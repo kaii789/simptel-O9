@@ -22,3 +22,5 @@ module ALU(
 	end
 	
 	assign zero = (ALU_result == 32'd0) ? 1'b1 : 1'b0; // set zero to be 0 if result is 0.
+	
+endmodule
