@@ -2,7 +2,7 @@ module ALU(
 	input clk,
 	input [31:0] src_A,
 	input [31:0] src_B,
-	input [2:0] ALU_control,
+	input [3:0] ALU_control,
 	output zero,
 	output reg [31:0] ALU_result
 	);
@@ -10,14 +10,23 @@ module ALU(
 	always @(*)
 	begin
 		case (ALU_control)
-		3'b000: ALU_result = src_A & src_B; // and
-		3'b001: ALU_result = src_A | src_A; // or
-		3'b010: ALU_result = a + b; // add
-		3'b110: ALU_result = a - b; // subtract
-		3'b111: begin if (a < b) ALU_result = 32'd1; // set on less than
-								else result = 32'd0;
+		4'b1000: ALU_result = src_A & src_B; // and
+		4'b1001: ALU_result = src_A | src_B; // or
+		4'b1011: ALU_result = ~(src_A | src_B); // nor
+		4'b1010: ALU_result = A ^ B; // xor
+		4'b0100: ALU_result = A << 1; // shift left
+		4'b0101: ALU_result = A >> 1; // shift right
+		4'b0000: ALU_result = src_A + src_B; // add
+		4'b0001: ALU_result = src_A - src_B; // subtract
+		4'b0010: ALU_result = src_A * src_B; // multiplication
+		4'b0011: ALU_result = src_A / src_B; // division
+		4'b1110: begin if (a > b) ALU_result = 32'd1; // set on less than
+								else ALU_result = 32'd0;
 								end
-		default: result = a + b; // add
+		4'b1111: begin if (a == b) ALU_result = 32'd1; // set on equal
+								else ALU_result = 32'd0;
+								end
+		default: ALU_result = src_A + src_B; // add
 		endcase
 	end
 	
