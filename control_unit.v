@@ -1,7 +1,7 @@
 module control_unit(input[5:0] opCode, 
 			  input clk, reset,
-                          output reg[3:0] ALUOp, output reg[1:0] PCWriteCond, ALUSrcB, PCSource,
-                          output reg PCWrite, IorD, MemWrite, MemtoReg, IRWrite, ALUSrcA, RegWrite, RegDst);
+                          output reg[1:0] PCWriteCond, ALUSrcB, PCSource,
+                          output reg PCWrite, IorD, MemWrite, MemtoReg, IRWrite, ALUSrcA, RegWrite, RegDst, ALUOp);
     
 //    always @(*)
 //        begin
