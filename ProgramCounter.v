@@ -8,6 +8,7 @@ module ProgramCounter(
 
 	input reset;
 	input clk;
+	input enable;
 	input [31:0] PC_in;
 	output [31:0] PC_out;
 	reg [31:0] PC_out;
