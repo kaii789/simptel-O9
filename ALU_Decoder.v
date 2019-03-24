@@ -1,4 +1,4 @@
-module ALU_Decoder(ALU_opCode, ALU_control);
+module ALU_Decoder(ALU_optcode, ALU_control);
 	input [5:0] ALU_optcode;
 	output reg [3:0] ALU_control;
 	

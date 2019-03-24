@@ -13,17 +13,17 @@ module ALU(
 		4'b1000: ALU_result = src_A & src_B; // and
 		4'b1001: ALU_result = src_A | src_B; // or
 		4'b1011: ALU_result = ~(src_A | src_B); // nor
-		4'b1010: ALU_result = A ^ B; // xor
-		4'b0100: ALU_result = A << 1; // shift left
-		4'b0101: ALU_result = A >> 1; // shift right
+		4'b1010: ALU_result = src_A ^ src_B; // xor
+		4'b0100: ALU_result = src_A << 1; // shift left
+		4'b0101: ALU_result = src_A >> 1; // shift right
 		4'b0000: ALU_result = src_A + src_B; // add
 		4'b0001: ALU_result = src_A - src_B; // subtract
 		4'b0010: ALU_result = src_A * src_B; // multiplication
 		4'b0011: ALU_result = src_A / src_B; // division
-		4'b1110: begin if (a > b) ALU_result = 32'd1; // set on less than
+		4'b1110: begin if (src_A > src_B) ALU_result = 32'd1; // set on less than
 								else ALU_result = 32'd0;
 								end
-		4'b1111: begin if (a == b) ALU_result = 32'd1; // set on equal
+		4'b1111: begin if (src_A == src_B) ALU_result = 32'd1; // set on equal
 								else ALU_result = 32'd0;
 								end
 		default: ALU_result = src_A + src_B; // add
