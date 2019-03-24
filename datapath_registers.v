@@ -6,7 +6,7 @@ module Instruction_Register(clk, memory_data, IRWrite, instruc3, instruc2, instr
 	output reg [4:0] instruc2, instruc1;
 	output reg [15:0] instruc0;
 	
-	always @(posedge clk);
+	always @(posedge clk)
 		begin
 			if (IRWrite) begin
 				instruc3 <= memory_data[31:26];
@@ -28,7 +28,7 @@ module Registers(clk, reset, RegWrite, read_reg1, read_reg2, write_reg, write_da
 		
 	reg [31:0] registers[31:0]; // we 32 registers, each able to hold 4 bytes
 	
-	always @(posedge clk, posedge reset);
+	always @(posedge clk, posedge reset)
 		begin 
 			if (reset) 
 				begin 
