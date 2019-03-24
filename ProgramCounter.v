@@ -17,4 +17,7 @@ module ProgramCounter(
 		else
 			PC_out = PC_in;
 			
+			
+	// MIGHT NEED TO MODIFY THIS TO ADD AN ENABLE FEATURE
+			
 endmodule
