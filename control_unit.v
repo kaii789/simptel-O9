@@ -33,9 +33,7 @@ module control_unit(input[5:0] opCode,
 	localparam 
                 R_TYPE = 6'b000000,
                 ADDI   = 6'b001000,
-                ANDI   = 6'b001100,
-					ORI    = 6'b001101,
-					XORI   = 6'b001110,
+              
 					BEQ   = 6'b000100,
 					BGTZ   = 6'b000111,
 					BLEZ   = 6'b000110,  
@@ -105,29 +103,11 @@ always @(*)
 							ALUSrcB = 2'b00;
 							RegDst = 1'b0;
 						end
-										ADDI: begin 
+						ADDI: begin 
 							ALUSrcA = 1'b1;
 							ALUSrcB = 2'b11;
 							RegDst = 1'b0;
 							ALUOp = ADD;
-						end
-						ANDI: begin 
-							ALUSrcA = 1'b1;
-							ALUSrcB = 2'b11;
-							RegDst = 1'b0;
-							ALUOp = AND;
-						end
-						ORI: begin 
-							ALUSrcA = 1'b1;
-							ALUSrcB = 2'b11;
-							RegDst = 1'b0;
-							ALUOp = OR;
-						end
-						XORI: begin 
-							ALUSrcA = 1'b1;
-							ALUSrcB = 2'b11;
-							RegDst = 1'b0;
-							ALUOp = XOR;
 						end
 						BEQ: begin 
 							
@@ -168,27 +148,6 @@ always @(*)
 						ALUSrcB = 2'b11;
 						RegDst = 1'b0;
 						ALUOp = ADD;
-						RegWrite = 1'b1;
-					end
-					ANDI: begin 
-						ALUSrcA = 1'b1;
-						ALUSrcB = 2'b11;
-						RegDst = 1'b0;
-						ALUOp = AND;
-						RegWrite = 1'b1;
-					end
-					ORI: begin 
-						ALUSrcA = 1'b1;
-						ALUSrcB = 2'b11;
-						RegDst = 1'b0;
-						ALUOp = OR;
-						RegWrite = 1'b1;
-					end
-					XORI: begin 
-						ALUSrcA = 1'b1;
-						ALUSrcB = 2'b11;
-						RegDst = 1'b0;
-						ALUOp = XOR;
 						RegWrite = 1'b1;
 					end
 					BEQ: begin 
