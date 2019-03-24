@@ -17,7 +17,7 @@ module Instruction_Register(clk, memory_data, IRWrite, instruc3, instruc2, instr
 		end
 	
 
-endmodule;
+endmodule
 
 
 module Registers(clk, reset, RegWrite, read_reg1, read_reg2, write_reg, write_data, read_data1, read_data2);
