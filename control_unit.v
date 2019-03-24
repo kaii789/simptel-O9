@@ -44,16 +44,8 @@ module control_unit(input[5:0] opCode,
 					SW   = 6'b101011;	
 	// ALUOps
 	localparam 
-                ADD = 6'b100000,
-		DIV = 6'b011010,
-		MULT = 6'b011000,
-		SUB = 6'b100010,
-		AND = 6'b100100,
-		NOR = 6'b100111,
-		OR = 6'b100101,
-		XOR = 6'b100110,
-		SLL = 6'b000000,
-		SRL = 6'b000010;
+                R_OP = 1'b0,
+		ADD = 1'b1;
 
 	reg [4:0] current_state, next_state; 	
 
@@ -78,9 +70,9 @@ module control_unit(input[5:0] opCode,
 always @(*)
     begin: enable_signals
         // By default make all our signals 0
-        	 ALUOp = 4'b0000; 
+        	    ALUOp = 4'b0000; 
 		    PCWriteCond = 2'b00;
-           PCWrite = 1'b0;
+           	    PCWrite = 1'b0;
 		    IorD = 1'b0;
 		    MemRead = 1'b0;
 		    MemWrite = 1'b0;
@@ -102,6 +94,7 @@ always @(*)
 							ALUSrcA = 1'b1;
 							ALUSrcB = 2'b00;
 							RegDst = 1'b0;
+							ALUOp = R_OP;
 						end
 						ADDI: begin 
 							ALUSrcA = 1'b1;
@@ -141,6 +134,7 @@ always @(*)
 						ALUSrcA = 1'b1;
 						ALUSrcB = 2'b00;
 						RegDst = 1'b0;
+						ALUOp = R_OP;
 						RegWrite = 1'b1;
 					end
                				ADDI: begin 
