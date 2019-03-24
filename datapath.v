@@ -59,7 +59,8 @@ module datapath(
 		.reset(reset),
 		.clk(clk),
 		.PC_in(mux_F_out[31:0]),
-		.PC_out(PC_Out_Bus[31:0])
+		.PC_out(PC_Out_Bus[31:0]),
+		.enable(my_or_out)
 	);
 	
 	two_two_one_mux mux_A(
