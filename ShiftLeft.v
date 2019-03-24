@@ -3,6 +3,6 @@ module ShiftLeft(to_shift, shifted);
 	output [31:0] shifted;
 	wire [31:0] shifted;
 	
-	assign shifted = to_shifter << to_shift;
+	assign shifted = to_shift << to_shift;
 
 endmodule
