@@ -42,6 +42,8 @@ module datapath(
 	wire [31:0] shift_left_out;
 	wire [31:0] mux_E_out;
 	wire zero;
+	wire my_and_out;
+	wire my_or_out;
  	
 	three_to_one_mux mux_F(
 		.sel(PCSource[1:0]),
@@ -142,17 +144,29 @@ module datapath(
 		.zero(zero),
 		.ALU_result(ALU_Out_Bus) // not using a separate register here
 	);
+	
+	And my_and(
+		.in_0(zero),
+		.in_1(PCWriteCond),
+		.q(my_and_out)
+	);
+	
+	Or my_or(
+		.in_1(my_and_out),
+		.in_1(PCWrite),
+		.q(my_or_out)
+	);
 
 endmodule
 
-module and(in_0, in_1, q);
+module And(in_0, in_1, q);
 	input in_0, in_1;
 	output q;
 	
 	assign q = in_0 & in_1;
 endmodule
 
-module or(in_0, in_1, q);
+module Or(in_0, in_1, q);
 	input in_0, in_1, q;
 	output q;
 	
