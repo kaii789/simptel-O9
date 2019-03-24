@@ -44,6 +44,7 @@ module datapath(
 	wire zero;
 	wire my_and_out;
 	wire my_or_out;
+	wire [3:0] alu_decoder_out;
  	
 	three_to_one_mux mux_F(
 		.sel(PCSource[1:0]),
@@ -136,11 +137,16 @@ module datapath(
 		.shifted(shift_left_out)
 	);
 	
+	ALU_Decoder alu_decoder(
+		.ALU_optcode(instruc0_bus[5:0]),
+		.ALU_control(alu_decoder_out[3:0]),
+	);
+	
 	ALU alu(
 		.clk(clk),
 		.srcA(mux_D_out),
 		.srcB(mux_E_out),
-		.ALU_control(instruc0_bus[3:0]), // be careful here. how to resolve conflict with ALUOp?
+		.ALU_control(alu_decoder_out[3:0]), // be careful here. how to resolve conflict with ALUOp?
 		.zero(zero),
 		.ALU_result(ALU_Out_Bus) // not using a separate register here
 	);
