@@ -1,7 +1,7 @@
 module control_unit(input[5:0] opCode, 
 			  input clk, reset,
                           output reg[3:0] ALUOp, output reg[1:0] PCWriteCond, ALUSrcB, PCSource,
-                          output reg PCWrite, IorD, MemRead, MemWrite, MemtoReg, IRWrite, ALUSrcA, RegWrite, RegDst);
+                          output reg PCWrite, IorD, MemWrite, MemtoReg, IRWrite, ALUSrcA, RegWrite, RegDst);
     
 //    always @(*)
 //        begin
@@ -33,7 +33,9 @@ module control_unit(input[5:0] opCode,
 	localparam 
                 R_TYPE = 6'b000000,
                 ADDI   = 6'b001000,
-              
+                ANDI   = 6'b001100,
+					ORI    = 6'b001101,
+					XORI   = 6'b001110,
 					BEQ   = 6'b000100,
 					BGTZ   = 6'b000111,
 					BLEZ   = 6'b000110,  
@@ -44,8 +46,16 @@ module control_unit(input[5:0] opCode,
 					SW   = 6'b101011;	
 	// ALUOps
 	localparam 
-                R_OP = 1'b0,
-		ADD = 1'b1;
+                ADD = 6'b100000,
+		DIV = 6'b011010,
+		MULT = 6'b011000,
+		SUB = 6'b100010,
+		AND = 6'b100100,
+		NOR = 6'b100111,
+		OR = 6'b100101,
+		XOR = 6'b100110,
+		SLL = 6'b000000,
+		SRL = 6'b000010;
 
 	reg [4:0] current_state, next_state; 	
 
@@ -70,11 +80,10 @@ module control_unit(input[5:0] opCode,
 always @(*)
     begin: enable_signals
         // By default make all our signals 0
-        	    ALUOp = 4'b0000; 
+        	 ALUOp = 4'b0000; 
 		    PCWriteCond = 2'b00;
-           	    PCWrite = 1'b0;
+           PCWrite = 1'b0;
 		    IorD = 1'b0;
-		    MemRead = 1'b0;
 		    MemWrite = 1'b0;
 		    MemtoReg = 1'b0;
 		    IRWrite = 1'b0;
@@ -85,7 +94,7 @@ always @(*)
  case (current_state)
             FETCH: begin  // get the instruction into the IR
                 IRWrite = 1'b1;
-		MemRead = 1'b1;
+					 IorD = 1'b0;
                 end
             DECODE: begin // decode the instruction and prepare the values
            
@@ -94,13 +103,30 @@ always @(*)
 							ALUSrcA = 1'b1;
 							ALUSrcB = 2'b00;
 							RegDst = 1'b0;
-							ALUOp = R_OP;
 						end
-						ADDI: begin 
+										ADDI: begin 
 							ALUSrcA = 1'b1;
 							ALUSrcB = 2'b11;
 							RegDst = 1'b0;
 							ALUOp = ADD;
+						end
+						ANDI: begin 
+							ALUSrcA = 1'b1;
+							ALUSrcB = 2'b11;
+							RegDst = 1'b0;
+							ALUOp = AND;
+						end
+						ORI: begin 
+							ALUSrcA = 1'b1;
+							ALUSrcB = 2'b11;
+							RegDst = 1'b0;
+							ALUOp = OR;
+						end
+						XORI: begin 
+							ALUSrcA = 1'b1;
+							ALUSrcB = 2'b11;
+							RegDst = 1'b0;
+							ALUOp = XOR;
 						end
 						BEQ: begin 
 							
@@ -134,7 +160,6 @@ always @(*)
 						ALUSrcA = 1'b1;
 						ALUSrcB = 2'b00;
 						RegDst = 1'b0;
-						ALUOp = R_OP;
 						RegWrite = 1'b1;
 					end
                				ADDI: begin 
@@ -142,6 +167,27 @@ always @(*)
 						ALUSrcB = 2'b11;
 						RegDst = 1'b0;
 						ALUOp = ADD;
+						RegWrite = 1'b1;
+					end
+					ANDI: begin 
+						ALUSrcA = 1'b1;
+						ALUSrcB = 2'b11;
+						RegDst = 1'b0;
+						ALUOp = AND;
+						RegWrite = 1'b1;
+					end
+					ORI: begin 
+						ALUSrcA = 1'b1;
+						ALUSrcB = 2'b11;
+						RegDst = 1'b0;
+						ALUOp = OR;
+						RegWrite = 1'b1;
+					end
+					XORI: begin 
+						ALUSrcA = 1'b1;
+						ALUSrcB = 2'b11;
+						RegDst = 1'b0;
+						ALUOp = XOR;
 						RegWrite = 1'b1;
 					end
 					BEQ: begin 
