@@ -1,29 +1,34 @@
 module Simptel-O9(CLOCK_50)
-
-
-module control_unit(.opCode(), 
+  input CLOCK_50;
+  
+  wire opCode, ALUOp, PCWriteCond, PCWrite, IorD, MemWrite, MemtoReg, IRWrite, ALUSrcA, RegWrite, RegDst;
+  wire [1:0] ALUSrcB, PCSource;
+  
+  control_unit(.opCode(opCode), 
 			  .clk(CLOCK_50), .reset(0),
-                          .ALUOp(), 
-                          PCWriteCond, ALUSrcB, PCSource,
-                          PCWrite, IorD, MemRead, MemWrite, MemtoReg, IRWrite, ALUSrcA, RegWrite, RegDst);
+                          .ALUOp(ALUOp), 
+                          .PCWriteCond(PCWriteCond), .ALUSrcB(ALUSrcB[1:0]), .PCSource(PCSource),
+                          .PCWrite(PCWrite), .IorD(IorD), .MemWrite(MemWrite), .MemtoReg(MemtoReg), 
+                          .IRWrite(IRWrite), .ALUSrcA(ALUSrcA), .RegWrite(RegWrite), .RegDst(RegDst));
     
   
   datapath dpath(
-	.PCWriteCond(),
-	.PCWrite(),
-	.IorD,
-	MemRead,
-	MemWrite,
-	MemtoReg,
+	.PCWriteCond(PCWriteCond),
+	.PCWrite(PCWrite),
+	.IorD(IorD),
+	.MemRead(0),
+	.MemWrite(MemWrite),
+	.MemtoReg,
 	IRWrite,
-	PCSource,
-	ALUOp,
-	ALUSrcB,
-	ALUSrcA,
-	RegWrite,
-	RegDst,
-	clk,
-	reset
+	.PCSource(PCSource),
+	.ALUOp(ALUOp),
+	.ALUSrcB(ALUSrcB[1:0),
+	.ALUSrcA(ALUSrcA),
+	.RegWrite(RegWrite),
+	.RegDst(RegDst),
+	.clk(CLOCK_50),
+	.reset(0),
+  .opcode(opCode)
 );
 
 endmodule 
