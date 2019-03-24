@@ -13,7 +13,8 @@ module datapath(
 	RegWrite,
 	RegDst,
 	clk,
-	reset
+	reset,
+	opCode
 );
 
 
@@ -108,9 +109,9 @@ module datapath(
 	);
 	
 	two_to_one_mux mux_C(
-		.in_0(ALU_out_bus[31:0]),
+		.in_0(ALU_Out_Bus[31:0]),
 		.in_1(mem_out[31:0]),
-		.q(mux_C_outp[31:0]),
+		.q(mux_C_out[31:0]),
 		.sel(MemtoReg)
 	);
 	
@@ -141,7 +142,7 @@ module datapath(
 		.in_1(32'b00000000000000000000000000000100),
 		.in_2(sign_extend_out[31:0]),
 		.in_3(shift_left_out[31:0]),
-		.sel(ALUSrcB),
+		.sel(ALUSrcB)
 	);
 	
 	ShiftLeft shift_left_2_A(
@@ -151,7 +152,7 @@ module datapath(
 	
 	ALU_Decoder alu_decoder(
 		.ALU_optcode(instruc0_bus[5:0]),
-		.ALU_control(alu_decoder_out[3:0]),
+		.ALU_control(alu_decoder_out[3:0])
 	);
 	
 	ALU alu(
@@ -185,7 +186,7 @@ module And(in_0, in_1, q);
 endmodule
 
 module Or(in_0, in_1, q);
-	input in_0, in_1, q;
+	input in_0, in_1;
 	output q;
 	
 	assign q = in_0 | in_1;
@@ -224,7 +225,7 @@ endmodule
 module two_to_one_mux_5_bit(in_0, in_1, q, sel);
 	input [4:0] in_0, in_1;
 	input sel;
-	output [4:0] q;
+	output reg [4:0] q;
 	
 	always @(in_0 or in_1 or sel)
 		if (sel == 1'b0)
@@ -237,16 +238,18 @@ endmodule
 module four_to_one_mux(in_0, in_1, in_2, in_3, q, sel);
 	input [31:0] in_0, in_1, in_2, in_3;
 	input [1:0] sel;
-	output [31:0] q;
+	output reg [31:0] q;
 	
 	always @(in_0 or in_1 or in_2 or in_3 or sel)
-		if (sel == 2'b00)
-			q = in_0
-		else if (sel == 2'b01)
-			q = in_1
-		else if (sel == 2'b10)
-			q = in_2
-		else
-			q = in_3
+		begin
+			if (sel == 2'b00)
+				q = in_0;
+			else if (sel == 2'b01)
+				q = in_1;
+			else if (sel == 2'b10)
+				q = in_2;
+			else
+				q = in_3;
+		end
 	
 endmodule
