@@ -1,0 +1,3 @@
+001000_00000_00001_0000000000000001 // initialize register 1 to 1
+001000_00000_00010_0000000000000010 // initialize register 2 to 2
+000000_00001_00010_00011_11111_100000 // add value at registers 1 and 2 and store at register 3

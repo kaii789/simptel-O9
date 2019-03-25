@@ -1,0 +1,31 @@
+cd Desktop/Sim
+# couldn't change working directory to "Desktop/Sim": no such file or directory
+cd Desktop/
+# couldn't change working directory to "Desktop/": no such file or directory
+pwd
+# /h/u11/c7/00/huangk46/Desktop/Simptel-O9
+do test.do
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 22:18:36 on Mar 24,2019
+# vlog -reportprogress 300 -timescale 1ns/1ns SimptelO9.v 
+# -- Compiling module SimptelO9
+# 
+# Top level modules:
+# 	SimptelO9
+# End time: 22:18:36 on Mar 24,2019, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vsim SimptelO9 
+# Start time: 22:18:36 on Mar 24,2019
+# Loading work.SimptelO9
+# ** Error: (vsim-3033) SimptelO9.v(12): Instantiation of 'control_unit' failed. The design unit was not found.
+#    Time: 0 ps  Iteration: 0  Instance: /SimptelO9 File: SimptelO9.v
+#         Searched libraries:
+#             /h/u11/c7/00/huangk46/Desktop/Simptel-O9/work
+# ** Error: (vsim-3033) SimptelO9.v(15): Instantiation of 'datapath' failed. The design unit was not found.
+#    Time: 0 ps  Iteration: 0  Instance: /SimptelO9 File: SimptelO9.v
+#         Searched libraries:
+#             /h/u11/c7/00/huangk46/Desktop/Simptel-O9/work
+# Error loading design
+# Error: Error loading design
+#        Pausing macro execution
+# MACRO ./test.do PAUSED at line 5

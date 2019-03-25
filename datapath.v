@@ -71,7 +71,7 @@ module datapath(
 		.q(mux_A_out[31:0])
 	);
 	
-	ram65536x32 Memory(
+	RAMO9 Memory(
 		.address(mux_A_out[15:0]),
 		.clock(clk),
 		.data(B[31:0]),
