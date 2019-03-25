@@ -64,7 +64,7 @@ module datapath(
 		.enable(my_or_out)
 	);
 	
-	two_two_one_mux mux_A(
+	two_to_one_mux mux_A(
 		.sel(IorD),
 		.in_0(PC_Out_Bus[31:0]),
 		.in_1(ALU_Out_Bus[31:0]),
@@ -157,35 +157,35 @@ module datapath(
 	
 	ALU alu(
 		.clk(clk),
-		.srcA(mux_D_out[31:0]),
-		.srcB(mux_E_out[31:0]),
+		.src_A(mux_D_out[31:0]),
+		.src_B(mux_E_out[31:0]),
 		.ALU_control(alu_decoder_out[3:0]), // be careful here. how to resolve conflict with ALUOp?
 		.zero(zero),
 		.ALU_result(ALU_Out_Bus[31:0]) // not using a separate register here
 	);
 	
-	And my_and(
+	And_ my_and(
 		.in_0(zero),
 		.in_1(PCWriteCond),
 		.q(my_and_out)
 	);
 	
-	Or my_or(
-		.in_1(my_and_out),
+	Or_ my_or(
+		.in_0(my_and_out),
 		.in_1(PCWrite),
 		.q(my_or_out)
 	);
 
 endmodule
 
-module And(in_0, in_1, q);
+module And_(in_0, in_1, q);
 	input in_0, in_1;
 	output q;
 	
 	assign q = in_0 & in_1;
 endmodule
 
-module Or(in_0, in_1, q);
+module Or_(in_0, in_1, q);
 	input in_0, in_1;
 	output q;
 	
