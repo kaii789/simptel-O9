@@ -8,25 +8,371 @@ z2
 !i10f 100
 cModel Technology
 Z0 d/h/u11/c7/00/huangk46/Desktop/Simptel-O9
-vSimptelO9
-!s110 1553480316
+vALU
+Z1 !s110 1553481995
 !i10b 1
-!s100 To6]Of0AnFL>RC=H[YVZN1
-IPJPzUg3:@MP_JO?zT4iXU2
-VDg1SIo80bB@j0V0VzS_@n1
+!s100 nEAd]2Sn9obbXK<FhC;4D1
+IQZS?5h6_32?YbkaZ;Je4W3
+Z2 VDg1SIo80bB@j0V0VzS_@n1
 R0
-w1553475825
-8SimptelO9.v
-FSimptelO9.v
+Z3 w1553465684
+8ALU.v
+FALU.v
 L0 1
-OV;L;10.5b;63
+Z4 OV;L;10.5b;63
 r1
 !s85 0
 31
-!s108 1553480316.000000
-!s107 SimptelO9.v|
-!s90 -reportprogress|300|-timescale|1ns/1ns|SimptelO9.v|
+Z5 !s108 1553481995.000000
+Z6 !s107 datapath_registers.v|control_unit.v|SignExtend.v|ShiftLeft.v|RAMO9(4KB).v|ProgramCounter.v|ALU_Decoder.v|ALU.v|datapath.v|SimptelO9.v|
+Z7 !s90 -reportprogress|300|-timescale|1ns/1ns|SimptelO9.v|datapath.v|ALU.v|ALU_Decoder.v|ProgramCounter.v|RAMO9(4KB).v|ShiftLeft.v|SignExtend.v|control_unit.v|datapath_registers.v|
 !i113 1
-o-timescale 1ns/1ns
-tCvgOpt 0
+Z8 o-timescale 1ns/1ns
+Z9 tCvgOpt 0
+n@a@l@u
+vALU_Decoder
+R1
+!i10b 1
+!s100 PAgHO<KTWU;3ljc5=JX<L2
+IgJo5RS:GhLeMEkF:lgFPi2
+R2
+R0
+R3
+8ALU_Decoder.v
+FALU_Decoder.v
+L0 1
+R4
+r1
+!s85 0
+31
+R5
+R6
+R7
+!i113 1
+R8
+R9
+n@a@l@u_@decoder
+vAnd_
+R1
+!i10b 1
+!s100 _c5N_`3G^kF3mZ];j2mD]2
+I><G>HjULZ;Riail>gUdLH0
+R2
+R0
+Z10 w1553479636
+Z11 8datapath.v
+Z12 Fdatapath.v
+L0 181
+R4
+r1
+!s85 0
+31
+R5
+R6
+R7
+!i113 1
+R8
+R9
+n@and_
+vcontrol_unit
+R1
+!i10b 1
+!s100 _TSXaAmg=1WbLNfAH=1O<0
+Ia:B@eJDo7Sd>TNb]NCXR42
+R2
+R0
+w1553474178
+8control_unit.v
+Fcontrol_unit.v
+L0 1
+R4
+r1
+!s85 0
+31
+R5
+R6
+R7
+!i113 1
+R8
+R9
+vdatapath
+R1
+!i10b 1
+!s100 [kKl4`zgodVkO4<eARTQa3
+I`ol@8H?30UQ=>jhKSO^jR0
+R2
+R0
+R10
+R11
+R12
+L0 1
+R4
+r1
+!s85 0
+31
+R5
+R6
+R7
+!i113 1
+R8
+R9
+vfour_to_one_mux
+R1
+!i10b 1
+!s100 ?z>HbBn;Qm>WgYR72`G5B0
+IYhR6=ZRlEeCUAV]ZhbNjY1
+R2
+R0
+R10
+R11
+R12
+L0 238
+R4
+r1
+!s85 0
+31
+R5
+R6
+R7
+!i113 1
+R8
+R9
+vInstruction_Register
+R1
+!i10b 1
+!s100 [J3A8eR5`R7P`8d:QSW2o2
+IH>Xi=7mTJX@I;6iRnaBV13
+R2
+R0
+Z13 w1553479952
+Z14 8datapath_registers.v
+Z15 Fdatapath_registers.v
+L0 1
+R4
+r1
+!s85 0
+31
+R5
+R6
+R7
+!i113 1
+R8
+R9
+n@instruction_@register
+vOr_
+R1
+!i10b 1
+!s100 =811lVi98@]`R=[^DKH=O0
+IzkiE`]dVcE7<zQH1gU=R53
+R2
+R0
+R10
+R11
+R12
+L0 188
+R4
+r1
+!s85 0
+31
+R5
+R6
+R7
+!i113 1
+R8
+R9
+n@or_
+vProgramCounter
+R1
+!i10b 1
+!s100 5f?9XGYYLk[IC_dh3h3;[2
+IloZ8`C7NEN?ATEF^Q^inW3
+R2
+R0
+R3
+8ProgramCounter.v
+FProgramCounter.v
+L0 1
+R4
+r1
+!s85 0
+31
+R5
+R6
+R7
+!i113 1
+R8
+R9
+n@program@counter
+vRAMO9
+R1
+!i10b 1
+!s100 KDF>LG4T[gI2>I6A><?SZ0
+IBBB[^:7J7`2lkOe6f35@P2
+R2
+R0
+w1553479396
+8RAMO9(4KB).v
+FRAMO9(4KB).v
+L0 1
+R4
+r1
+!s85 0
+31
+R5
+R6
+R7
+!i113 1
+R8
+R9
+n@r@a@m@o9
+vRegisters
+R1
+!i10b 1
+!s100 4VkD3M@OGPDV6`aQfon[00
+I`JIBnHKeJ1eR`@eX5CJLN3
+R2
+R0
+R13
+R14
+R15
+L0 23
+R4
+r1
+!s85 0
+31
+R5
+R6
+R7
+!i113 1
+R8
+R9
+n@registers
+vShiftLeft
+R1
+!i10b 1
+!s100 9MFCjNgVF4Ngj]=TI9hTl0
+IzRzg3OY=PzjA7RN`;5G>g1
+R2
+R0
+R3
+8ShiftLeft.v
+FShiftLeft.v
+L0 1
+R4
+r1
+!s85 0
+31
+R5
+R6
+R7
+!i113 1
+R8
+R9
+n@shift@left
+vSignExtend
+R1
+!i10b 1
+!s100 1I;?^3=j>F5;h68]F;EHE1
+I@>KmMh?Z9jcMdAD6<Z:eE3
+R2
+R0
+w1553455969
+8SignExtend.v
+FSignExtend.v
+L0 1
+R4
+r1
+!s85 0
+31
+R5
+R6
+R7
+!i113 1
+R8
+R9
+n@sign@extend
+vSimptelO9
+R1
+!i10b 1
+!s100 cEc^c@T7eZom>H@egEZ993
+IhF6SFB2<7?UQTW@:P]b0g3
+R2
+R0
+w1553481766
+8SimptelO9.v
+FSimptelO9.v
+L0 1
+R4
+r1
+!s85 0
+31
+R5
+R6
+R7
+!i113 1
+R8
+R9
 n@simptel@o9
+vthree_to_one_mux
+R1
+!i10b 1
+!s100 >1e8mbD025T;?6<Qi[aSA3
+I1Tb9SWP[bkN?lI=?M<F193
+R2
+R0
+R10
+R11
+R12
+L0 209
+R4
+r1
+!s85 0
+31
+R5
+R6
+R7
+!i113 1
+R8
+R9
+vtwo_to_one_mux
+R1
+!i10b 1
+!s100 clg9>MEBBffmB[B6gkWoZ2
+I1J@VAXlH@<8^hQ=6W;J_I1
+R2
+R0
+R10
+R11
+R12
+L0 195
+R4
+r1
+!s85 0
+31
+R5
+R6
+R7
+!i113 1
+R8
+R9
+vtwo_to_one_mux_5_bit
+R1
+!i10b 1
+!s100 RU8U=daO]GZ>@k@EA:GLe2
+IjNLP8hKeQKBPl;Gi8UWcB0
+R2
+R0
+R10
+R11
+R12
+L0 225
+R4
+r1
+!s85 0
+31
+R5
+R6
+R7
+!i113 1
+R8
+R9

@@ -2,7 +2,7 @@
 CLOCK_50 => CLOCK_50.IN2
 
 
-|SimptelO9|control_unit:comb_3
+|SimptelO9|control_unit:cunit
 opCode[0] => ~NO_FANOUT~
 opCode[1] => ~NO_FANOUT~
 opCode[2] => ~NO_FANOUT~

@@ -1,6 +1,6 @@
 vlib work
 
-vlog -timescale 1ns/1ns SimptelO9.v
+vlog -timescale 1ns/1ns SimptelO9.v datapath.v ALU.v ALU_Decoder.v ProgramCounter.v RAMO9(4KB).v ShiftLeft.v SignExtend.v control_unit.v datapath_registers.v  
 
 vsim SimptelO9
 

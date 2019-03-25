@@ -29,3 +29,330 @@ do test.do
 # Error: Error loading design
 #        Pausing macro execution
 # MACRO ./test.do PAUSED at line 5
+pwd
+# /h/u11/c7/00/huangk46/Desktop/Simptel-O9
+do test.do
+# ** Warning: (vlib-34) Library already exists at "work".
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 22:28:42 on Mar 24,2019
+# vlog -reportprogress 300 -timescale 1ns/1ns SimptelO9.v 
+# -- Compiling module SimptelO9
+# 
+# Top level modules:
+# 	SimptelO9
+# End time: 22:28:42 on Mar 24,2019, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vsim SimptelO9 
+# Start time: 22:18:36 on Mar 24,2019
+# Loading work.SimptelO9
+# ** Error: (vsim-3033) SimptelO9.v(12): Instantiation of 'control_unit' failed. The design unit was not found.
+#    Time: 0 ps  Iteration: 0  Instance: /SimptelO9 File: SimptelO9.v
+#         Searched libraries:
+#             /h/u11/c7/00/huangk46/Desktop/Simptel-O9/work
+# ** Error: (vsim-3033) SimptelO9.v(15): Instantiation of 'datapath' failed. The design unit was not found.
+#    Time: 0 ps  Iteration: 0  Instance: /SimptelO9 File: SimptelO9.v
+#         Searched libraries:
+#             /h/u11/c7/00/huangk46/Desktop/Simptel-O9/work
+# Error loading design
+# Error: Error loading design
+#        Pausing macro execution
+# MACRO ./test.do PAUSED at line 5
+do test.do
+# ** Warning: (vlib-34) Library already exists at "work".
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 22:39:02 on Mar 24,2019
+# vlog -reportprogress 300 -timescale 1ns/1ns SimptelO9.v datapath.v 
+# -- Compiling module SimptelO9
+# -- Compiling module datapath
+# -- Compiling module And_
+# -- Compiling module Or_
+# -- Compiling module two_to_one_mux
+# -- Compiling module three_to_one_mux
+# -- Compiling module two_to_one_mux_5_bit
+# -- Compiling module four_to_one_mux
+# 
+# Top level modules:
+# 	SimptelO9
+# End time: 22:39:03 on Mar 24,2019, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 0
+# vsim SimptelO9 
+# Start time: 22:18:36 on Mar 24,2019
+# Loading work.SimptelO9
+# ** Error: (vsim-3033) SimptelO9.v(12): Instantiation of 'control_unit' failed. The design unit was not found.
+#    Time: 0 ps  Iteration: 0  Instance: /SimptelO9 File: SimptelO9.v
+#         Searched libraries:
+#             /h/u11/c7/00/huangk46/Desktop/Simptel-O9/work
+# Loading work.datapath
+# Loading work.three_to_one_mux
+# ** Error: (vsim-3033) datapath.v(59): Instantiation of 'ProgramCounter' failed. The design unit was not found.
+#    Time: 0 ps  Iteration: 0  Instance: /SimptelO9/dpath File: datapath.v
+#         Searched libraries:
+#             /h/u11/c7/00/huangk46/Desktop/Simptel-O9/work
+# Loading work.two_to_one_mux
+# ** Error: (vsim-3033) datapath.v(74): Instantiation of 'RAMO9' failed. The design unit was not found.
+#    Time: 0 ps  Iteration: 0  Instance: /SimptelO9/dpath File: datapath.v
+#         Searched libraries:
+#             /h/u11/c7/00/huangk46/Desktop/Simptel-O9/work
+# ** Error: (vsim-3033) datapath.v(82): Instantiation of 'Instruction_Register' failed. The design unit was not found.
+#    Time: 0 ps  Iteration: 0  Instance: /SimptelO9/dpath File: datapath.v
+#         Searched libraries:
+#             /h/u11/c7/00/huangk46/Desktop/Simptel-O9/work
+# Loading work.two_to_one_mux_5_bit
+# ** Error: (vsim-3033) datapath.v(99): Instantiation of 'Registers' failed. The design unit was not found.
+#    Time: 0 ps  Iteration: 0  Instance: /SimptelO9/dpath File: datapath.v
+#         Searched libraries:
+#             /h/u11/c7/00/huangk46/Desktop/Simptel-O9/work
+# ** Error: (vsim-3033) datapath.v(118): Instantiation of 'SignExtend' failed. The design unit was not found.
+#    Time: 0 ps  Iteration: 0  Instance: /SimptelO9/dpath File: datapath.v
+#         Searched libraries:
+#             /h/u11/c7/00/huangk46/Desktop/Simptel-O9/work
+# ** Error: (vsim-3033) datapath.v(123): Instantiation of 'SignExtend' failed. The design unit was not found.
+#    Time: 0 ps  Iteration: 0  Instance: /SimptelO9/dpath File: datapath.v
+#         Searched libraries:
+#             /h/u11/c7/00/huangk46/Desktop/Simptel-O9/work
+# ** Error: (vsim-3033) datapath.v(128): Instantiation of 'ShiftLeft' failed. The design unit was not found.
+#    Time: 0 ps  Iteration: 0  Instance: /SimptelO9/dpath File: datapath.v
+#         Searched libraries:
+#             /h/u11/c7/00/huangk46/Desktop/Simptel-O9/work
+# Loading work.four_to_one_mux
+# ** Error: (vsim-3033) datapath.v(148): Instantiation of 'ShiftLeft' failed. The design unit was not found.
+#    Time: 0 ps  Iteration: 0  Instance: /SimptelO9/dpath File: datapath.v
+#         Searched libraries:
+#             /h/u11/c7/00/huangk46/Desktop/Simptel-O9/work
+# ** Error: (vsim-3033) datapath.v(153): Instantiation of 'ALU_Decoder' failed. The design unit was not found.
+#    Time: 0 ps  Iteration: 0  Instance: /SimptelO9/dpath File: datapath.v
+#         Searched libraries:
+#             /h/u11/c7/00/huangk46/Desktop/Simptel-O9/work
+# ** Error: (vsim-3033) datapath.v(158): Instantiation of 'ALU' failed. The design unit was not found.
+#    Time: 0 ps  Iteration: 0  Instance: /SimptelO9/dpath File: datapath.v
+#         Searched libraries:
+#             /h/u11/c7/00/huangk46/Desktop/Simptel-O9/work
+# Loading work.And_
+# Loading work.Or_
+# Error loading design
+# Error: Error loading design
+#        Pausing macro execution
+# MACRO ./test.do PAUSED at line 5
+do test.do
+# ** Warning: (vlib-34) Library already exists at "work".
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 22:40:58 on Mar 24,2019
+# vlog -reportprogress 300 -timescale 1ns/1ns SimptelO9.v datapath.v ALU.v ALU_Decoder.v ProgramCounter.v RAMO9(4KB).v ShiftLeft.v SignExtend.v control_unit.v datapath_registers.v 
+# -- Compiling module SimptelO9
+# -- Compiling module datapath
+# -- Compiling module And_
+# -- Compiling module Or_
+# -- Compiling module two_to_one_mux
+# -- Compiling module three_to_one_mux
+# -- Compiling module two_to_one_mux_5_bit
+# -- Compiling module four_to_one_mux
+# -- Compiling module ALU
+# -- Compiling module ALU_Decoder
+# -- Compiling module ProgramCounter
+# -- Compiling module RAMO9
+# -- Compiling module ShiftLeft
+# -- Compiling module SignExtend
+# -- Compiling module control_unit
+# -- Compiling module Instruction_Register
+# -- Compiling module Registers
+# ** Warning: datapath_registers.v(36): (vlog-2600) [RDGN] - Redundant digits in numeric literal.
+# ** Warning: datapath_registers.v(37): (vlog-2600) [RDGN] - Redundant digits in numeric literal.
+# ** Warning: datapath_registers.v(38): (vlog-2600) [RDGN] - Redundant digits in numeric literal.
+# ** Warning: datapath_registers.v(39): (vlog-2600) [RDGN] - Redundant digits in numeric literal.
+# ** Warning: datapath_registers.v(40): (vlog-2600) [RDGN] - Redundant digits in numeric literal.
+# ** Warning: datapath_registers.v(41): (vlog-2600) [RDGN] - Redundant digits in numeric literal.
+# ** Warning: datapath_registers.v(42): (vlog-2600) [RDGN] - Redundant digits in numeric literal.
+# ** Warning: datapath_registers.v(43): (vlog-2600) [RDGN] - Redundant digits in numeric literal.
+# ** Warning: datapath_registers.v(44): (vlog-2600) [RDGN] - Redundant digits in numeric literal.
+# ** Warning: datapath_registers.v(45): (vlog-2600) [RDGN] - Redundant digits in numeric literal.
+# ** Warning: datapath_registers.v(46): (vlog-2600) [RDGN] - Redundant digits in numeric literal.
+# ** Warning: datapath_registers.v(47): (vlog-2600) [RDGN] - Redundant digits in numeric literal.
+# ** Warning: datapath_registers.v(48): (vlog-2600) [RDGN] - Redundant digits in numeric literal.
+# ** Warning: datapath_registers.v(49): (vlog-2600) [RDGN] - Redundant digits in numeric literal.
+# ** Warning: datapath_registers.v(50): (vlog-2600) [RDGN] - Redundant digits in numeric literal.
+# ** Warning: datapath_registers.v(51): (vlog-2600) [RDGN] - Redundant digits in numeric literal.
+# ** Warning: datapath_registers.v(52): (vlog-2600) [RDGN] - Redundant digits in numeric literal.
+# ** Warning: datapath_registers.v(53): (vlog-2600) [RDGN] - Redundant digits in numeric literal.
+# ** Warning: datapath_registers.v(54): (vlog-2600) [RDGN] - Redundant digits in numeric literal.
+# ** Warning: datapath_registers.v(55): (vlog-2600) [RDGN] - Redundant digits in numeric literal.
+# ** Warning: datapath_registers.v(56): (vlog-2600) [RDGN] - Redundant digits in numeric literal.
+# ** Warning: datapath_registers.v(57): (vlog-2600) [RDGN] - Redundant digits in numeric literal.
+# ** Warning: datapath_registers.v(58): (vlog-2600) [RDGN] - Redundant digits in numeric literal.
+# ** Warning: datapath_registers.v(59): (vlog-2600) [RDGN] - Redundant digits in numeric literal.
+# ** Warning: datapath_registers.v(60): (vlog-2600) [RDGN] - Redundant digits in numeric literal.
+# ** Warning: datapath_registers.v(61): (vlog-2600) [RDGN] - Redundant digits in numeric literal.
+# ** Warning: datapath_registers.v(62): (vlog-2600) [RDGN] - Redundant digits in numeric literal.
+# ** Warning: datapath_registers.v(63): (vlog-2600) [RDGN] - Redundant digits in numeric literal.
+# ** Warning: datapath_registers.v(64): (vlog-2600) [RDGN] - Redundant digits in numeric literal.
+# ** Warning: datapath_registers.v(65): (vlog-2600) [RDGN] - Redundant digits in numeric literal.
+# ** Warning: datapath_registers.v(66): (vlog-2600) [RDGN] - Redundant digits in numeric literal.
+# ** Warning: datapath_registers.v(67): (vlog-2600) [RDGN] - Redundant digits in numeric literal.
+# ** Warning: datapath_registers.v(74): (vlog-2600) [RDGN] - Redundant digits in numeric literal.
+# 
+# Top level modules:
+# 	SimptelO9
+# End time: 22:40:58 on Mar 24,2019, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 33
+# vsim SimptelO9 
+# Start time: 22:18:36 on Mar 24,2019
+# Loading work.SimptelO9
+# ** Error: (vsim-3037) SimptelO9.v(12): Missing instance name in instantiation of 'control_unit'.
+#    Time: 0 ps  Iteration: 0  Instance: /SimptelO9 File: SimptelO9.v
+# Loading work.datapath
+# Loading work.three_to_one_mux
+# Loading work.ProgramCounter
+# Loading work.two_to_one_mux
+# Loading work.RAMO9
+# Loading work.Instruction_Register
+# Loading work.two_to_one_mux_5_bit
+# Loading work.Registers
+# Loading work.SignExtend
+# Loading work.ShiftLeft
+# Loading work.four_to_one_mux
+# Loading work.ALU_Decoder
+# Loading work.ALU
+# Loading work.And_
+# Loading work.Or_
+# Error loading design
+# Error: Error loading design
+#        Pausing macro execution
+# MACRO ./test.do PAUSED at line 5
+do test.do
+# ** Warning: (vlib-34) Library already exists at "work".
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 22:41:59 on Mar 24,2019
+# vlog -reportprogress 300 -timescale 1ns/1ns SimptelO9.v datapath.v ALU.v ALU_Decoder.v ProgramCounter.v RAMO9(4KB).v ShiftLeft.v SignExtend.v control_unit.v #datapath_registers.v 
+# -- Compiling module SimptelO9
+# -- Compiling module datapath
+# -- Compiling module And_
+# -- Compiling module Or_
+# -- Compiling module two_to_one_mux
+# -- Compiling module three_to_one_mux
+# -- Compiling module two_to_one_mux_5_bit
+# -- Compiling module four_to_one_mux
+# -- Compiling module ALU
+# -- Compiling module ALU_Decoder
+# -- Compiling module ProgramCounter
+# -- Compiling module RAMO9
+# -- Compiling module ShiftLeft
+# -- Compiling module SignExtend
+# -- Compiling module control_unit
+# ** Error: (vlog-7) Failed to open design unit file "#datapath_registers.v" in read mode.
+# No such file or directory. (errno = ENOENT)
+# End time: 22:41:59 on Mar 24,2019, Elapsed time: 0:00:00
+# Errors: 1, Warnings: 0
+# ** Error: /s/appspace/quartus-17.0.0.595/modelsim_ase/linuxaloem/vlog failed.
+# Error in macro ./test.do line 3
+# /s/appspace/quartus-17.0.0.595/modelsim_ase/linuxaloem/vlog failed.
+#     while executing
+# "vlog -timescale 1ns/1ns SimptelO9.v datapath.v ALU.v ALU_Decoder.v ProgramCounter.v RAMO9(4KB).v ShiftLeft.v SignExtend.v control_unit.v #datapath_reg..."
+do test.do
+# ** Warning: (vlib-34) Library already exists at "work".
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 22:46:35 on Mar 24,2019
+# vlog -reportprogress 300 -timescale 1ns/1ns SimptelO9.v datapath.v ALU.v ALU_Decoder.v ProgramCounter.v RAMO9(4KB).v ShiftLeft.v SignExtend.v control_unit.v datapath_registers.v 
+# -- Compiling module SimptelO9
+# -- Compiling module datapath
+# -- Compiling module And_
+# -- Compiling module Or_
+# -- Compiling module two_to_one_mux
+# -- Compiling module three_to_one_mux
+# -- Compiling module two_to_one_mux_5_bit
+# -- Compiling module four_to_one_mux
+# -- Compiling module ALU
+# -- Compiling module ALU_Decoder
+# -- Compiling module ProgramCounter
+# -- Compiling module RAMO9
+# -- Compiling module ShiftLeft
+# -- Compiling module SignExtend
+# -- Compiling module control_unit
+# -- Compiling module Instruction_Register
+# -- Compiling module Registers
+# ** Warning: datapath_registers.v(36): (vlog-2600) [RDGN] - Redundant digits in numeric literal.
+# ** Warning: datapath_registers.v(37): (vlog-2600) [RDGN] - Redundant digits in numeric literal.
+# ** Warning: datapath_registers.v(38): (vlog-2600) [RDGN] - Redundant digits in numeric literal.
+# ** Warning: datapath_registers.v(39): (vlog-2600) [RDGN] - Redundant digits in numeric literal.
+# ** Warning: datapath_registers.v(40): (vlog-2600) [RDGN] - Redundant digits in numeric literal.
+# ** Warning: datapath_registers.v(41): (vlog-2600) [RDGN] - Redundant digits in numeric literal.
+# ** Warning: datapath_registers.v(42): (vlog-2600) [RDGN] - Redundant digits in numeric literal.
+# ** Warning: datapath_registers.v(43): (vlog-2600) [RDGN] - Redundant digits in numeric literal.
+# ** Warning: datapath_registers.v(44): (vlog-2600) [RDGN] - Redundant digits in numeric literal.
+# ** Warning: datapath_registers.v(45): (vlog-2600) [RDGN] - Redundant digits in numeric literal.
+# ** Warning: datapath_registers.v(46): (vlog-2600) [RDGN] - Redundant digits in numeric literal.
+# ** Warning: datapath_registers.v(47): (vlog-2600) [RDGN] - Redundant digits in numeric literal.
+# ** Warning: datapath_registers.v(48): (vlog-2600) [RDGN] - Redundant digits in numeric literal.
+# ** Warning: datapath_registers.v(49): (vlog-2600) [RDGN] - Redundant digits in numeric literal.
+# ** Warning: datapath_registers.v(50): (vlog-2600) [RDGN] - Redundant digits in numeric literal.
+# ** Warning: datapath_registers.v(51): (vlog-2600) [RDGN] - Redundant digits in numeric literal.
+# ** Warning: datapath_registers.v(52): (vlog-2600) [RDGN] - Redundant digits in numeric literal.
+# ** Warning: datapath_registers.v(53): (vlog-2600) [RDGN] - Redundant digits in numeric literal.
+# ** Warning: datapath_registers.v(54): (vlog-2600) [RDGN] - Redundant digits in numeric literal.
+# ** Warning: datapath_registers.v(55): (vlog-2600) [RDGN] - Redundant digits in numeric literal.
+# ** Warning: datapath_registers.v(56): (vlog-2600) [RDGN] - Redundant digits in numeric literal.
+# ** Warning: datapath_registers.v(57): (vlog-2600) [RDGN] - Redundant digits in numeric literal.
+# ** Warning: datapath_registers.v(58): (vlog-2600) [RDGN] - Redundant digits in numeric literal.
+# ** Warning: datapath_registers.v(59): (vlog-2600) [RDGN] - Redundant digits in numeric literal.
+# ** Warning: datapath_registers.v(60): (vlog-2600) [RDGN] - Redundant digits in numeric literal.
+# ** Warning: datapath_registers.v(61): (vlog-2600) [RDGN] - Redundant digits in numeric literal.
+# ** Warning: datapath_registers.v(62): (vlog-2600) [RDGN] - Redundant digits in numeric literal.
+# ** Warning: datapath_registers.v(63): (vlog-2600) [RDGN] - Redundant digits in numeric literal.
+# ** Warning: datapath_registers.v(64): (vlog-2600) [RDGN] - Redundant digits in numeric literal.
+# ** Warning: datapath_registers.v(65): (vlog-2600) [RDGN] - Redundant digits in numeric literal.
+# ** Warning: datapath_registers.v(66): (vlog-2600) [RDGN] - Redundant digits in numeric literal.
+# ** Warning: datapath_registers.v(67): (vlog-2600) [RDGN] - Redundant digits in numeric literal.
+# ** Warning: datapath_registers.v(74): (vlog-2600) [RDGN] - Redundant digits in numeric literal.
+# 
+# Top level modules:
+# 	SimptelO9
+# End time: 22:46:35 on Mar 24,2019, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 33
+# vsim SimptelO9 
+# Start time: 22:18:36 on Mar 24,2019
+# Loading work.SimptelO9
+# Loading work.control_unit
+# Loading work.datapath
+# Loading work.three_to_one_mux
+# Loading work.ProgramCounter
+# Loading work.two_to_one_mux
+# Loading work.RAMO9
+# Loading work.Instruction_Register
+# Loading work.two_to_one_mux_5_bit
+# Loading work.Registers
+# Loading work.SignExtend
+# Loading work.ShiftLeft
+# Loading work.four_to_one_mux
+# Loading work.ALU_Decoder
+# Loading work.ALU
+# Loading work.And_
+# Loading work.Or_
+# ** Warning: (vsim-3015) SimptelO9.v(7): [PCDPC] - Port size (6) does not match connection size (1) for port 'opCode'. The port definition is at: control_unit.v(1).
+#    Time: 0 ns  Iteration: 0  Instance: /SimptelO9/cunit File: control_unit.v
+# ** Warning: (vsim-3015) SimptelO9.v(7): [PCDPC] - Port size (1) does not match connection size (32) for port 'reset'. The port definition is at: control_unit.v(2).
+#    Time: 0 ns  Iteration: 0  Instance: /SimptelO9/cunit File: control_unit.v
+# ** Warning: (vsim-3015) SimptelO9.v(7): [PCDPC] - Port size (2) does not match connection size (1) for port 'PCWriteCond'. The port definition is at: control_unit.v(4).
+#    Time: 0 ns  Iteration: 0  Instance: /SimptelO9/cunit File: control_unit.v
+# ** Warning: (vsim-3015) SimptelO9.v(15): [PCDPC] - Port size (1) does not match connection size (32) for port 'MemRead'. The port definition is at: datapath.v(5).
+#    Time: 0 ns  Iteration: 0  Instance: /SimptelO9/dpath File: datapath.v
+# ** Warning: (vsim-3015) SimptelO9.v(15): [PCDPC] - Port size (3) does not match connection size (2) for port 'ALUSrcB'. The port definition is at: datapath.v(11).
+#    Time: 0 ns  Iteration: 0  Instance: /SimptelO9/dpath File: datapath.v
+# ** Warning: (vsim-3015) SimptelO9.v(15): [PCDPC] - Port size (1) does not match connection size (32) for port 'reset'. The port definition is at: datapath.v(16).
+#    Time: 0 ns  Iteration: 0  Instance: /SimptelO9/dpath File: datapath.v
+# ** Warning: (vsim-3015) SimptelO9.v(15): [PCDPC] - Port size (6) does not match connection size (1) for port 'opCode'. The port definition is at: datapath.v(17).
+#    Time: 0 ns  Iteration: 0  Instance: /SimptelO9/dpath File: datapath.v
+# ** Warning: (vsim-3015) datapath.v(74): [PCDPC] - Port size (32) does not match connection size (16) for port 'address'. The port definition is at: RAMO9(4KB).v(1).
+#    Time: 0 ns  Iteration: 0  Instance: /SimptelO9/dpath/Memory File: RAMO9(4KB).v
+# ** Warning: (vsim-3015) datapath.v(123): [PCDPC] - Port size (16) does not match connection size (26) for port 'to_extend'. The port definition is at: SignExtend.v(1).
+#    Time: 0 ns  Iteration: 0  Instance: /SimptelO9/dpath/sign_extend_B File: SignExtend.v
+# ** Warning: (vsim-3017) datapath.v(140): [TFMPC] - Too few port connections. Expected 6, found 5.
+#    Time: 0 ns  Iteration: 0  Instance: /SimptelO9/dpath/mux_E File: datapath.v
+# ** Warning: (vsim-3015) datapath.v(140): [PCDPC] - Port size (2) does not match connection size (3) for port 'sel'. The port definition is at: datapath.v(238).
+#    Time: 0 ns  Iteration: 0  Instance: /SimptelO9/dpath/mux_E File: datapath.v
+# ** Warning: (vsim-3722) datapath.v(140): [TFMPC] - Missing connection for port 'q'.
+# ** Warning: (vsim-3017) datapath.v(153): [TFMPC] - Too few port connections. Expected 3, found 2.
+#    Time: 0 ns  Iteration: 0  Instance: /SimptelO9/dpath/alu_decoder File: ALU_Decoder.v
+# ** Warning: (vsim-3015) datapath.v(153): [PCDPC] - Port size (1) does not match connection size (6) for port 'ALU_optcode'. The port definition is at: ALU_Decoder.v(1).
+#    Time: 0 ns  Iteration: 0  Instance: /SimptelO9/dpath/alu_decoder File: ALU_Decoder.v
+# ** Warning: (vsim-3722) datapath.v(153): [TFMPC] - Missing connection for port 'Function_code'.
+add wave -position end  sim:/SimptelO9/dpath/Memory/memory
+add wave -position 29  -format Default -height 17 -label memory -max 0 -min 0
+# Missing signal name or pattern.

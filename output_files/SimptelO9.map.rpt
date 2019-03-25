@@ -1,5 +1,5 @@
 Analysis & Synthesis report for SimptelO9
-Sun Mar 24 22:14:55 2019
+Sun Mar 24 22:43:14 2019
 Quartus Prime Version 17.0.0 Build 595 04/25/2017 SJ Lite Edition
 
 
@@ -20,7 +20,7 @@ Quartus Prime Version 17.0.0 Build 595 04/25/2017 SJ Lite Edition
  12. Port Connectivity Checks: "datapath:dpath|RAMO9:Memory"
  13. Port Connectivity Checks: "datapath:dpath|two_to_one_mux:mux_A"
  14. Port Connectivity Checks: "datapath:dpath"
- 15. Port Connectivity Checks: "control_unit:comb_3"
+ 15. Port Connectivity Checks: "control_unit:cunit"
  16. Post-Synthesis Netlist Statistics for Top Partition
  17. Elapsed Time Per Partition
  18. Analysis & Synthesis Messages
@@ -50,7 +50,7 @@ agreement for further details.
 +-------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                  ;
 +---------------------------------+---------------------------------------------+
-; Analysis & Synthesis Status     ; Successful - Sun Mar 24 22:14:55 2019       ;
+; Analysis & Synthesis Status     ; Successful - Sun Mar 24 22:43:13 2019       ;
 ; Quartus Prime Version           ; 17.0.0 Build 595 04/25/2017 SJ Lite Edition ;
 ; Revision Name                   ; SimptelO9                                   ;
 ; Top-level Entity Name           ; SimptelO9                                   ;
@@ -309,7 +309,7 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 
 
 +----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Port Connectivity Checks: "control_unit:comb_3"                                                                                                                                                                      ;
+; Port Connectivity Checks: "control_unit:cunit"                                                                                                                                                                       ;
 +-------------+--------+----------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 ; Port        ; Type   ; Severity ; Details                                                                                                                                                                            ;
 +-------------+--------+----------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -347,7 +347,7 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Synthesis
     Info: Version 17.0.0 Build 595 04/25/2017 SJ Lite Edition
-    Info: Processing started: Sun Mar 24 22:14:36 2019
+    Info: Processing started: Sun Mar 24 22:42:53 2019
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off SimptelO9 -c SimptelO9
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
 Info (20030): Parallel compilation is enabled and will use 4 of the 4 processors detected
@@ -382,9 +382,8 @@ Info (12021): Found 2 design units, including 2 entities, in source file datapat
     Info (12023): Found entity 2: Registers File: /h/u11/c7/00/huangk46/Desktop/Simptel-O9/datapath_registers.v Line: 23
 Info (12021): Found 1 design units, including 1 entities, in source file ShiftLeft.v
     Info (12023): Found entity 1: ShiftLeft File: /h/u11/c7/00/huangk46/Desktop/Simptel-O9/ShiftLeft.v Line: 1
-Critical Warning (10846): Verilog HDL Instantiation warning at SimptelO9.v(12): instance has no name File: /h/u11/c7/00/huangk46/Desktop/Simptel-O9/SimptelO9.v Line: 12
 Info (12127): Elaborating entity "SimptelO9" for the top level hierarchy
-Info (12128): Elaborating entity "control_unit" for hierarchy "control_unit:comb_3" File: /h/u11/c7/00/huangk46/Desktop/Simptel-O9/SimptelO9.v Line: 12
+Info (12128): Elaborating entity "control_unit" for hierarchy "control_unit:cunit" File: /h/u11/c7/00/huangk46/Desktop/Simptel-O9/SimptelO9.v Line: 12
 Warning (10858): Verilog HDL warning at control_unit.v(61): object current_state used but never assigned File: /h/u11/c7/00/huangk46/Desktop/Simptel-O9/control_unit.v Line: 61
 Warning (10036): Verilog HDL or VHDL warning at control_unit.v(61): object "next_state" assigned a value but never read File: /h/u11/c7/00/huangk46/Desktop/Simptel-O9/control_unit.v Line: 61
 Info (10264): Verilog HDL Case Statement information at control_unit.v(65): all case item expressions in this case statement are onehot File: /h/u11/c7/00/huangk46/Desktop/Simptel-O9/control_unit.v Line: 65
@@ -445,10 +444,10 @@ Warning (21074): Design contains 1 input pin(s) that do not drive logic
 Info (21057): Implemented 1 device resources after synthesis - the final resource count might be different
     Info (21058): Implemented 1 input pins
     Info (21059): Implemented 0 output pins
-Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 35 warnings
-    Info: Peak virtual memory: 1004 megabytes
-    Info: Processing ended: Sun Mar 24 22:14:56 2019
-    Info: Elapsed time: 00:00:20
-    Info: Total CPU time (on all processors): 00:00:24
+Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 34 warnings
+    Info: Peak virtual memory: 1006 megabytes
+    Info: Processing ended: Sun Mar 24 22:43:14 2019
+    Info: Elapsed time: 00:00:21
+    Info: Total CPU time (on all processors): 00:00:23
 
 
