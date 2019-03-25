@@ -1,0 +1,1 @@
+Warning (10268): Verilog HDL information at datapath_registers.v(31): always construct contains both blocking and non-blocking assignments File: /h/u11/c7/00/huangk46/Desktop/Simptel-O9/datapath_registers.v Line: 31
