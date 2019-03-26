@@ -19,8 +19,8 @@ module datapath(
 
 
 	input PCWriteCond, PCWrite, IorD, MemRead, MemWrite, MemtoReg, IRWrite, ALUOp, ALUSrcA, RegWrite, RegDst, clk, reset;
-	input [1:0] PCSource;
-	input [2:0] ALUSrcB;
+	input [1:0] PCSource, ALUSrcB;
+	
 	output [5:0] opCode;
 	
 	wire [31:0] ALU_Out_Bus;
@@ -120,7 +120,7 @@ module datapath(
 		.extended(sign_extend_out[31:0])
 	);
 	
-	SignExtend sign_extend_B(
+	SignExtend_26_bit sign_extend_B(
 		.to_extend({instruc2_bus[4:0], instruc1_bus[4:0], instruc0_bus[15:0]}),
 		.extended(sign_extend_B_out[31:0])
 	);
@@ -139,10 +139,11 @@ module datapath(
 	
 	four_to_one_mux mux_E(
 		.in_0(B[31:0]),
-		.in_1(32'b00000000000000000000000000000100),
+		.in_1(32'b00000000000000000000000000000001),
 		.in_2(sign_extend_out[31:0]),
 		.in_3(shift_left_out[31:0]),
-		.sel(ALUSrcB)
+		.sel(ALUSrcB[1:0]),
+		.q(mux_E_out[31:0])
 	);
 	
 	ShiftLeft shift_left_2_A(
@@ -151,7 +152,8 @@ module datapath(
 	);
 	
 	ALU_Decoder alu_decoder(
-		.ALU_optcode(instruc0_bus[5:0]),
+		.Function_code(instruc0_bus[5:0]),
+		.ALU_optcode(ALUOp),
 		.ALU_control(alu_decoder_out[3:0])
 	);
 	

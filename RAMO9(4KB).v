@@ -1,4 +1,4 @@
-module RAMO9(input [31:0] address,
+module RAMO9(input [15:0] address,
 	input clock,
 	input [31:0] data,
 	input wren,
@@ -9,7 +9,7 @@ module RAMO9(input [31:0] address,
 	// initialize our RAM 
 	initial
 	begin
-		$readmemb("simp_prog.mem", memory, 0, 2);	
+		$readmemb("C:\\DESL\\Quartus18\\Projects\\Simptel-O9-master\\simp_prog.mem", memory, 0, 2);	
 	end
 
 	always @(posedge clock) begin 

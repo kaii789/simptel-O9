@@ -1,7 +1,7 @@
 module control_unit(input[5:0] opCode, 
 			  input clk, reset, 
-		    	  output reg ALUOp,
-                          output reg[1:0] PCWriteCond, ALUSrcB, PCSource,
+		    	  output reg ALUOp, PCWriteCond,
+                          output reg[1:0] ALUSrcB, PCSource,
                           output reg PCWrite, IorD, MemWrite, MemtoReg, IRWrite, ALUSrcA, RegWrite, RegDst);
     
 //    always @(*)
@@ -34,9 +34,6 @@ module control_unit(input[5:0] opCode,
 	localparam 
                 R_TYPE = 6'b000000,
                 ADDI   = 6'b001000,
-                ANDI   = 6'b001100,
-					ORI    = 6'b001101,
-					XORI   = 6'b001110,
 					BEQ   = 6'b000100,
 					BGTZ   = 6'b000111,
 					BLEZ   = 6'b000110,  
@@ -47,19 +44,16 @@ module control_unit(input[5:0] opCode,
 					SW   = 6'b101011;	
 	// ALUOps
 	localparam 
-                ADD = 6'b100000,
-		DIV = 6'b011010,
-		MULT = 6'b011000,
-		SUB = 6'b100010,
-		AND = 6'b100100,
-		NOR = 6'b100111,
-		OR = 6'b100101,
-		XOR = 6'b100110,
-		SLL = 6'b000000,
-		SRL = 6'b000010;
+					 R_OP = 1'b0,
+                ADD = 1'b1;
+		
 
 	reg [4:0] current_state, next_state; 	
-
+	
+	initial begin
+	current_state = FETCH;
+	end
+	
 	always@(*)
     	begin // state_table 
             case (current_state)
@@ -71,7 +65,7 @@ module control_unit(input[5:0] opCode,
 							JAL: next_state = FETCH;
 							default: next_state = INCREMENT_PC;
 							endcase
-					end		
+					 end		
 					 INCREMENT_PC: next_state = INCREMENT_PC_EXECUTE;	
 					 default: next_state = FETCH;
         endcase
@@ -81,8 +75,8 @@ module control_unit(input[5:0] opCode,
 always @(*)
     begin: enable_signals
         // By default make all our signals 0
-        	 ALUOp = 4'b0000; 
-		    PCWriteCond = 2'b00;
+        	 ALUOp = 1'b0; 
+		    PCWriteCond = 1'b0;
            PCWrite = 1'b0;
 		    IorD = 1'b0;
 		    MemWrite = 1'b0;
@@ -92,6 +86,7 @@ always @(*)
 		    ALUSrcA = 1'b0;
 		    RegWrite = 1'b0; 
 		    RegDst = 1'b0;
+			 PCSource = 2'b00;
  case (current_state)
             FETCH: begin  // get the instruction into the IR
                 IRWrite = 1'b1;
@@ -104,30 +99,13 @@ always @(*)
 							ALUSrcA = 1'b1;
 							ALUSrcB = 2'b00;
 							RegDst = 1'b0;
+							ALUOp = R_OP;
 						end
-										ADDI: begin 
+						ADDI: begin 
 							ALUSrcA = 1'b1;
-							ALUSrcB = 2'b11;
+							ALUSrcB = 2'b10;
 							RegDst = 1'b0;
 							ALUOp = ADD;
-						end
-						ANDI: begin 
-							ALUSrcA = 1'b1;
-							ALUSrcB = 2'b11;
-							RegDst = 1'b0;
-							ALUOp = AND;
-						end
-						ORI: begin 
-							ALUSrcA = 1'b1;
-							ALUSrcB = 2'b11;
-							RegDst = 1'b0;
-							ALUOp = OR;
-						end
-						XORI: begin 
-							ALUSrcA = 1'b1;
-							ALUSrcB = 2'b11;
-							RegDst = 1'b0;
-							ALUOp = XOR;
 						end
 						BEQ: begin 
 							
@@ -161,34 +139,14 @@ always @(*)
 						ALUSrcA = 1'b1;
 						ALUSrcB = 2'b00;
 						RegDst = 1'b0;
+						ALUOp = R_OP;
 						RegWrite = 1'b1;
 					end
-               				ADDI: begin 
+               ADDI: begin 
 						ALUSrcA = 1'b1;
-						ALUSrcB = 2'b11;
+						ALUSrcB = 2'b10;
 						RegDst = 1'b0;
 						ALUOp = ADD;
-						RegWrite = 1'b1;
-					end
-					ANDI: begin 
-						ALUSrcA = 1'b1;
-						ALUSrcB = 2'b11;
-						RegDst = 1'b0;
-						ALUOp = AND;
-						RegWrite = 1'b1;
-					end
-					ORI: begin 
-						ALUSrcA = 1'b1;
-						ALUSrcB = 2'b11;
-						RegDst = 1'b0;
-						ALUOp = OR;
-						RegWrite = 1'b1;
-					end
-					XORI: begin 
-						ALUSrcA = 1'b1;
-						ALUSrcB = 2'b11;
-						RegDst = 1'b0;
-						ALUOp = XOR;
 						RegWrite = 1'b1;
 					end
 					BEQ: begin 
@@ -221,10 +179,12 @@ always @(*)
 	INCREMENT_PC: begin
 		ALUSrcA = 1'b0;
 		ALUSrcB = 2'b01;
+		ALUOp = ADD;
 	end
 	INCREMENT_PC_EXECUTE: begin
 		ALUSrcA = 1'b0;
 		ALUSrcB = 2'b01;
+		ALUOp = ADD;
 		PCWrite = 1'b1;
 	end
                 
@@ -233,7 +193,12 @@ always @(*)
         endcase
 	end
                                 
-                                
+   
+	always @(posedge clk)
+	begin
+		current_state <= next_state;
+	end
+	
 endmodule 
 
 

@@ -13,6 +13,10 @@ module ProgramCounter(
 	output [31:0] PC_out;
 	reg [31:0] PC_out;
 	
+	initial begin
+		PC_out = 32'b00000000000000000000000000000000;
+	end
+	
 	always @(posedge clk)
 		begin
 		if (reset)

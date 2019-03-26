@@ -28,12 +28,14 @@ module Registers(clk, reset, RegWrite, read_reg1, read_reg2, write_reg, write_da
 		
 	reg [31:0] registers[31:0]; // we 32 registers, each able to hold 4 bytes	
 	
+	initial begin
+		registers[0] = 32'b000000000000000000000000000000000000;
+	end
 	
 	always @(posedge clk, posedge reset)
 		begin
 			if (reset) 
 				begin 
-					registers[0] <= 32'b000000000000000000000000000000000000;
 					registers[1] <= 32'b000000000000000000000000000000000000;
 					registers[2] <= 32'b000000000000000000000000000000000000;
 					registers[3] <= 32'b000000000000000000000000000000000000;
@@ -70,8 +72,6 @@ module Registers(clk, reset, RegWrite, read_reg1, read_reg2, write_reg, write_da
 				begin 
 					registers[write_reg] = write_data;
 				end
-			else 
-				registers[0] = 32'b000000000000000000000000000000000000;
 		end
 		
 		assign read_data1 = registers[read_reg1];
