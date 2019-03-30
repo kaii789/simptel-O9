@@ -9,7 +9,7 @@ module RAMO9(input [15:0] address,
 	// initialize our RAM 
 	initial
 	begin
-		$readmemb("C:\\DESL\\Quartus18\\Projects\\Simptel-O9-master\\simp_prog.mem", memory, 0, 2);	
+		$readmemb("/h/u7/c7/04/fanyao2/Simptel-O9/simp_prog.mem", memory, 0, 3); // TODO: edit with program changes
 	end
 
 	always @(posedge clock) begin 
