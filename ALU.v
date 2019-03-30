@@ -7,7 +7,7 @@ module ALU(
 	output reg [31:0] ALU_result
 	);
 	
-	always @(*)
+	always @(posedge clk)
 	begin
 		case (ALU_control)
 		4'b1000: ALU_result = src_A & src_B; // and
