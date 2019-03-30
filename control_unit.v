@@ -10,6 +10,8 @@ module control_unit(input[5:0] opCode,
                 EXECUTE = 3'd2,
 		INCREMENT_PC = 3'd3,
 		INCREMENT_PC_EXECUTE = 3'd4;
+		CHECK_BRANCH_COND = 3'd5;
+		BRANCH_EXECUTE = 3'd6;
 	
 	// opcodes
 	localparam 
