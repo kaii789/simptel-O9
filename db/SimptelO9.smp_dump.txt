@@ -1,0 +1,8 @@
+
+State Machine - |SimptelO9|control_unit:cunit|current_state
+Name current_state.INCREMENT_PC current_state.EXECUTE current_state.DECODE current_state.FETCH current_state.INCREMENT_PC_EXECUTE 
+current_state.FETCH 0 0 0 0 0 
+current_state.DECODE 0 0 1 1 0 
+current_state.EXECUTE 0 1 0 1 0 
+current_state.INCREMENT_PC 1 0 0 1 0 
+current_state.INCREMENT_PC_EXECUTE 0 0 0 1 1 

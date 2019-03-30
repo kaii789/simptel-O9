@@ -1,5 +1,5 @@
 Fitter report for SimptelO9
-Sun Mar 24 22:44:05 2019
+Sat Mar 30 17:32:34 2019
 Quartus Prime Version 17.0.0 Build 595 04/25/2017 SJ Lite Edition
 
 
@@ -56,7 +56,7 @@ agreement for further details.
 +-------------------------------------------------------------------------------+
 ; Fitter Summary                                                                ;
 +---------------------------------+---------------------------------------------+
-; Fitter Status                   ; Successful - Sun Mar 24 22:44:05 2019       ;
+; Fitter Status                   ; Successful - Sat Mar 30 17:32:34 2019       ;
 ; Quartus Prime Version           ; 17.0.0 Build 595 04/25/2017 SJ Lite Edition ;
 ; Revision Name                   ; SimptelO9                                   ;
 ; Top-level Entity Name           ; SimptelO9                                   ;
@@ -193,7 +193,7 @@ agreement for further details.
 +--------------+
 ; Pin-Out File ;
 +--------------+
-The pin-out file can be found in /h/u11/c7/00/huangk46/Desktop/Simptel-O9/output_files/SimptelO9.pin.
+The pin-out file can be found in /h/u7/c7/04/fanyao2/Simptel-O9/output_files/SimptelO9.pin.
 
 
 +------------------------------------------------------------------------------------------+
@@ -1560,7 +1560,7 @@ Info (184021): Fitter periphery placement operations ending: elapsed time is 00:
 Info (176233): Starting register packing
 Info (176235): Finished register packing
     Extra Info (176219): No registers were packed into other blocks
-Info (11798): Fitter preparation operations ending: elapsed time is 00:00:11
+Info (11798): Fitter preparation operations ending: elapsed time is 00:00:10
 Critical Warning (332012): Synopsys Design Constraints File file not found: 'SimptelO9.sdc'. A Synopsys Design Constraints File is required by the TimeQuest Timing Analyzer to get proper timing constraints. Without it, the Compiler will not properly optimize the design.
 Info (332144): No user constrained base clocks found in the design
 Info (332096): The command derive_clocks did not find any clocks to derive.  No clocks were created or changed.
@@ -1570,7 +1570,7 @@ Info (332154): The derive_clock_uncertainty command did not apply clock uncertai
 Info (332130): Timing requirements not specified -- quality metrics such as performance may be sacrificed to reduce compilation time.
 Info (170189): Fitter placement preparation operations beginning
 Info (14951): The Fitter is using Advanced Physical Optimization.
-Info (170190): Fitter placement preparation operations ending: elapsed time is 00:00:01
+Info (170190): Fitter placement preparation operations ending: elapsed time is 00:00:00
 Info (170191): Fitter placement operations beginning
 Info (170137): Fitter placement was successful
 Info (170192): Fitter placement operations ending: elapsed time is 00:00:00
@@ -1581,16 +1581,16 @@ Info (170199): The Fitter performed an Auto Fit compilation.  Optimizations were
     Info (170201): Optimizations that may affect the design's routability were skipped
     Info (170200): Optimizations that may affect the design's timing were skipped
 Info (170194): Fitter routing operations ending: elapsed time is 00:00:01
-Info (11888): Total time spent on timing analysis during the Fitter is 0.31 seconds.
+Info (11888): Total time spent on timing analysis during the Fitter is 0.08 seconds.
 Info (334003): Started post-fitting delay annotation
 Info (334004): Delay annotation completed successfully
 Info (334003): Started post-fitting delay annotation
 Info (334004): Delay annotation completed successfully
 Info (11801): Fitter post-fit operations ending: elapsed time is 00:00:01
 Info: Quartus Prime Fitter was successful. 0 errors, 6 warnings
-    Info: Peak virtual memory: 2092 megabytes
-    Info: Processing ended: Sun Mar 24 22:44:24 2019
-    Info: Elapsed time: 00:01:03
-    Info: Total CPU time (on all processors): 00:00:48
+    Info: Peak virtual memory: 2093 megabytes
+    Info: Processing ended: Sat Mar 30 17:32:45 2019
+    Info: Elapsed time: 00:00:49
+    Info: Total CPU time (on all processors): 00:00:43
 
 

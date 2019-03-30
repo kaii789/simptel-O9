@@ -1,5 +1,5 @@
 Analysis & Synthesis report for SimptelO9
-Sun Mar 24 22:43:14 2019
+Sat Mar 30 17:31:46 2019
 Quartus Prime Version 17.0.0 Build 595 04/25/2017 SJ Lite Edition
 
 
@@ -13,17 +13,25 @@ Quartus Prime Version 17.0.0 Build 595 04/25/2017 SJ Lite Edition
   5. Analysis & Synthesis Source Files Read
   6. Analysis & Synthesis Resource Usage Summary
   7. Analysis & Synthesis Resource Utilization by Entity
-  8. General Register Statistics
-  9. Port Connectivity Checks: "datapath:dpath|ALU_Decoder:alu_decoder"
- 10. Port Connectivity Checks: "datapath:dpath|four_to_one_mux:mux_E"
- 11. Port Connectivity Checks: "datapath:dpath|SignExtend:sign_extend_B"
- 12. Port Connectivity Checks: "datapath:dpath|RAMO9:Memory"
- 13. Port Connectivity Checks: "datapath:dpath|two_to_one_mux:mux_A"
- 14. Port Connectivity Checks: "datapath:dpath"
- 15. Port Connectivity Checks: "control_unit:cunit"
- 16. Post-Synthesis Netlist Statistics for Top Partition
- 17. Elapsed Time Per Partition
- 18. Analysis & Synthesis Messages
+  8. State Machine - |SimptelO9|control_unit:cunit|current_state
+  9. Registers Removed During Synthesis
+ 10. Removed Registers Triggering Further Register Optimizations
+ 11. General Register Statistics
+ 12. Registers Added for RAM Pass-Through Logic
+ 13. Registers Packed Into Inferred Megafunctions
+ 14. Multiplexer Restructuring Statistics (Restructuring Performed)
+ 15. Source assignments for datapath:dpath|Registers:register|altsyncram:registers_rtl_0|altsyncram_5io1:auto_generated
+ 16. Source assignments for datapath:dpath|Registers:register|altsyncram:registers_rtl_1|altsyncram_5io1:auto_generated
+ 17. Parameter Settings for Inferred Entity Instance: datapath:dpath|Registers:register|altsyncram:registers_rtl_0
+ 18. Parameter Settings for Inferred Entity Instance: datapath:dpath|Registers:register|altsyncram:registers_rtl_1
+ 19. altsyncram Parameter Settings by Entity Instance
+ 20. Port Connectivity Checks: "datapath:dpath|four_to_one_mux:mux_E"
+ 21. Port Connectivity Checks: "datapath:dpath|ShiftLeft:shift_left_2_B"
+ 22. Port Connectivity Checks: "datapath:dpath|two_to_one_mux:mux_A"
+ 23. Post-Synthesis Netlist Statistics for Top Partition
+ 24. Elapsed Time Per Partition
+ 25. Analysis & Synthesis Messages
+ 26. Analysis & Synthesis Suppressed Messages
 
 
 
@@ -50,7 +58,7 @@ agreement for further details.
 +-------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                  ;
 +---------------------------------+---------------------------------------------+
-; Analysis & Synthesis Status     ; Successful - Sun Mar 24 22:43:13 2019       ;
+; Analysis & Synthesis Status     ; Successful - Sat Mar 30 17:31:46 2019       ;
 ; Quartus Prime Version           ; 17.0.0 Build 595 04/25/2017 SJ Lite Edition ;
 ; Revision Name                   ; SimptelO9                                   ;
 ; Top-level Entity Name           ; SimptelO9                                   ;
@@ -166,30 +174,42 @@ agreement for further details.
 ; Maximum allowed            ; 4           ;
 ;                            ;             ;
 ; Average used               ; 1.00        ;
-; Maximum used               ; 1           ;
+; Maximum used               ; 3           ;
 ;                            ;             ;
 ; Usage by Processor         ; % Time Used ;
 ;     Processor 1            ; 100.0%      ;
+;     Processor 2            ;   0.0%      ;
+;     Processor 3            ;   0.0%      ;
 +----------------------------+-------------+
 
 
-+-------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Analysis & Synthesis Source Files Read                                                                                                                      ;
-+----------------------------------+-----------------+------------------------------+---------------------------------------------------------------+---------+
-; File Name with User-Entered Path ; Used in Netlist ; File Type                    ; File Name with Absolute Path                                  ; Library ;
-+----------------------------------+-----------------+------------------------------+---------------------------------------------------------------+---------+
-; RAMO9(4KB).v                     ; yes             ; User Verilog HDL File        ; /h/u11/c7/00/huangk46/Desktop/Simptel-O9/RAMO9(4KB).v         ;         ;
-; SimptelO9.v                      ; yes             ; User Verilog HDL File        ; /h/u11/c7/00/huangk46/Desktop/Simptel-O9/SimptelO9.v          ;         ;
-; ALU_Decoder.v                    ; yes             ; User Verilog HDL File        ; /h/u11/c7/00/huangk46/Desktop/Simptel-O9/ALU_Decoder.v        ;         ;
-; ProgramCounter.v                 ; yes             ; User Verilog HDL File        ; /h/u11/c7/00/huangk46/Desktop/Simptel-O9/ProgramCounter.v     ;         ;
-; ALU.v                            ; yes             ; User Verilog HDL File        ; /h/u11/c7/00/huangk46/Desktop/Simptel-O9/ALU.v                ;         ;
-; SignExtend.v                     ; yes             ; User Verilog HDL File        ; /h/u11/c7/00/huangk46/Desktop/Simptel-O9/SignExtend.v         ;         ;
-; control_unit.v                   ; yes             ; User Verilog HDL File        ; /h/u11/c7/00/huangk46/Desktop/Simptel-O9/control_unit.v       ;         ;
-; datapath.v                       ; yes             ; User Verilog HDL File        ; /h/u11/c7/00/huangk46/Desktop/Simptel-O9/datapath.v           ;         ;
-; datapath_registers.v             ; yes             ; User Verilog HDL File        ; /h/u11/c7/00/huangk46/Desktop/Simptel-O9/datapath_registers.v ;         ;
-; ShiftLeft.v                      ; yes             ; User Verilog HDL File        ; /h/u11/c7/00/huangk46/Desktop/Simptel-O9/ShiftLeft.v          ;         ;
-; simp_prog.mem                    ; yes             ; Auto-Found Unspecified File  ; /h/u11/c7/00/huangk46/Desktop/Simptel-O9/simp_prog.mem        ;         ;
-+----------------------------------+-----------------+------------------------------+---------------------------------------------------------------+---------+
++-------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Source Files Read                                                                                                                                  ;
++----------------------------------+-----------------+------------------------------+---------------------------------------------------------------------------+---------+
+; File Name with User-Entered Path ; Used in Netlist ; File Type                    ; File Name with Absolute Path                                              ; Library ;
++----------------------------------+-----------------+------------------------------+---------------------------------------------------------------------------+---------+
+; RAMO9(4KB).v                     ; yes             ; User Verilog HDL File        ; /h/u7/c7/04/fanyao2/Simptel-O9/RAMO9(4KB).v                               ;         ;
+; SimptelO9.v                      ; yes             ; User Verilog HDL File        ; /h/u7/c7/04/fanyao2/Simptel-O9/SimptelO9.v                                ;         ;
+; ALU_Decoder.v                    ; yes             ; User Verilog HDL File        ; /h/u7/c7/04/fanyao2/Simptel-O9/ALU_Decoder.v                              ;         ;
+; ProgramCounter.v                 ; yes             ; User Verilog HDL File        ; /h/u7/c7/04/fanyao2/Simptel-O9/ProgramCounter.v                           ;         ;
+; ALU.v                            ; yes             ; User Verilog HDL File        ; /h/u7/c7/04/fanyao2/Simptel-O9/ALU.v                                      ;         ;
+; SignExtend.v                     ; yes             ; User Verilog HDL File        ; /h/u7/c7/04/fanyao2/Simptel-O9/SignExtend.v                               ;         ;
+; control_unit.v                   ; yes             ; User Verilog HDL File        ; /h/u7/c7/04/fanyao2/Simptel-O9/control_unit.v                             ;         ;
+; datapath.v                       ; yes             ; User Verilog HDL File        ; /h/u7/c7/04/fanyao2/Simptel-O9/datapath.v                                 ;         ;
+; datapath_registers.v             ; yes             ; User Verilog HDL File        ; /h/u7/c7/04/fanyao2/Simptel-O9/datapath_registers.v                       ;         ;
+; ShiftLeft.v                      ; yes             ; User Verilog HDL File        ; /h/u7/c7/04/fanyao2/Simptel-O9/ShiftLeft.v                                ;         ;
+; simp_prog.mem                    ; yes             ; Auto-Found Unspecified File  ; /h/u7/c7/04/fanyao2/Simptel-O9/simp_prog.mem                              ;         ;
+; altsyncram.tdf                   ; yes             ; Megafunction                 ; /s/appspace/quartus/quartus/libraries/megafunctions/altsyncram.tdf        ;         ;
+; stratix_ram_block.inc            ; yes             ; Megafunction                 ; /s/appspace/quartus/quartus/libraries/megafunctions/stratix_ram_block.inc ;         ;
+; lpm_mux.inc                      ; yes             ; Megafunction                 ; /s/appspace/quartus/quartus/libraries/megafunctions/lpm_mux.inc           ;         ;
+; lpm_decode.inc                   ; yes             ; Megafunction                 ; /s/appspace/quartus/quartus/libraries/megafunctions/lpm_decode.inc        ;         ;
+; aglobal170.inc                   ; yes             ; Megafunction                 ; /s/appspace/quartus/quartus/libraries/megafunctions/aglobal170.inc        ;         ;
+; a_rdenreg.inc                    ; yes             ; Megafunction                 ; /s/appspace/quartus/quartus/libraries/megafunctions/a_rdenreg.inc         ;         ;
+; altrom.inc                       ; yes             ; Megafunction                 ; /s/appspace/quartus/quartus/libraries/megafunctions/altrom.inc            ;         ;
+; altram.inc                       ; yes             ; Megafunction                 ; /s/appspace/quartus/quartus/libraries/megafunctions/altram.inc            ;         ;
+; altdpram.inc                     ; yes             ; Megafunction                 ; /s/appspace/quartus/quartus/libraries/megafunctions/altdpram.inc          ;         ;
+; db/altsyncram_5io1.tdf           ; yes             ; Auto-Generated Megafunction  ; /h/u7/c7/04/fanyao2/Simptel-O9/db/altsyncram_5io1.tdf                     ;         ;
++----------------------------------+-----------------+------------------------------+---------------------------------------------------------------------------+---------+
 
 
 +--------------------------------------------------------+
@@ -229,6 +249,232 @@ agreement for further details.
 Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
 
 
+Encoding Type:  One-Hot
++---------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; State Machine - |SimptelO9|control_unit:cunit|current_state                                                                                                               ;
++------------------------------------+----------------------------+-----------------------+----------------------+---------------------+------------------------------------+
+; Name                               ; current_state.INCREMENT_PC ; current_state.EXECUTE ; current_state.DECODE ; current_state.FETCH ; current_state.INCREMENT_PC_EXECUTE ;
++------------------------------------+----------------------------+-----------------------+----------------------+---------------------+------------------------------------+
+; current_state.FETCH                ; 0                          ; 0                     ; 0                    ; 0                   ; 0                                  ;
+; current_state.DECODE               ; 0                          ; 0                     ; 1                    ; 1                   ; 0                                  ;
+; current_state.EXECUTE              ; 0                          ; 1                     ; 0                    ; 1                   ; 0                                  ;
+; current_state.INCREMENT_PC         ; 1                          ; 0                     ; 0                    ; 1                   ; 0                                  ;
+; current_state.INCREMENT_PC_EXECUTE ; 0                          ; 0                     ; 0                    ; 1                   ; 1                                  ;
++------------------------------------+----------------------------+-----------------------+----------------------+---------------------+------------------------------------+
+
+
++----------------------------------------------------------------------------------------------------------------------------------------+
+; Registers Removed During Synthesis                                                                                                     ;
++-----------------------------------------------------------------------+----------------------------------------------------------------+
+; Register name                                                         ; Reason for Removal                                             ;
++-----------------------------------------------------------------------+----------------------------------------------------------------+
+; datapath:dpath|Instruction_Register:IR|instruc2[1]                    ; Merged with datapath:dpath|Instruction_Register:IR|instruc0[2] ;
+; datapath:dpath|Instruction_Register:IR|instruc0[3,4,13..15]           ; Merged with datapath:dpath|Instruction_Register:IR|instruc0[2] ;
+; datapath:dpath|Instruction_Register:IR|instruc1[2..4]                 ; Merged with datapath:dpath|Instruction_Register:IR|instruc0[2] ;
+; datapath:dpath|Instruction_Register:IR|instruc2[2..4]                 ; Merged with datapath:dpath|Instruction_Register:IR|instruc0[2] ;
+; datapath:dpath|Instruction_Register:IR|instruc3[0,2,4,5]              ; Merged with datapath:dpath|Instruction_Register:IR|instruc0[2] ;
+; datapath:dpath|Instruction_Register:IR|instruc2[0]                    ; Merged with datapath:dpath|Instruction_Register:IR|instruc0[5] ;
+; datapath:dpath|Instruction_Register:IR|instruc0[6..12]                ; Merged with datapath:dpath|Instruction_Register:IR|instruc0[5] ;
+; datapath:dpath|Instruction_Register:IR|instruc0[2]                    ; Stuck at GND due to stuck port data_in                         ;
+; datapath:dpath|Registers:register|registers_rtl_0_bypass[4..10]       ; Stuck at GND due to stuck port data_in                         ;
+; datapath:dpath|Registers:register|registers_rtl_1_bypass[5..10]       ; Stuck at GND due to stuck port data_in                         ;
+; control_unit:cunit|current_state~2                                    ; Lost fanout                                                    ;
+; control_unit:cunit|current_state~3                                    ; Lost fanout                                                    ;
+; control_unit:cunit|current_state~5                                    ; Lost fanout                                                    ;
+; control_unit:cunit|current_state~6                                    ; Lost fanout                                                    ;
+; datapath:dpath|Instruction_Register:IR|instruc1[0]                    ; Merged with datapath:dpath|Instruction_Register:IR|instruc0[0] ;
+; datapath:dpath|Instruction_Register:IR|instruc3[1]                    ; Lost fanout                                                    ;
+; control_unit:cunit|current_state.EXECUTE                              ; Lost fanout                                                    ;
+; datapath:dpath|ALU:alu|ALU_result[0..31]                              ; Lost fanout                                                    ;
+; datapath:dpath|Instruction_Register:IR|instruc0[0,5]                  ; Lost fanout                                                    ;
+; datapath:dpath|Instruction_Register:IR|instruc3[3]                    ; Lost fanout                                                    ;
+; control_unit:cunit|current_state.DECODE                               ; Lost fanout                                                    ;
+; datapath:dpath|Instruction_Register:IR|instruc1[1]                    ; Lost fanout                                                    ;
+; datapath:dpath|ProgramCounter:program_counter|PC_out[0..9]            ; Lost fanout                                                    ;
+; control_unit:cunit|current_state.FETCH                                ; Lost fanout                                                    ;
+; datapath:dpath|ProgramCounter:program_counter|PC_out[30]              ; Lost fanout                                                    ;
+; datapath:dpath|Registers:register|registers_rtl_0_bypass[0..3,12]     ; Lost fanout                                                    ;
+; datapath:dpath|ProgramCounter:program_counter|PC_out[29]              ; Lost fanout                                                    ;
+; datapath:dpath|Registers:register|registers_rtl_0_bypass[13]          ; Lost fanout                                                    ;
+; datapath:dpath|ProgramCounter:program_counter|PC_out[31]              ; Lost fanout                                                    ;
+; datapath:dpath|Registers:register|registers_rtl_0_bypass[11]          ; Lost fanout                                                    ;
+; datapath:dpath|ProgramCounter:program_counter|PC_out[28]              ; Lost fanout                                                    ;
+; datapath:dpath|Registers:register|registers_rtl_0_bypass[14]          ; Lost fanout                                                    ;
+; datapath:dpath|ProgramCounter:program_counter|PC_out[27]              ; Lost fanout                                                    ;
+; datapath:dpath|Registers:register|registers_rtl_0_bypass[15]          ; Lost fanout                                                    ;
+; datapath:dpath|ProgramCounter:program_counter|PC_out[26]              ; Lost fanout                                                    ;
+; datapath:dpath|Registers:register|registers_rtl_0_bypass[16]          ; Lost fanout                                                    ;
+; datapath:dpath|ProgramCounter:program_counter|PC_out[25]              ; Lost fanout                                                    ;
+; datapath:dpath|Registers:register|registers_rtl_0_bypass[17]          ; Lost fanout                                                    ;
+; datapath:dpath|ProgramCounter:program_counter|PC_out[24]              ; Lost fanout                                                    ;
+; datapath:dpath|Registers:register|registers_rtl_0_bypass[18]          ; Lost fanout                                                    ;
+; datapath:dpath|ProgramCounter:program_counter|PC_out[23]              ; Lost fanout                                                    ;
+; datapath:dpath|Registers:register|registers_rtl_0_bypass[19]          ; Lost fanout                                                    ;
+; datapath:dpath|ProgramCounter:program_counter|PC_out[22]              ; Lost fanout                                                    ;
+; datapath:dpath|Registers:register|registers_rtl_0_bypass[20]          ; Lost fanout                                                    ;
+; datapath:dpath|ProgramCounter:program_counter|PC_out[21]              ; Lost fanout                                                    ;
+; datapath:dpath|Registers:register|registers_rtl_0_bypass[21]          ; Lost fanout                                                    ;
+; datapath:dpath|ProgramCounter:program_counter|PC_out[20]              ; Lost fanout                                                    ;
+; datapath:dpath|Registers:register|registers_rtl_0_bypass[22]          ; Lost fanout                                                    ;
+; datapath:dpath|ProgramCounter:program_counter|PC_out[19]              ; Lost fanout                                                    ;
+; datapath:dpath|Registers:register|registers_rtl_0_bypass[23]          ; Lost fanout                                                    ;
+; datapath:dpath|ProgramCounter:program_counter|PC_out[18]              ; Lost fanout                                                    ;
+; datapath:dpath|Registers:register|registers_rtl_0_bypass[24]          ; Lost fanout                                                    ;
+; datapath:dpath|ProgramCounter:program_counter|PC_out[17]              ; Lost fanout                                                    ;
+; datapath:dpath|Registers:register|registers_rtl_0_bypass[25]          ; Lost fanout                                                    ;
+; datapath:dpath|ProgramCounter:program_counter|PC_out[16]              ; Lost fanout                                                    ;
+; datapath:dpath|Registers:register|registers_rtl_0_bypass[26]          ; Lost fanout                                                    ;
+; datapath:dpath|ProgramCounter:program_counter|PC_out[15]              ; Lost fanout                                                    ;
+; datapath:dpath|Registers:register|registers_rtl_0_bypass[27]          ; Lost fanout                                                    ;
+; datapath:dpath|ProgramCounter:program_counter|PC_out[14]              ; Lost fanout                                                    ;
+; datapath:dpath|Registers:register|registers_rtl_0_bypass[28]          ; Lost fanout                                                    ;
+; datapath:dpath|ProgramCounter:program_counter|PC_out[13]              ; Lost fanout                                                    ;
+; datapath:dpath|Registers:register|registers_rtl_0_bypass[29]          ; Lost fanout                                                    ;
+; datapath:dpath|ProgramCounter:program_counter|PC_out[12]              ; Lost fanout                                                    ;
+; datapath:dpath|Registers:register|registers_rtl_0_bypass[30]          ; Lost fanout                                                    ;
+; datapath:dpath|ProgramCounter:program_counter|PC_out[11]              ; Lost fanout                                                    ;
+; datapath:dpath|Registers:register|registers_rtl_0_bypass[31]          ; Lost fanout                                                    ;
+; datapath:dpath|ProgramCounter:program_counter|PC_out[10]              ; Lost fanout                                                    ;
+; datapath:dpath|Registers:register|registers_rtl_0_bypass[32..42]      ; Lost fanout                                                    ;
+; control_unit:cunit|current_state.INCREMENT_PC_EXECUTE                 ; Lost fanout                                                    ;
+; datapath:dpath|Instruction_Register:IR|instruc0[1]                    ; Lost fanout                                                    ;
+; control_unit:cunit|current_state.INCREMENT_PC                         ; Lost fanout                                                    ;
+; datapath:dpath|Registers:register|registers_rtl_1_bypass[0..4,11..42] ; Lost fanout                                                    ;
+; Total Number of Removed Registers = 191                               ;                                                                ;
++-----------------------------------------------------------------------+----------------------------------------------------------------+
+
+
++----------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Removed Registers Triggering Further Register Optimizations                                                                                                                ;
++-------------------------------------------------------------+---------------------------+----------------------------------------------------------------------------------+
+; Register name                                               ; Reason for Removal        ; Registers Removed due to This Register                                           ;
++-------------------------------------------------------------+---------------------------+----------------------------------------------------------------------------------+
+; datapath:dpath|Instruction_Register:IR|instruc0[2]          ; Stuck at GND              ; datapath:dpath|Registers:register|registers_rtl_0_bypass[5],                     ;
+;                                                             ; due to stuck port data_in ; datapath:dpath|Registers:register|registers_rtl_0_bypass[7],                     ;
+;                                                             ;                           ; datapath:dpath|Registers:register|registers_rtl_0_bypass[9],                     ;
+;                                                             ;                           ; datapath:dpath|Registers:register|registers_rtl_1_bypass[5],                     ;
+;                                                             ;                           ; datapath:dpath|Registers:register|registers_rtl_1_bypass[7],                     ;
+;                                                             ;                           ; datapath:dpath|Registers:register|registers_rtl_1_bypass[9],                     ;
+;                                                             ;                           ; datapath:dpath|Instruction_Register:IR|instruc3[1],                              ;
+;                                                             ;                           ; datapath:dpath|ALU:alu|ALU_result[27], datapath:dpath|ALU:alu|ALU_result[26],    ;
+;                                                             ;                           ; datapath:dpath|ALU:alu|ALU_result[25], datapath:dpath|ALU:alu|ALU_result[24],    ;
+;                                                             ;                           ; datapath:dpath|ALU:alu|ALU_result[23], datapath:dpath|ALU:alu|ALU_result[22],    ;
+;                                                             ;                           ; datapath:dpath|Instruction_Register:IR|instruc0[0],                              ;
+;                                                             ;                           ; datapath:dpath|Instruction_Register:IR|instruc0[5],                              ;
+;                                                             ;                           ; datapath:dpath|Instruction_Register:IR|instruc3[3],                              ;
+;                                                             ;                           ; datapath:dpath|ProgramCounter:program_counter|PC_out[2],                         ;
+;                                                             ;                           ; datapath:dpath|ProgramCounter:program_counter|PC_out[4],                         ;
+;                                                             ;                           ; datapath:dpath|ProgramCounter:program_counter|PC_out[0],                         ;
+;                                                             ;                           ; datapath:dpath|ProgramCounter:program_counter|PC_out[6],                         ;
+;                                                             ;                           ; datapath:dpath|ProgramCounter:program_counter|PC_out[7],                         ;
+;                                                             ;                           ; datapath:dpath|ProgramCounter:program_counter|PC_out[1],                         ;
+;                                                             ;                           ; datapath:dpath|ProgramCounter:program_counter|PC_out[5],                         ;
+;                                                             ;                           ; datapath:dpath|ProgramCounter:program_counter|PC_out[9],                         ;
+;                                                             ;                           ; datapath:dpath|ProgramCounter:program_counter|PC_out[8],                         ;
+;                                                             ;                           ; datapath:dpath|ProgramCounter:program_counter|PC_out[30],                        ;
+;                                                             ;                           ; datapath:dpath|Registers:register|registers_rtl_0_bypass[12],                    ;
+;                                                             ;                           ; datapath:dpath|ProgramCounter:program_counter|PC_out[29],                        ;
+;                                                             ;                           ; datapath:dpath|ProgramCounter:program_counter|PC_out[31],                        ;
+;                                                             ;                           ; datapath:dpath|Registers:register|registers_rtl_0_bypass[11],                    ;
+;                                                             ;                           ; datapath:dpath|ProgramCounter:program_counter|PC_out[25],                        ;
+;                                                             ;                           ; datapath:dpath|Registers:register|registers_rtl_0_bypass[17],                    ;
+;                                                             ;                           ; datapath:dpath|ProgramCounter:program_counter|PC_out[23],                        ;
+;                                                             ;                           ; datapath:dpath|Registers:register|registers_rtl_0_bypass[19],                    ;
+;                                                             ;                           ; datapath:dpath|ProgramCounter:program_counter|PC_out[21],                        ;
+;                                                             ;                           ; datapath:dpath|Registers:register|registers_rtl_0_bypass[21],                    ;
+;                                                             ;                           ; datapath:dpath|ProgramCounter:program_counter|PC_out[18],                        ;
+;                                                             ;                           ; datapath:dpath|ProgramCounter:program_counter|PC_out[16],                        ;
+;                                                             ;                           ; datapath:dpath|Registers:register|registers_rtl_0_bypass[26],                    ;
+;                                                             ;                           ; datapath:dpath|ProgramCounter:program_counter|PC_out[14],                        ;
+;                                                             ;                           ; datapath:dpath|Registers:register|registers_rtl_0_bypass[28],                    ;
+;                                                             ;                           ; datapath:dpath|ProgramCounter:program_counter|PC_out[12],                        ;
+;                                                             ;                           ; datapath:dpath|Registers:register|registers_rtl_0_bypass[30],                    ;
+;                                                             ;                           ; datapath:dpath|ProgramCounter:program_counter|PC_out[11],                        ;
+;                                                             ;                           ; datapath:dpath|ProgramCounter:program_counter|PC_out[10],                        ;
+;                                                             ;                           ; datapath:dpath|Registers:register|registers_rtl_0_bypass[32],                    ;
+;                                                             ;                           ; datapath:dpath|Registers:register|registers_rtl_0_bypass[34],                    ;
+;                                                             ;                           ; datapath:dpath|Registers:register|registers_rtl_0_bypass[36],                    ;
+;                                                             ;                           ; datapath:dpath|Registers:register|registers_rtl_0_bypass[38],                    ;
+;                                                             ;                           ; datapath:dpath|Registers:register|registers_rtl_0_bypass[40],                    ;
+;                                                             ;                           ; datapath:dpath|Instruction_Register:IR|instruc0[1],                              ;
+;                                                             ;                           ; datapath:dpath|Registers:register|registers_rtl_1_bypass[11],                    ;
+;                                                             ;                           ; datapath:dpath|Registers:register|registers_rtl_1_bypass[0],                     ;
+;                                                             ;                           ; datapath:dpath|Registers:register|registers_rtl_1_bypass[1],                     ;
+;                                                             ;                           ; datapath:dpath|Registers:register|registers_rtl_1_bypass[2],                     ;
+;                                                             ;                           ; datapath:dpath|Registers:register|registers_rtl_1_bypass[3],                     ;
+;                                                             ;                           ; datapath:dpath|Registers:register|registers_rtl_1_bypass[4],                     ;
+;                                                             ;                           ; datapath:dpath|Registers:register|registers_rtl_1_bypass[13],                    ;
+;                                                             ;                           ; datapath:dpath|Registers:register|registers_rtl_1_bypass[14],                    ;
+;                                                             ;                           ; datapath:dpath|Registers:register|registers_rtl_1_bypass[15],                    ;
+;                                                             ;                           ; datapath:dpath|Registers:register|registers_rtl_1_bypass[16],                    ;
+;                                                             ;                           ; datapath:dpath|Registers:register|registers_rtl_1_bypass[17],                    ;
+;                                                             ;                           ; datapath:dpath|Registers:register|registers_rtl_1_bypass[18],                    ;
+;                                                             ;                           ; datapath:dpath|Registers:register|registers_rtl_1_bypass[19],                    ;
+;                                                             ;                           ; datapath:dpath|Registers:register|registers_rtl_1_bypass[20],                    ;
+;                                                             ;                           ; datapath:dpath|Registers:register|registers_rtl_1_bypass[21],                    ;
+;                                                             ;                           ; datapath:dpath|Registers:register|registers_rtl_1_bypass[22],                    ;
+;                                                             ;                           ; datapath:dpath|Registers:register|registers_rtl_1_bypass[23],                    ;
+;                                                             ;                           ; datapath:dpath|Registers:register|registers_rtl_1_bypass[24],                    ;
+;                                                             ;                           ; datapath:dpath|Registers:register|registers_rtl_1_bypass[25],                    ;
+;                                                             ;                           ; datapath:dpath|Registers:register|registers_rtl_1_bypass[26],                    ;
+;                                                             ;                           ; datapath:dpath|Registers:register|registers_rtl_1_bypass[27],                    ;
+;                                                             ;                           ; datapath:dpath|Registers:register|registers_rtl_1_bypass[28],                    ;
+;                                                             ;                           ; datapath:dpath|Registers:register|registers_rtl_1_bypass[29],                    ;
+;                                                             ;                           ; datapath:dpath|Registers:register|registers_rtl_1_bypass[30],                    ;
+;                                                             ;                           ; datapath:dpath|Registers:register|registers_rtl_1_bypass[31],                    ;
+;                                                             ;                           ; datapath:dpath|Registers:register|registers_rtl_1_bypass[32],                    ;
+;                                                             ;                           ; datapath:dpath|Registers:register|registers_rtl_1_bypass[33],                    ;
+;                                                             ;                           ; datapath:dpath|Registers:register|registers_rtl_1_bypass[34],                    ;
+;                                                             ;                           ; datapath:dpath|Registers:register|registers_rtl_1_bypass[35],                    ;
+;                                                             ;                           ; datapath:dpath|Registers:register|registers_rtl_1_bypass[36],                    ;
+;                                                             ;                           ; datapath:dpath|Registers:register|registers_rtl_1_bypass[37],                    ;
+;                                                             ;                           ; datapath:dpath|Registers:register|registers_rtl_1_bypass[38],                    ;
+;                                                             ;                           ; datapath:dpath|Registers:register|registers_rtl_1_bypass[39],                    ;
+;                                                             ;                           ; datapath:dpath|Registers:register|registers_rtl_1_bypass[40],                    ;
+;                                                             ;                           ; datapath:dpath|Registers:register|registers_rtl_1_bypass[41],                    ;
+;                                                             ;                           ; datapath:dpath|Registers:register|registers_rtl_1_bypass[42]                     ;
+; datapath:dpath|Registers:register|registers_rtl_0_bypass[4] ; Stuck at GND              ; datapath:dpath|ProgramCounter:program_counter|PC_out[3],                         ;
+;                                                             ; due to stuck port data_in ; datapath:dpath|Registers:register|registers_rtl_0_bypass[0],                     ;
+;                                                             ;                           ; datapath:dpath|Registers:register|registers_rtl_0_bypass[1],                     ;
+;                                                             ;                           ; datapath:dpath|Registers:register|registers_rtl_0_bypass[2],                     ;
+;                                                             ;                           ; datapath:dpath|Registers:register|registers_rtl_0_bypass[3],                     ;
+;                                                             ;                           ; datapath:dpath|Registers:register|registers_rtl_0_bypass[15],                    ;
+;                                                             ;                           ; datapath:dpath|ProgramCounter:program_counter|PC_out[26],                        ;
+;                                                             ;                           ; datapath:dpath|Registers:register|registers_rtl_0_bypass[16],                    ;
+;                                                             ;                           ; datapath:dpath|ProgramCounter:program_counter|PC_out[24],                        ;
+;                                                             ;                           ; datapath:dpath|Registers:register|registers_rtl_0_bypass[18],                    ;
+;                                                             ;                           ; datapath:dpath|ProgramCounter:program_counter|PC_out[22],                        ;
+;                                                             ;                           ; datapath:dpath|Registers:register|registers_rtl_0_bypass[20],                    ;
+;                                                             ;                           ; datapath:dpath|Registers:register|registers_rtl_0_bypass[22],                    ;
+;                                                             ;                           ; datapath:dpath|ProgramCounter:program_counter|PC_out[17],                        ;
+;                                                             ;                           ; datapath:dpath|Registers:register|registers_rtl_0_bypass[25],                    ;
+;                                                             ;                           ; datapath:dpath|ProgramCounter:program_counter|PC_out[15],                        ;
+;                                                             ;                           ; datapath:dpath|Registers:register|registers_rtl_0_bypass[27],                    ;
+;                                                             ;                           ; datapath:dpath|ProgramCounter:program_counter|PC_out[13],                        ;
+;                                                             ;                           ; datapath:dpath|Registers:register|registers_rtl_0_bypass[29],                    ;
+;                                                             ;                           ; datapath:dpath|Registers:register|registers_rtl_0_bypass[31],                    ;
+;                                                             ;                           ; datapath:dpath|Registers:register|registers_rtl_0_bypass[33],                    ;
+;                                                             ;                           ; datapath:dpath|Registers:register|registers_rtl_0_bypass[35],                    ;
+;                                                             ;                           ; datapath:dpath|Registers:register|registers_rtl_0_bypass[37],                    ;
+;                                                             ;                           ; datapath:dpath|Registers:register|registers_rtl_0_bypass[39],                    ;
+;                                                             ;                           ; datapath:dpath|Registers:register|registers_rtl_0_bypass[41]                     ;
+; control_unit:cunit|current_state~2                          ; Lost Fanouts              ; control_unit:cunit|current_state.EXECUTE, control_unit:cunit|current_state.FETCH ;
+; datapath:dpath|ALU:alu|ALU_result[31]                       ; Lost Fanouts              ; control_unit:cunit|current_state.INCREMENT_PC_EXECUTE,                           ;
+;                                                             ;                           ; control_unit:cunit|current_state.INCREMENT_PC                                    ;
+; datapath:dpath|ALU:alu|ALU_result[30]                       ; Lost Fanouts              ; datapath:dpath|Registers:register|registers_rtl_0_bypass[13],                    ;
+;                                                             ;                           ; datapath:dpath|Registers:register|registers_rtl_1_bypass[12]                     ;
+; datapath:dpath|ALU:alu|ALU_result[29]                       ; Lost Fanouts              ; datapath:dpath|ProgramCounter:program_counter|PC_out[28],                        ;
+;                                                             ;                           ; datapath:dpath|Registers:register|registers_rtl_0_bypass[14]                     ;
+; datapath:dpath|ALU:alu|ALU_result[20]                       ; Lost Fanouts              ; datapath:dpath|ProgramCounter:program_counter|PC_out[19],                        ;
+;                                                             ;                           ; datapath:dpath|Registers:register|registers_rtl_0_bypass[23]                     ;
+; control_unit:cunit|current_state~3                          ; Lost Fanouts              ; control_unit:cunit|current_state.DECODE                                          ;
+; datapath:dpath|ALU:alu|ALU_result[28]                       ; Lost Fanouts              ; datapath:dpath|ProgramCounter:program_counter|PC_out[27]                         ;
+; datapath:dpath|ALU:alu|ALU_result[21]                       ; Lost Fanouts              ; datapath:dpath|ProgramCounter:program_counter|PC_out[20]                         ;
+; datapath:dpath|ALU:alu|ALU_result[19]                       ; Lost Fanouts              ; datapath:dpath|Registers:register|registers_rtl_0_bypass[24]                     ;
+; datapath:dpath|ALU:alu|ALU_result[1]                        ; Lost Fanouts              ; datapath:dpath|Registers:register|registers_rtl_0_bypass[42]                     ;
++-------------------------------------------------------------+---------------------------+----------------------------------------------------------------------------------+
+
+
 +------------------------------------------------------+
 ; General Register Statistics                          ;
 +----------------------------------------------+-------+
@@ -244,45 +490,311 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +----------------------------------------------+-------+
 
 
-+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Port Connectivity Checks: "datapath:dpath|ALU_Decoder:alu_decoder"                                                                                                                                                  ;
-+---------------+-------+----------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Port          ; Type  ; Severity ; Details                                                                                                                                                                          ;
-+---------------+-------+----------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; ALU_optcode   ; Input ; Warning  ; Input port expression (6 bits) is wider than the input port (1 bits) it drives.  The 5 most-significant bit(s) in the expression will be dangling if they have no other fanouts. ;
-; Function_code ; Input ; Warning  ; Declared by entity but not connected by instance. If a default value exists, it will be used.  Otherwise, the port will be connected to GND.                                     ;
-+---------------+-------+----------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
++------------------------------------------------------------------------------------------------------------------+
+; Registers Added for RAM Pass-Through Logic                                                                       ;
++--------------------------------------------------------------+---------------------------------------------------+
+; Register Name                                                ; RAM Name                                          ;
++--------------------------------------------------------------+---------------------------------------------------+
+; datapath:dpath|Registers:register|registers_rtl_0_bypass[0]  ; datapath:dpath|Registers:register|registers_rtl_0 ;
+; datapath:dpath|Registers:register|registers_rtl_0_bypass[1]  ; datapath:dpath|Registers:register|registers_rtl_0 ;
+; datapath:dpath|Registers:register|registers_rtl_0_bypass[2]  ; datapath:dpath|Registers:register|registers_rtl_0 ;
+; datapath:dpath|Registers:register|registers_rtl_0_bypass[3]  ; datapath:dpath|Registers:register|registers_rtl_0 ;
+; datapath:dpath|Registers:register|registers_rtl_0_bypass[4]  ; datapath:dpath|Registers:register|registers_rtl_0 ;
+; datapath:dpath|Registers:register|registers_rtl_0_bypass[5]  ; datapath:dpath|Registers:register|registers_rtl_0 ;
+; datapath:dpath|Registers:register|registers_rtl_0_bypass[6]  ; datapath:dpath|Registers:register|registers_rtl_0 ;
+; datapath:dpath|Registers:register|registers_rtl_0_bypass[7]  ; datapath:dpath|Registers:register|registers_rtl_0 ;
+; datapath:dpath|Registers:register|registers_rtl_0_bypass[8]  ; datapath:dpath|Registers:register|registers_rtl_0 ;
+; datapath:dpath|Registers:register|registers_rtl_0_bypass[9]  ; datapath:dpath|Registers:register|registers_rtl_0 ;
+; datapath:dpath|Registers:register|registers_rtl_0_bypass[10] ; datapath:dpath|Registers:register|registers_rtl_0 ;
+; datapath:dpath|Registers:register|registers_rtl_0_bypass[11] ; datapath:dpath|Registers:register|registers_rtl_0 ;
+; datapath:dpath|Registers:register|registers_rtl_0_bypass[12] ; datapath:dpath|Registers:register|registers_rtl_0 ;
+; datapath:dpath|Registers:register|registers_rtl_0_bypass[13] ; datapath:dpath|Registers:register|registers_rtl_0 ;
+; datapath:dpath|Registers:register|registers_rtl_0_bypass[14] ; datapath:dpath|Registers:register|registers_rtl_0 ;
+; datapath:dpath|Registers:register|registers_rtl_0_bypass[15] ; datapath:dpath|Registers:register|registers_rtl_0 ;
+; datapath:dpath|Registers:register|registers_rtl_0_bypass[16] ; datapath:dpath|Registers:register|registers_rtl_0 ;
+; datapath:dpath|Registers:register|registers_rtl_0_bypass[17] ; datapath:dpath|Registers:register|registers_rtl_0 ;
+; datapath:dpath|Registers:register|registers_rtl_0_bypass[18] ; datapath:dpath|Registers:register|registers_rtl_0 ;
+; datapath:dpath|Registers:register|registers_rtl_0_bypass[19] ; datapath:dpath|Registers:register|registers_rtl_0 ;
+; datapath:dpath|Registers:register|registers_rtl_0_bypass[20] ; datapath:dpath|Registers:register|registers_rtl_0 ;
+; datapath:dpath|Registers:register|registers_rtl_0_bypass[21] ; datapath:dpath|Registers:register|registers_rtl_0 ;
+; datapath:dpath|Registers:register|registers_rtl_0_bypass[22] ; datapath:dpath|Registers:register|registers_rtl_0 ;
+; datapath:dpath|Registers:register|registers_rtl_0_bypass[23] ; datapath:dpath|Registers:register|registers_rtl_0 ;
+; datapath:dpath|Registers:register|registers_rtl_0_bypass[24] ; datapath:dpath|Registers:register|registers_rtl_0 ;
+; datapath:dpath|Registers:register|registers_rtl_0_bypass[25] ; datapath:dpath|Registers:register|registers_rtl_0 ;
+; datapath:dpath|Registers:register|registers_rtl_0_bypass[26] ; datapath:dpath|Registers:register|registers_rtl_0 ;
+; datapath:dpath|Registers:register|registers_rtl_0_bypass[27] ; datapath:dpath|Registers:register|registers_rtl_0 ;
+; datapath:dpath|Registers:register|registers_rtl_0_bypass[28] ; datapath:dpath|Registers:register|registers_rtl_0 ;
+; datapath:dpath|Registers:register|registers_rtl_0_bypass[29] ; datapath:dpath|Registers:register|registers_rtl_0 ;
+; datapath:dpath|Registers:register|registers_rtl_0_bypass[30] ; datapath:dpath|Registers:register|registers_rtl_0 ;
+; datapath:dpath|Registers:register|registers_rtl_0_bypass[31] ; datapath:dpath|Registers:register|registers_rtl_0 ;
+; datapath:dpath|Registers:register|registers_rtl_0_bypass[32] ; datapath:dpath|Registers:register|registers_rtl_0 ;
+; datapath:dpath|Registers:register|registers_rtl_0_bypass[33] ; datapath:dpath|Registers:register|registers_rtl_0 ;
+; datapath:dpath|Registers:register|registers_rtl_0_bypass[34] ; datapath:dpath|Registers:register|registers_rtl_0 ;
+; datapath:dpath|Registers:register|registers_rtl_0_bypass[35] ; datapath:dpath|Registers:register|registers_rtl_0 ;
+; datapath:dpath|Registers:register|registers_rtl_0_bypass[36] ; datapath:dpath|Registers:register|registers_rtl_0 ;
+; datapath:dpath|Registers:register|registers_rtl_0_bypass[37] ; datapath:dpath|Registers:register|registers_rtl_0 ;
+; datapath:dpath|Registers:register|registers_rtl_0_bypass[38] ; datapath:dpath|Registers:register|registers_rtl_0 ;
+; datapath:dpath|Registers:register|registers_rtl_0_bypass[39] ; datapath:dpath|Registers:register|registers_rtl_0 ;
+; datapath:dpath|Registers:register|registers_rtl_0_bypass[40] ; datapath:dpath|Registers:register|registers_rtl_0 ;
+; datapath:dpath|Registers:register|registers_rtl_0_bypass[41] ; datapath:dpath|Registers:register|registers_rtl_0 ;
+; datapath:dpath|Registers:register|registers_rtl_0_bypass[42] ; datapath:dpath|Registers:register|registers_rtl_0 ;
+; datapath:dpath|Registers:register|registers_rtl_1_bypass[0]  ; datapath:dpath|Registers:register|registers_rtl_1 ;
+; datapath:dpath|Registers:register|registers_rtl_1_bypass[1]  ; datapath:dpath|Registers:register|registers_rtl_1 ;
+; datapath:dpath|Registers:register|registers_rtl_1_bypass[2]  ; datapath:dpath|Registers:register|registers_rtl_1 ;
+; datapath:dpath|Registers:register|registers_rtl_1_bypass[3]  ; datapath:dpath|Registers:register|registers_rtl_1 ;
+; datapath:dpath|Registers:register|registers_rtl_1_bypass[4]  ; datapath:dpath|Registers:register|registers_rtl_1 ;
+; datapath:dpath|Registers:register|registers_rtl_1_bypass[5]  ; datapath:dpath|Registers:register|registers_rtl_1 ;
+; datapath:dpath|Registers:register|registers_rtl_1_bypass[6]  ; datapath:dpath|Registers:register|registers_rtl_1 ;
+; datapath:dpath|Registers:register|registers_rtl_1_bypass[7]  ; datapath:dpath|Registers:register|registers_rtl_1 ;
+; datapath:dpath|Registers:register|registers_rtl_1_bypass[8]  ; datapath:dpath|Registers:register|registers_rtl_1 ;
+; datapath:dpath|Registers:register|registers_rtl_1_bypass[9]  ; datapath:dpath|Registers:register|registers_rtl_1 ;
+; datapath:dpath|Registers:register|registers_rtl_1_bypass[10] ; datapath:dpath|Registers:register|registers_rtl_1 ;
+; datapath:dpath|Registers:register|registers_rtl_1_bypass[11] ; datapath:dpath|Registers:register|registers_rtl_1 ;
+; datapath:dpath|Registers:register|registers_rtl_1_bypass[12] ; datapath:dpath|Registers:register|registers_rtl_1 ;
+; datapath:dpath|Registers:register|registers_rtl_1_bypass[13] ; datapath:dpath|Registers:register|registers_rtl_1 ;
+; datapath:dpath|Registers:register|registers_rtl_1_bypass[14] ; datapath:dpath|Registers:register|registers_rtl_1 ;
+; datapath:dpath|Registers:register|registers_rtl_1_bypass[15] ; datapath:dpath|Registers:register|registers_rtl_1 ;
+; datapath:dpath|Registers:register|registers_rtl_1_bypass[16] ; datapath:dpath|Registers:register|registers_rtl_1 ;
+; datapath:dpath|Registers:register|registers_rtl_1_bypass[17] ; datapath:dpath|Registers:register|registers_rtl_1 ;
+; datapath:dpath|Registers:register|registers_rtl_1_bypass[18] ; datapath:dpath|Registers:register|registers_rtl_1 ;
+; datapath:dpath|Registers:register|registers_rtl_1_bypass[19] ; datapath:dpath|Registers:register|registers_rtl_1 ;
+; datapath:dpath|Registers:register|registers_rtl_1_bypass[20] ; datapath:dpath|Registers:register|registers_rtl_1 ;
+; datapath:dpath|Registers:register|registers_rtl_1_bypass[21] ; datapath:dpath|Registers:register|registers_rtl_1 ;
+; datapath:dpath|Registers:register|registers_rtl_1_bypass[22] ; datapath:dpath|Registers:register|registers_rtl_1 ;
+; datapath:dpath|Registers:register|registers_rtl_1_bypass[23] ; datapath:dpath|Registers:register|registers_rtl_1 ;
+; datapath:dpath|Registers:register|registers_rtl_1_bypass[24] ; datapath:dpath|Registers:register|registers_rtl_1 ;
+; datapath:dpath|Registers:register|registers_rtl_1_bypass[25] ; datapath:dpath|Registers:register|registers_rtl_1 ;
+; datapath:dpath|Registers:register|registers_rtl_1_bypass[26] ; datapath:dpath|Registers:register|registers_rtl_1 ;
+; datapath:dpath|Registers:register|registers_rtl_1_bypass[27] ; datapath:dpath|Registers:register|registers_rtl_1 ;
+; datapath:dpath|Registers:register|registers_rtl_1_bypass[28] ; datapath:dpath|Registers:register|registers_rtl_1 ;
+; datapath:dpath|Registers:register|registers_rtl_1_bypass[29] ; datapath:dpath|Registers:register|registers_rtl_1 ;
+; datapath:dpath|Registers:register|registers_rtl_1_bypass[30] ; datapath:dpath|Registers:register|registers_rtl_1 ;
+; datapath:dpath|Registers:register|registers_rtl_1_bypass[31] ; datapath:dpath|Registers:register|registers_rtl_1 ;
+; datapath:dpath|Registers:register|registers_rtl_1_bypass[32] ; datapath:dpath|Registers:register|registers_rtl_1 ;
+; datapath:dpath|Registers:register|registers_rtl_1_bypass[33] ; datapath:dpath|Registers:register|registers_rtl_1 ;
+; datapath:dpath|Registers:register|registers_rtl_1_bypass[34] ; datapath:dpath|Registers:register|registers_rtl_1 ;
+; datapath:dpath|Registers:register|registers_rtl_1_bypass[35] ; datapath:dpath|Registers:register|registers_rtl_1 ;
+; datapath:dpath|Registers:register|registers_rtl_1_bypass[36] ; datapath:dpath|Registers:register|registers_rtl_1 ;
+; datapath:dpath|Registers:register|registers_rtl_1_bypass[37] ; datapath:dpath|Registers:register|registers_rtl_1 ;
+; datapath:dpath|Registers:register|registers_rtl_1_bypass[38] ; datapath:dpath|Registers:register|registers_rtl_1 ;
+; datapath:dpath|Registers:register|registers_rtl_1_bypass[39] ; datapath:dpath|Registers:register|registers_rtl_1 ;
+; datapath:dpath|Registers:register|registers_rtl_1_bypass[40] ; datapath:dpath|Registers:register|registers_rtl_1 ;
+; datapath:dpath|Registers:register|registers_rtl_1_bypass[41] ; datapath:dpath|Registers:register|registers_rtl_1 ;
+; datapath:dpath|Registers:register|registers_rtl_1_bypass[42] ; datapath:dpath|Registers:register|registers_rtl_1 ;
++--------------------------------------------------------------+---------------------------------------------------+
 
 
-+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Port Connectivity Checks: "datapath:dpath|four_to_one_mux:mux_E"                                                                                                                                                   ;
-+-------------+--------+----------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Port        ; Type   ; Severity ; Details                                                                                                                                                                          ;
-+-------------+--------+----------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; in_1[31..3] ; Input  ; Info     ; Stuck at GND                                                                                                                                                                     ;
-; in_1[1..0]  ; Input  ; Info     ; Stuck at GND                                                                                                                                                                     ;
-; in_1[2]     ; Input  ; Info     ; Stuck at VCC                                                                                                                                                                     ;
-; sel         ; Input  ; Warning  ; Input port expression (3 bits) is wider than the input port (2 bits) it drives.  The 1 most-significant bit(s) in the expression will be dangling if they have no other fanouts. ;
-; q           ; Output ; Warning  ; Declared by entity but not connected by instance. Logic that only feeds a dangling port will be removed.                                                                         ;
-+-------------+--------+----------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
++----------------------------------------------------------------------------------------------------------------------+
+; Registers Packed Into Inferred Megafunctions                                                                         ;
++-----------------------------------------------------------+---------------------------------------------------+------+
+; Register Name                                             ; Megafunction                                      ; Type ;
++-----------------------------------------------------------+---------------------------------------------------+------+
+; datapath:dpath|Registers:register|registers[0..31][0..31] ; datapath:dpath|Registers:register|registers_rtl_1 ; RAM  ;
++-----------------------------------------------------------+---------------------------------------------------+------+
 
 
-+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Port Connectivity Checks: "datapath:dpath|SignExtend:sign_extend_B"                                                                                                                                                ;
-+-----------+-------+----------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Port      ; Type  ; Severity ; Details                                                                                                                                                                             ;
-+-----------+-------+----------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; to_extend ; Input ; Warning  ; Input port expression (26 bits) is wider than the input port (16 bits) it drives.  The 10 most-significant bit(s) in the expression will be dangling if they have no other fanouts. ;
-+-----------+-------+----------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
++---------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Multiplexer Restructuring Statistics (Restructuring Performed)                                                                                                      ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+-------------------------------------------------------+
+; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output                            ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+-------------------------------------------------------+
+; 4:1                ; 30 bits   ; 60 LEs        ; 60 LEs               ; 0 LEs                  ; Yes        ; |SimptelO9|datapath:dpath|ALU:alu|ALU_result[16]      ;
+; 3:1                ; 17 bits   ; 34 LEs        ; 34 LEs               ; 0 LEs                  ; No         ; |SimptelO9|datapath:dpath|four_to_one_mux:mux_E|q[24] ;
+; 3:1                ; 5 bits    ; 10 LEs        ; 10 LEs               ; 0 LEs                  ; No         ; |SimptelO9|datapath:dpath|four_to_one_mux:mux_E|q[12] ;
+; 3:1                ; 32 bits   ; 64 LEs        ; 64 LEs               ; 0 LEs                  ; No         ; |SimptelO9|datapath:dpath|two_to_one_mux:mux_D|q[12]  ;
+; 7:1                ; 2 bits    ; 8 LEs         ; 8 LEs                ; 0 LEs                  ; No         ; |SimptelO9|datapath:dpath|four_to_one_mux:mux_E|q[15] ;
+; 7:1                ; 2 bits    ; 8 LEs         ; 8 LEs                ; 0 LEs                  ; No         ; |SimptelO9|datapath:dpath|four_to_one_mux:mux_E|q[5]  ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+-------------------------------------------------------+
 
 
-+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Port Connectivity Checks: "datapath:dpath|RAMO9:Memory"                                                                                                                          ;
-+---------+-------+----------+-----------------------------------------------------------------------------------------------------------------------------------------------------+
-; Port    ; Type  ; Severity ; Details                                                                                                                                             ;
-+---------+-------+----------+-----------------------------------------------------------------------------------------------------------------------------------------------------+
-; address ; Input ; Warning  ; Input port expression (16 bits) is smaller than the input port (32 bits) it drives.  Extra input bit(s) "address[31..16]" will be connected to GND. ;
-+---------+-------+----------+-----------------------------------------------------------------------------------------------------------------------------------------------------+
++--------------------------------------------------------------------------------------------------------------------+
+; Source assignments for datapath:dpath|Registers:register|altsyncram:registers_rtl_0|altsyncram_5io1:auto_generated ;
++---------------------------------+--------------------+------+------------------------------------------------------+
+; Assignment                      ; Value              ; From ; To                                                   ;
++---------------------------------+--------------------+------+------------------------------------------------------+
+; OPTIMIZE_POWER_DURING_SYNTHESIS ; NORMAL_COMPILATION ; -    ; -                                                    ;
++---------------------------------+--------------------+------+------------------------------------------------------+
+
+
++--------------------------------------------------------------------------------------------------------------------+
+; Source assignments for datapath:dpath|Registers:register|altsyncram:registers_rtl_1|altsyncram_5io1:auto_generated ;
++---------------------------------+--------------------+------+------------------------------------------------------+
+; Assignment                      ; Value              ; From ; To                                                   ;
++---------------------------------+--------------------+------+------------------------------------------------------+
+; OPTIMIZE_POWER_DURING_SYNTHESIS ; NORMAL_COMPILATION ; -    ; -                                                    ;
++---------------------------------+--------------------+------+------------------------------------------------------+
+
+
++---------------------------------------------------------------------------------------------------------------+
+; Parameter Settings for Inferred Entity Instance: datapath:dpath|Registers:register|altsyncram:registers_rtl_0 ;
++------------------------------------+----------------------+---------------------------------------------------+
+; Parameter Name                     ; Value                ; Type                                              ;
++------------------------------------+----------------------+---------------------------------------------------+
+; BYTE_SIZE_BLOCK                    ; 8                    ; Untyped                                           ;
+; AUTO_CARRY_CHAINS                  ; ON                   ; AUTO_CARRY                                        ;
+; IGNORE_CARRY_BUFFERS               ; OFF                  ; IGNORE_CARRY                                      ;
+; AUTO_CASCADE_CHAINS                ; ON                   ; AUTO_CASCADE                                      ;
+; IGNORE_CASCADE_BUFFERS             ; OFF                  ; IGNORE_CASCADE                                    ;
+; WIDTH_BYTEENA                      ; 1                    ; Untyped                                           ;
+; OPERATION_MODE                     ; DUAL_PORT            ; Untyped                                           ;
+; WIDTH_A                            ; 32                   ; Untyped                                           ;
+; WIDTHAD_A                          ; 5                    ; Untyped                                           ;
+; NUMWORDS_A                         ; 32                   ; Untyped                                           ;
+; OUTDATA_REG_A                      ; UNREGISTERED         ; Untyped                                           ;
+; ADDRESS_ACLR_A                     ; NONE                 ; Untyped                                           ;
+; OUTDATA_ACLR_A                     ; NONE                 ; Untyped                                           ;
+; WRCONTROL_ACLR_A                   ; NONE                 ; Untyped                                           ;
+; INDATA_ACLR_A                      ; NONE                 ; Untyped                                           ;
+; BYTEENA_ACLR_A                     ; NONE                 ; Untyped                                           ;
+; WIDTH_B                            ; 32                   ; Untyped                                           ;
+; WIDTHAD_B                          ; 5                    ; Untyped                                           ;
+; NUMWORDS_B                         ; 32                   ; Untyped                                           ;
+; INDATA_REG_B                       ; CLOCK1               ; Untyped                                           ;
+; WRCONTROL_WRADDRESS_REG_B          ; CLOCK1               ; Untyped                                           ;
+; RDCONTROL_REG_B                    ; CLOCK1               ; Untyped                                           ;
+; ADDRESS_REG_B                      ; CLOCK0               ; Untyped                                           ;
+; OUTDATA_REG_B                      ; UNREGISTERED         ; Untyped                                           ;
+; BYTEENA_REG_B                      ; CLOCK1               ; Untyped                                           ;
+; INDATA_ACLR_B                      ; NONE                 ; Untyped                                           ;
+; WRCONTROL_ACLR_B                   ; NONE                 ; Untyped                                           ;
+; ADDRESS_ACLR_B                     ; NONE                 ; Untyped                                           ;
+; OUTDATA_ACLR_B                     ; NONE                 ; Untyped                                           ;
+; RDCONTROL_ACLR_B                   ; NONE                 ; Untyped                                           ;
+; BYTEENA_ACLR_B                     ; NONE                 ; Untyped                                           ;
+; WIDTH_BYTEENA_A                    ; 1                    ; Untyped                                           ;
+; WIDTH_BYTEENA_B                    ; 1                    ; Untyped                                           ;
+; RAM_BLOCK_TYPE                     ; AUTO                 ; Untyped                                           ;
+; BYTE_SIZE                          ; 8                    ; Untyped                                           ;
+; READ_DURING_WRITE_MODE_MIXED_PORTS ; OLD_DATA             ; Untyped                                           ;
+; READ_DURING_WRITE_MODE_PORT_A      ; NEW_DATA_NO_NBE_READ ; Untyped                                           ;
+; READ_DURING_WRITE_MODE_PORT_B      ; NEW_DATA_NO_NBE_READ ; Untyped                                           ;
+; INIT_FILE                          ; UNUSED               ; Untyped                                           ;
+; INIT_FILE_LAYOUT                   ; PORT_A               ; Untyped                                           ;
+; MAXIMUM_DEPTH                      ; 0                    ; Untyped                                           ;
+; CLOCK_ENABLE_INPUT_A               ; NORMAL               ; Untyped                                           ;
+; CLOCK_ENABLE_INPUT_B               ; NORMAL               ; Untyped                                           ;
+; CLOCK_ENABLE_OUTPUT_A              ; NORMAL               ; Untyped                                           ;
+; CLOCK_ENABLE_OUTPUT_B              ; NORMAL               ; Untyped                                           ;
+; CLOCK_ENABLE_CORE_A                ; USE_INPUT_CLKEN      ; Untyped                                           ;
+; CLOCK_ENABLE_CORE_B                ; USE_INPUT_CLKEN      ; Untyped                                           ;
+; ENABLE_ECC                         ; FALSE                ; Untyped                                           ;
+; ECC_PIPELINE_STAGE_ENABLED         ; FALSE                ; Untyped                                           ;
+; WIDTH_ECCSTATUS                    ; 3                    ; Untyped                                           ;
+; DEVICE_FAMILY                      ; Cyclone V            ; Untyped                                           ;
+; CBXI_PARAMETER                     ; altsyncram_5io1      ; Untyped                                           ;
++------------------------------------+----------------------+---------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++---------------------------------------------------------------------------------------------------------------+
+; Parameter Settings for Inferred Entity Instance: datapath:dpath|Registers:register|altsyncram:registers_rtl_1 ;
++------------------------------------+----------------------+---------------------------------------------------+
+; Parameter Name                     ; Value                ; Type                                              ;
++------------------------------------+----------------------+---------------------------------------------------+
+; BYTE_SIZE_BLOCK                    ; 8                    ; Untyped                                           ;
+; AUTO_CARRY_CHAINS                  ; ON                   ; AUTO_CARRY                                        ;
+; IGNORE_CARRY_BUFFERS               ; OFF                  ; IGNORE_CARRY                                      ;
+; AUTO_CASCADE_CHAINS                ; ON                   ; AUTO_CASCADE                                      ;
+; IGNORE_CASCADE_BUFFERS             ; OFF                  ; IGNORE_CASCADE                                    ;
+; WIDTH_BYTEENA                      ; 1                    ; Untyped                                           ;
+; OPERATION_MODE                     ; DUAL_PORT            ; Untyped                                           ;
+; WIDTH_A                            ; 32                   ; Untyped                                           ;
+; WIDTHAD_A                          ; 5                    ; Untyped                                           ;
+; NUMWORDS_A                         ; 32                   ; Untyped                                           ;
+; OUTDATA_REG_A                      ; UNREGISTERED         ; Untyped                                           ;
+; ADDRESS_ACLR_A                     ; NONE                 ; Untyped                                           ;
+; OUTDATA_ACLR_A                     ; NONE                 ; Untyped                                           ;
+; WRCONTROL_ACLR_A                   ; NONE                 ; Untyped                                           ;
+; INDATA_ACLR_A                      ; NONE                 ; Untyped                                           ;
+; BYTEENA_ACLR_A                     ; NONE                 ; Untyped                                           ;
+; WIDTH_B                            ; 32                   ; Untyped                                           ;
+; WIDTHAD_B                          ; 5                    ; Untyped                                           ;
+; NUMWORDS_B                         ; 32                   ; Untyped                                           ;
+; INDATA_REG_B                       ; CLOCK1               ; Untyped                                           ;
+; WRCONTROL_WRADDRESS_REG_B          ; CLOCK1               ; Untyped                                           ;
+; RDCONTROL_REG_B                    ; CLOCK1               ; Untyped                                           ;
+; ADDRESS_REG_B                      ; CLOCK0               ; Untyped                                           ;
+; OUTDATA_REG_B                      ; UNREGISTERED         ; Untyped                                           ;
+; BYTEENA_REG_B                      ; CLOCK1               ; Untyped                                           ;
+; INDATA_ACLR_B                      ; NONE                 ; Untyped                                           ;
+; WRCONTROL_ACLR_B                   ; NONE                 ; Untyped                                           ;
+; ADDRESS_ACLR_B                     ; NONE                 ; Untyped                                           ;
+; OUTDATA_ACLR_B                     ; NONE                 ; Untyped                                           ;
+; RDCONTROL_ACLR_B                   ; NONE                 ; Untyped                                           ;
+; BYTEENA_ACLR_B                     ; NONE                 ; Untyped                                           ;
+; WIDTH_BYTEENA_A                    ; 1                    ; Untyped                                           ;
+; WIDTH_BYTEENA_B                    ; 1                    ; Untyped                                           ;
+; RAM_BLOCK_TYPE                     ; AUTO                 ; Untyped                                           ;
+; BYTE_SIZE                          ; 8                    ; Untyped                                           ;
+; READ_DURING_WRITE_MODE_MIXED_PORTS ; OLD_DATA             ; Untyped                                           ;
+; READ_DURING_WRITE_MODE_PORT_A      ; NEW_DATA_NO_NBE_READ ; Untyped                                           ;
+; READ_DURING_WRITE_MODE_PORT_B      ; NEW_DATA_NO_NBE_READ ; Untyped                                           ;
+; INIT_FILE                          ; UNUSED               ; Untyped                                           ;
+; INIT_FILE_LAYOUT                   ; PORT_A               ; Untyped                                           ;
+; MAXIMUM_DEPTH                      ; 0                    ; Untyped                                           ;
+; CLOCK_ENABLE_INPUT_A               ; NORMAL               ; Untyped                                           ;
+; CLOCK_ENABLE_INPUT_B               ; NORMAL               ; Untyped                                           ;
+; CLOCK_ENABLE_OUTPUT_A              ; NORMAL               ; Untyped                                           ;
+; CLOCK_ENABLE_OUTPUT_B              ; NORMAL               ; Untyped                                           ;
+; CLOCK_ENABLE_CORE_A                ; USE_INPUT_CLKEN      ; Untyped                                           ;
+; CLOCK_ENABLE_CORE_B                ; USE_INPUT_CLKEN      ; Untyped                                           ;
+; ENABLE_ECC                         ; FALSE                ; Untyped                                           ;
+; ECC_PIPELINE_STAGE_ENABLED         ; FALSE                ; Untyped                                           ;
+; WIDTH_ECCSTATUS                    ; 3                    ; Untyped                                           ;
+; DEVICE_FAMILY                      ; Cyclone V            ; Untyped                                           ;
+; CBXI_PARAMETER                     ; altsyncram_5io1      ; Untyped                                           ;
++------------------------------------+----------------------+---------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++----------------------------------------------------------------------------------------------------------+
+; altsyncram Parameter Settings by Entity Instance                                                         ;
++-------------------------------------------+--------------------------------------------------------------+
+; Name                                      ; Value                                                        ;
++-------------------------------------------+--------------------------------------------------------------+
+; Number of entity instances                ; 2                                                            ;
+; Entity Instance                           ; datapath:dpath|Registers:register|altsyncram:registers_rtl_0 ;
+;     -- OPERATION_MODE                     ; DUAL_PORT                                                    ;
+;     -- WIDTH_A                            ; 32                                                           ;
+;     -- NUMWORDS_A                         ; 32                                                           ;
+;     -- OUTDATA_REG_A                      ; UNREGISTERED                                                 ;
+;     -- WIDTH_B                            ; 32                                                           ;
+;     -- NUMWORDS_B                         ; 32                                                           ;
+;     -- ADDRESS_REG_B                      ; CLOCK0                                                       ;
+;     -- OUTDATA_REG_B                      ; UNREGISTERED                                                 ;
+;     -- RAM_BLOCK_TYPE                     ; AUTO                                                         ;
+;     -- READ_DURING_WRITE_MODE_MIXED_PORTS ; OLD_DATA                                                     ;
+; Entity Instance                           ; datapath:dpath|Registers:register|altsyncram:registers_rtl_1 ;
+;     -- OPERATION_MODE                     ; DUAL_PORT                                                    ;
+;     -- WIDTH_A                            ; 32                                                           ;
+;     -- NUMWORDS_A                         ; 32                                                           ;
+;     -- OUTDATA_REG_A                      ; UNREGISTERED                                                 ;
+;     -- WIDTH_B                            ; 32                                                           ;
+;     -- NUMWORDS_B                         ; 32                                                           ;
+;     -- ADDRESS_REG_B                      ; CLOCK0                                                       ;
+;     -- OUTDATA_REG_B                      ; UNREGISTERED                                                 ;
+;     -- RAM_BLOCK_TYPE                     ; AUTO                                                         ;
+;     -- READ_DURING_WRITE_MODE_MIXED_PORTS ; OLD_DATA                                                     ;
++-------------------------------------------+--------------------------------------------------------------+
+
+
++------------------------------------------------------------------+
+; Port Connectivity Checks: "datapath:dpath|four_to_one_mux:mux_E" ;
++-------------+-------+----------+---------------------------------+
+; Port        ; Type  ; Severity ; Details                         ;
++-------------+-------+----------+---------------------------------+
+; in_1[31..1] ; Input ; Info     ; Stuck at GND                    ;
+; in_1[0]     ; Input ; Info     ; Stuck at VCC                    ;
++-------------+-------+----------+---------------------------------+
+
+
++-------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "datapath:dpath|ShiftLeft:shift_left_2_B"                                               ;
++---------+--------+----------+-------------------------------------------------------------------------------------+
+; Port    ; Type   ; Severity ; Details                                                                             ;
++---------+--------+----------+-------------------------------------------------------------------------------------+
+; shifted ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
++---------+--------+----------+-------------------------------------------------------------------------------------+
 
 
 +---------------------------------------------------------------------------------------------------------------------+
@@ -292,32 +804,6 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +-----------+--------+----------+-------------------------------------------------------------------------------------+
 ; q[31..16] ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
 +-----------+--------+----------+-------------------------------------------------------------------------------------+
-
-
-+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Port Connectivity Checks: "datapath:dpath"                                                                                                                                                                           ;
-+-------------+--------+----------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Port        ; Type   ; Severity ; Details                                                                                                                                                                            ;
-+-------------+--------+----------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; MemRead     ; Input  ; Warning  ; Input port expression (32 bits) is wider than the input port (1 bits) it drives.  The 31 most-significant bit(s) in the expression will be dangling if they have no other fanouts. ;
-; MemRead[-1] ; Input  ; Info     ; Stuck at GND                                                                                                                                                                       ;
-; ALUSrcB     ; Input  ; Warning  ; Input port expression (2 bits) is smaller than the input port (3 bits) it drives.  Extra input bit(s) "ALUSrcB[2..2]" will be connected to GND.                                    ;
-; reset       ; Input  ; Warning  ; Input port expression (32 bits) is wider than the input port (1 bits) it drives.  The 31 most-significant bit(s) in the expression will be dangling if they have no other fanouts. ;
-; reset[-1]   ; Input  ; Info     ; Stuck at GND                                                                                                                                                                       ;
-; opCode      ; Output ; Warning  ; Output or bidir port (6 bits) is wider than the port expression (1 bits) it drives; bit(s) "opCode[5..1]" have no fanouts                                                          ;
-+-------------+--------+----------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-
-
-+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Port Connectivity Checks: "control_unit:cunit"                                                                                                                                                                       ;
-+-------------+--------+----------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Port        ; Type   ; Severity ; Details                                                                                                                                                                            ;
-+-------------+--------+----------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; opCode      ; Input  ; Warning  ; Input port expression (1 bits) is smaller than the input port (6 bits) it drives.  Extra input bit(s) "opCode[5..1]" will be connected to GND.                                     ;
-; reset       ; Input  ; Warning  ; Input port expression (32 bits) is wider than the input port (1 bits) it drives.  The 31 most-significant bit(s) in the expression will be dangling if they have no other fanouts. ;
-; reset[-1]   ; Input  ; Info     ; Stuck at GND                                                                                                                                                                       ;
-; PCWriteCond ; Output ; Warning  ; Output or bidir port (2 bits) is wider than the port expression (1 bits) it drives; bit(s) "PCWriteCond[1..1]" have no fanouts                                                     ;
-+-------------+--------+----------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
 
 +-----------------------------------------------------+
@@ -337,7 +823,7 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +----------------+--------------+
 ; Partition Name ; Elapsed Time ;
 +----------------+--------------+
-; Top            ; 00:00:00     ;
+; Top            ; 00:00:01     ;
 +----------------+--------------+
 
 
@@ -347,107 +833,231 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Synthesis
     Info: Version 17.0.0 Build 595 04/25/2017 SJ Lite Edition
-    Info: Processing started: Sun Mar 24 22:42:53 2019
+    Info: Processing started: Sat Mar 30 17:31:27 2019
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off SimptelO9 -c SimptelO9
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
 Info (20030): Parallel compilation is enabled and will use 4 of the 4 processors detected
 Info (12021): Found 1 design units, including 1 entities, in source file RAMO9(4KB).v
-    Info (12023): Found entity 1: RAMO9 File: /h/u11/c7/00/huangk46/Desktop/Simptel-O9/RAMO9(4KB).v Line: 1
+    Info (12023): Found entity 1: RAMO9 File: /h/u7/c7/04/fanyao2/Simptel-O9/RAMO9(4KB).v Line: 1
 Info (12021): Found 1 design units, including 1 entities, in source file SimptelO9.v
-    Info (12023): Found entity 1: SimptelO9 File: /h/u11/c7/00/huangk46/Desktop/Simptel-O9/SimptelO9.v Line: 1
+    Info (12023): Found entity 1: SimptelO9 File: /h/u7/c7/04/fanyao2/Simptel-O9/SimptelO9.v Line: 1
 Info (12021): Found 1 design units, including 1 entities, in source file ram65536x32.v
-    Info (12023): Found entity 1: ram65536x32 File: /h/u11/c7/00/huangk46/Desktop/Simptel-O9/ram65536x32.v Line: 40
+    Info (12023): Found entity 1: ram65536x32 File: /h/u7/c7/04/fanyao2/Simptel-O9/ram65536x32.v Line: 40
 Info (12021): Found 1 design units, including 1 entities, in source file ALU_Decoder.v
-    Info (12023): Found entity 1: ALU_Decoder File: /h/u11/c7/00/huangk46/Desktop/Simptel-O9/ALU_Decoder.v Line: 1
+    Info (12023): Found entity 1: ALU_Decoder File: /h/u7/c7/04/fanyao2/Simptel-O9/ALU_Decoder.v Line: 1
 Info (12021): Found 1 design units, including 1 entities, in source file MemoryDataRegister.v
-    Info (12023): Found entity 1: MemoryDataRegister File: /h/u11/c7/00/huangk46/Desktop/Simptel-O9/MemoryDataRegister.v Line: 1
+    Info (12023): Found entity 1: MemoryDataRegister File: /h/u7/c7/04/fanyao2/Simptel-O9/MemoryDataRegister.v Line: 1
 Info (12021): Found 1 design units, including 1 entities, in source file ProgramCounter.v
-    Info (12023): Found entity 1: ProgramCounter File: /h/u11/c7/00/huangk46/Desktop/Simptel-O9/ProgramCounter.v Line: 1
+    Info (12023): Found entity 1: ProgramCounter File: /h/u7/c7/04/fanyao2/Simptel-O9/ProgramCounter.v Line: 1
 Info (12021): Found 1 design units, including 1 entities, in source file ALU.v
-    Info (12023): Found entity 1: ALU File: /h/u11/c7/00/huangk46/Desktop/Simptel-O9/ALU.v Line: 1
-Info (12021): Found 1 design units, including 1 entities, in source file SignExtend.v
-    Info (12023): Found entity 1: SignExtend File: /h/u11/c7/00/huangk46/Desktop/Simptel-O9/SignExtend.v Line: 1
+    Info (12023): Found entity 1: ALU File: /h/u7/c7/04/fanyao2/Simptel-O9/ALU.v Line: 1
+Info (12021): Found 2 design units, including 2 entities, in source file SignExtend.v
+    Info (12023): Found entity 1: SignExtend File: /h/u7/c7/04/fanyao2/Simptel-O9/SignExtend.v Line: 1
+    Info (12023): Found entity 2: SignExtend_26_bit File: /h/u7/c7/04/fanyao2/Simptel-O9/SignExtend.v Line: 10
 Info (12021): Found 1 design units, including 1 entities, in source file control_unit.v
-    Info (12023): Found entity 1: control_unit File: /h/u11/c7/00/huangk46/Desktop/Simptel-O9/control_unit.v Line: 1
+    Info (12023): Found entity 1: control_unit File: /h/u7/c7/04/fanyao2/Simptel-O9/control_unit.v Line: 1
 Info (12021): Found 7 design units, including 7 entities, in source file datapath.v
-    Info (12023): Found entity 1: datapath File: /h/u11/c7/00/huangk46/Desktop/Simptel-O9/datapath.v Line: 1
-    Info (12023): Found entity 2: And_ File: /h/u11/c7/00/huangk46/Desktop/Simptel-O9/datapath.v Line: 181
-    Info (12023): Found entity 3: Or_ File: /h/u11/c7/00/huangk46/Desktop/Simptel-O9/datapath.v Line: 188
-    Info (12023): Found entity 4: two_to_one_mux File: /h/u11/c7/00/huangk46/Desktop/Simptel-O9/datapath.v Line: 195
-    Info (12023): Found entity 5: three_to_one_mux File: /h/u11/c7/00/huangk46/Desktop/Simptel-O9/datapath.v Line: 209
-    Info (12023): Found entity 6: two_to_one_mux_5_bit File: /h/u11/c7/00/huangk46/Desktop/Simptel-O9/datapath.v Line: 225
-    Info (12023): Found entity 7: four_to_one_mux File: /h/u11/c7/00/huangk46/Desktop/Simptel-O9/datapath.v Line: 238
+    Info (12023): Found entity 1: datapath File: /h/u7/c7/04/fanyao2/Simptel-O9/datapath.v Line: 1
+    Info (12023): Found entity 2: And_ File: /h/u7/c7/04/fanyao2/Simptel-O9/datapath.v Line: 183
+    Info (12023): Found entity 3: Or_ File: /h/u7/c7/04/fanyao2/Simptel-O9/datapath.v Line: 190
+    Info (12023): Found entity 4: two_to_one_mux File: /h/u7/c7/04/fanyao2/Simptel-O9/datapath.v Line: 197
+    Info (12023): Found entity 5: three_to_one_mux File: /h/u7/c7/04/fanyao2/Simptel-O9/datapath.v Line: 211
+    Info (12023): Found entity 6: two_to_one_mux_5_bit File: /h/u7/c7/04/fanyao2/Simptel-O9/datapath.v Line: 227
+    Info (12023): Found entity 7: four_to_one_mux File: /h/u7/c7/04/fanyao2/Simptel-O9/datapath.v Line: 240
 Info (12021): Found 2 design units, including 2 entities, in source file datapath_registers.v
-    Info (12023): Found entity 1: Instruction_Register File: /h/u11/c7/00/huangk46/Desktop/Simptel-O9/datapath_registers.v Line: 1
-    Info (12023): Found entity 2: Registers File: /h/u11/c7/00/huangk46/Desktop/Simptel-O9/datapath_registers.v Line: 23
+    Info (12023): Found entity 1: Instruction_Register File: /h/u7/c7/04/fanyao2/Simptel-O9/datapath_registers.v Line: 1
+    Info (12023): Found entity 2: Registers File: /h/u7/c7/04/fanyao2/Simptel-O9/datapath_registers.v Line: 23
 Info (12021): Found 1 design units, including 1 entities, in source file ShiftLeft.v
-    Info (12023): Found entity 1: ShiftLeft File: /h/u11/c7/00/huangk46/Desktop/Simptel-O9/ShiftLeft.v Line: 1
+    Info (12023): Found entity 1: ShiftLeft File: /h/u7/c7/04/fanyao2/Simptel-O9/ShiftLeft.v Line: 1
 Info (12127): Elaborating entity "SimptelO9" for the top level hierarchy
-Info (12128): Elaborating entity "control_unit" for hierarchy "control_unit:cunit" File: /h/u11/c7/00/huangk46/Desktop/Simptel-O9/SimptelO9.v Line: 12
-Warning (10858): Verilog HDL warning at control_unit.v(61): object current_state used but never assigned File: /h/u11/c7/00/huangk46/Desktop/Simptel-O9/control_unit.v Line: 61
-Warning (10036): Verilog HDL or VHDL warning at control_unit.v(61): object "next_state" assigned a value but never read File: /h/u11/c7/00/huangk46/Desktop/Simptel-O9/control_unit.v Line: 61
-Info (10264): Verilog HDL Case Statement information at control_unit.v(65): all case item expressions in this case statement are onehot File: /h/u11/c7/00/huangk46/Desktop/Simptel-O9/control_unit.v Line: 65
-Warning (10230): Verilog HDL assignment warning at control_unit.v(84): truncated value with size 4 to match size of target (1) File: /h/u11/c7/00/huangk46/Desktop/Simptel-O9/control_unit.v Line: 84
-Warning (10230): Verilog HDL assignment warning at control_unit.v(112): truncated value with size 6 to match size of target (1) File: /h/u11/c7/00/huangk46/Desktop/Simptel-O9/control_unit.v Line: 112
-Warning (10230): Verilog HDL assignment warning at control_unit.v(118): truncated value with size 6 to match size of target (1) File: /h/u11/c7/00/huangk46/Desktop/Simptel-O9/control_unit.v Line: 118
-Warning (10230): Verilog HDL assignment warning at control_unit.v(124): truncated value with size 6 to match size of target (1) File: /h/u11/c7/00/huangk46/Desktop/Simptel-O9/control_unit.v Line: 124
-Warning (10230): Verilog HDL assignment warning at control_unit.v(130): truncated value with size 6 to match size of target (1) File: /h/u11/c7/00/huangk46/Desktop/Simptel-O9/control_unit.v Line: 130
-Warning (10270): Verilog HDL Case Statement warning at control_unit.v(102): incomplete case statement has no default case item File: /h/u11/c7/00/huangk46/Desktop/Simptel-O9/control_unit.v Line: 102
-Warning (10230): Verilog HDL assignment warning at control_unit.v(170): truncated value with size 6 to match size of target (1) File: /h/u11/c7/00/huangk46/Desktop/Simptel-O9/control_unit.v Line: 170
-Warning (10230): Verilog HDL assignment warning at control_unit.v(177): truncated value with size 6 to match size of target (1) File: /h/u11/c7/00/huangk46/Desktop/Simptel-O9/control_unit.v Line: 177
-Warning (10230): Verilog HDL assignment warning at control_unit.v(184): truncated value with size 6 to match size of target (1) File: /h/u11/c7/00/huangk46/Desktop/Simptel-O9/control_unit.v Line: 184
-Warning (10230): Verilog HDL assignment warning at control_unit.v(191): truncated value with size 6 to match size of target (1) File: /h/u11/c7/00/huangk46/Desktop/Simptel-O9/control_unit.v Line: 191
-Warning (10270): Verilog HDL Case Statement warning at control_unit.v(159): incomplete case statement has no default case item File: /h/u11/c7/00/huangk46/Desktop/Simptel-O9/control_unit.v Line: 159
-Warning (10240): Verilog HDL Always Construct warning at control_unit.v(82): inferring latch(es) for variable "PCSource", which holds its previous value in one or more paths through the always construct File: /h/u11/c7/00/huangk46/Desktop/Simptel-O9/control_unit.v Line: 82
-Warning (10030): Net "current_state.FETCH" at control_unit.v(61) has no driver or initial value, using a default initial value '0' File: /h/u11/c7/00/huangk46/Desktop/Simptel-O9/control_unit.v Line: 61
-Warning (10030): Net "current_state.DECODE" at control_unit.v(61) has no driver or initial value, using a default initial value '0' File: /h/u11/c7/00/huangk46/Desktop/Simptel-O9/control_unit.v Line: 61
-Warning (10030): Net "current_state.EXECUTE" at control_unit.v(61) has no driver or initial value, using a default initial value '0' File: /h/u11/c7/00/huangk46/Desktop/Simptel-O9/control_unit.v Line: 61
-Warning (10030): Net "current_state.INCREMENT_PC" at control_unit.v(61) has no driver or initial value, using a default initial value '0' File: /h/u11/c7/00/huangk46/Desktop/Simptel-O9/control_unit.v Line: 61
-Warning (10030): Net "current_state.INCREMENT_PC_EXECUTE" at control_unit.v(61) has no driver or initial value, using a default initial value '0' File: /h/u11/c7/00/huangk46/Desktop/Simptel-O9/control_unit.v Line: 61
-Info (10041): Inferred latch for "PCSource[0]" at control_unit.v(82) File: /h/u11/c7/00/huangk46/Desktop/Simptel-O9/control_unit.v Line: 82
-Info (10041): Inferred latch for "PCSource[1]" at control_unit.v(82) File: /h/u11/c7/00/huangk46/Desktop/Simptel-O9/control_unit.v Line: 82
-Info (12128): Elaborating entity "datapath" for hierarchy "datapath:dpath" File: /h/u11/c7/00/huangk46/Desktop/Simptel-O9/SimptelO9.v Line: 32
-Info (12128): Elaborating entity "three_to_one_mux" for hierarchy "datapath:dpath|three_to_one_mux:mux_F" File: /h/u11/c7/00/huangk46/Desktop/Simptel-O9/datapath.v Line: 57
-Info (12128): Elaborating entity "ProgramCounter" for hierarchy "datapath:dpath|ProgramCounter:program_counter" File: /h/u11/c7/00/huangk46/Desktop/Simptel-O9/datapath.v Line: 65
-Info (12128): Elaborating entity "two_to_one_mux" for hierarchy "datapath:dpath|two_to_one_mux:mux_A" File: /h/u11/c7/00/huangk46/Desktop/Simptel-O9/datapath.v Line: 72
-Info (12128): Elaborating entity "RAMO9" for hierarchy "datapath:dpath|RAMO9:Memory" File: /h/u11/c7/00/huangk46/Desktop/Simptel-O9/datapath.v Line: 80
-Info (12128): Elaborating entity "Instruction_Register" for hierarchy "datapath:dpath|Instruction_Register:IR" File: /h/u11/c7/00/huangk46/Desktop/Simptel-O9/datapath.v Line: 90
-Info (12128): Elaborating entity "two_to_one_mux_5_bit" for hierarchy "datapath:dpath|two_to_one_mux_5_bit:mux_B" File: /h/u11/c7/00/huangk46/Desktop/Simptel-O9/datapath.v Line: 97
-Info (12128): Elaborating entity "Registers" for hierarchy "datapath:dpath|Registers:register" File: /h/u11/c7/00/huangk46/Desktop/Simptel-O9/datapath.v Line: 109
-Info (12128): Elaborating entity "SignExtend" for hierarchy "datapath:dpath|SignExtend:sign_extend_A" File: /h/u11/c7/00/huangk46/Desktop/Simptel-O9/datapath.v Line: 121
-Info (12128): Elaborating entity "ShiftLeft" for hierarchy "datapath:dpath|ShiftLeft:shift_left_2_B" File: /h/u11/c7/00/huangk46/Desktop/Simptel-O9/datapath.v Line: 131
-Info (12128): Elaborating entity "four_to_one_mux" for hierarchy "datapath:dpath|four_to_one_mux:mux_E" File: /h/u11/c7/00/huangk46/Desktop/Simptel-O9/datapath.v Line: 146
-Info (12128): Elaborating entity "ALU_Decoder" for hierarchy "datapath:dpath|ALU_Decoder:alu_decoder" File: /h/u11/c7/00/huangk46/Desktop/Simptel-O9/datapath.v Line: 156
-Warning (10199): Verilog HDL Case Statement warning at ALU_Decoder.v(13): case item expression never matches the case expression File: /h/u11/c7/00/huangk46/Desktop/Simptel-O9/ALU_Decoder.v Line: 13
-Warning (10199): Verilog HDL Case Statement warning at ALU_Decoder.v(14): case item expression never matches the case expression File: /h/u11/c7/00/huangk46/Desktop/Simptel-O9/ALU_Decoder.v Line: 14
-Warning (10199): Verilog HDL Case Statement warning at ALU_Decoder.v(15): case item expression never matches the case expression File: /h/u11/c7/00/huangk46/Desktop/Simptel-O9/ALU_Decoder.v Line: 15
-Warning (10199): Verilog HDL Case Statement warning at ALU_Decoder.v(16): case item expression never matches the case expression File: /h/u11/c7/00/huangk46/Desktop/Simptel-O9/ALU_Decoder.v Line: 16
-Warning (10199): Verilog HDL Case Statement warning at ALU_Decoder.v(17): case item expression never matches the case expression File: /h/u11/c7/00/huangk46/Desktop/Simptel-O9/ALU_Decoder.v Line: 17
-Warning (10199): Verilog HDL Case Statement warning at ALU_Decoder.v(18): case item expression never matches the case expression File: /h/u11/c7/00/huangk46/Desktop/Simptel-O9/ALU_Decoder.v Line: 18
-Warning (10199): Verilog HDL Case Statement warning at ALU_Decoder.v(19): case item expression never matches the case expression File: /h/u11/c7/00/huangk46/Desktop/Simptel-O9/ALU_Decoder.v Line: 19
-Warning (10199): Verilog HDL Case Statement warning at ALU_Decoder.v(20): case item expression never matches the case expression File: /h/u11/c7/00/huangk46/Desktop/Simptel-O9/ALU_Decoder.v Line: 20
-Warning (10199): Verilog HDL Case Statement warning at ALU_Decoder.v(22): case item expression never matches the case expression File: /h/u11/c7/00/huangk46/Desktop/Simptel-O9/ALU_Decoder.v Line: 22
-Warning (10270): Verilog HDL Case Statement warning at ALU_Decoder.v(12): incomplete case statement has no default case item File: /h/u11/c7/00/huangk46/Desktop/Simptel-O9/ALU_Decoder.v Line: 12
-Warning (10240): Verilog HDL Always Construct warning at ALU_Decoder.v(8): inferring latch(es) for variable "ALU_control", which holds its previous value in one or more paths through the always construct File: /h/u11/c7/00/huangk46/Desktop/Simptel-O9/ALU_Decoder.v Line: 8
-Info (10041): Inferred latch for "ALU_control[0]" at ALU_Decoder.v(12) File: /h/u11/c7/00/huangk46/Desktop/Simptel-O9/ALU_Decoder.v Line: 12
-Info (10041): Inferred latch for "ALU_control[1]" at ALU_Decoder.v(12) File: /h/u11/c7/00/huangk46/Desktop/Simptel-O9/ALU_Decoder.v Line: 12
-Info (10041): Inferred latch for "ALU_control[2]" at ALU_Decoder.v(12) File: /h/u11/c7/00/huangk46/Desktop/Simptel-O9/ALU_Decoder.v Line: 12
-Info (10041): Inferred latch for "ALU_control[3]" at ALU_Decoder.v(12) File: /h/u11/c7/00/huangk46/Desktop/Simptel-O9/ALU_Decoder.v Line: 12
-Info (12128): Elaborating entity "ALU" for hierarchy "datapath:dpath|ALU:alu" File: /h/u11/c7/00/huangk46/Desktop/Simptel-O9/datapath.v Line: 165
-Info (12128): Elaborating entity "And_" for hierarchy "datapath:dpath|And_:my_and" File: /h/u11/c7/00/huangk46/Desktop/Simptel-O9/datapath.v Line: 171
-Info (12128): Elaborating entity "Or_" for hierarchy "datapath:dpath|Or_:my_or" File: /h/u11/c7/00/huangk46/Desktop/Simptel-O9/datapath.v Line: 177
-Warning (12241): 6 hierarchies have connectivity warnings - see the Connectivity Checks report folder
+Info (12128): Elaborating entity "control_unit" for hierarchy "control_unit:cunit" File: /h/u7/c7/04/fanyao2/Simptel-O9/SimptelO9.v Line: 16
+Info (10264): Verilog HDL Case Statement information at control_unit.v(37): all case item expressions in this case statement are onehot File: /h/u7/c7/04/fanyao2/Simptel-O9/control_unit.v Line: 37
+Warning (10270): Verilog HDL Case Statement warning at control_unit.v(74): incomplete case statement has no default case item File: /h/u7/c7/04/fanyao2/Simptel-O9/control_unit.v Line: 74
+Warning (10270): Verilog HDL Case Statement warning at control_unit.v(105): incomplete case statement has no default case item File: /h/u7/c7/04/fanyao2/Simptel-O9/control_unit.v Line: 105
+Info (12128): Elaborating entity "datapath" for hierarchy "datapath:dpath" File: /h/u7/c7/04/fanyao2/Simptel-O9/SimptelO9.v Line: 36
+Info (12128): Elaborating entity "three_to_one_mux" for hierarchy "datapath:dpath|three_to_one_mux:mux_F" File: /h/u7/c7/04/fanyao2/Simptel-O9/datapath.v Line: 57
+Info (12128): Elaborating entity "ProgramCounter" for hierarchy "datapath:dpath|ProgramCounter:program_counter" File: /h/u7/c7/04/fanyao2/Simptel-O9/datapath.v Line: 65
+Info (12128): Elaborating entity "two_to_one_mux" for hierarchy "datapath:dpath|two_to_one_mux:mux_A" File: /h/u7/c7/04/fanyao2/Simptel-O9/datapath.v Line: 72
+Info (12128): Elaborating entity "RAMO9" for hierarchy "datapath:dpath|RAMO9:Memory" File: /h/u7/c7/04/fanyao2/Simptel-O9/datapath.v Line: 80
+Info (12128): Elaborating entity "Instruction_Register" for hierarchy "datapath:dpath|Instruction_Register:IR" File: /h/u7/c7/04/fanyao2/Simptel-O9/datapath.v Line: 90
+Info (12128): Elaborating entity "two_to_one_mux_5_bit" for hierarchy "datapath:dpath|two_to_one_mux_5_bit:mux_B" File: /h/u7/c7/04/fanyao2/Simptel-O9/datapath.v Line: 97
+Info (12128): Elaborating entity "Registers" for hierarchy "datapath:dpath|Registers:register" File: /h/u7/c7/04/fanyao2/Simptel-O9/datapath.v Line: 109
+Warning (10855): Verilog HDL warning at datapath_registers.v(31): initial value for variable registers should be constant File: /h/u7/c7/04/fanyao2/Simptel-O9/datapath_registers.v Line: 31
+Info (12128): Elaborating entity "SignExtend" for hierarchy "datapath:dpath|SignExtend:sign_extend_A" File: /h/u7/c7/04/fanyao2/Simptel-O9/datapath.v Line: 121
+Info (12128): Elaborating entity "SignExtend_26_bit" for hierarchy "datapath:dpath|SignExtend_26_bit:sign_extend_B" File: /h/u7/c7/04/fanyao2/Simptel-O9/datapath.v Line: 126
+Info (12128): Elaborating entity "ShiftLeft" for hierarchy "datapath:dpath|ShiftLeft:shift_left_2_B" File: /h/u7/c7/04/fanyao2/Simptel-O9/datapath.v Line: 131
+Info (12128): Elaborating entity "four_to_one_mux" for hierarchy "datapath:dpath|four_to_one_mux:mux_E" File: /h/u7/c7/04/fanyao2/Simptel-O9/datapath.v Line: 147
+Info (12128): Elaborating entity "ALU_Decoder" for hierarchy "datapath:dpath|ALU_Decoder:alu_decoder" File: /h/u7/c7/04/fanyao2/Simptel-O9/datapath.v Line: 158
+Warning (10270): Verilog HDL Case Statement warning at ALU_Decoder.v(12): incomplete case statement has no default case item File: /h/u7/c7/04/fanyao2/Simptel-O9/ALU_Decoder.v Line: 12
+Warning (10240): Verilog HDL Always Construct warning at ALU_Decoder.v(8): inferring latch(es) for variable "ALU_control", which holds its previous value in one or more paths through the always construct File: /h/u7/c7/04/fanyao2/Simptel-O9/ALU_Decoder.v Line: 8
+Info (10041): Inferred latch for "ALU_control[0]" at ALU_Decoder.v(12) File: /h/u7/c7/04/fanyao2/Simptel-O9/ALU_Decoder.v Line: 12
+Info (10041): Inferred latch for "ALU_control[1]" at ALU_Decoder.v(12) File: /h/u7/c7/04/fanyao2/Simptel-O9/ALU_Decoder.v Line: 12
+Info (10041): Inferred latch for "ALU_control[2]" at ALU_Decoder.v(12) File: /h/u7/c7/04/fanyao2/Simptel-O9/ALU_Decoder.v Line: 12
+Info (10041): Inferred latch for "ALU_control[3]" at ALU_Decoder.v(12) File: /h/u7/c7/04/fanyao2/Simptel-O9/ALU_Decoder.v Line: 12
+Info (12128): Elaborating entity "ALU" for hierarchy "datapath:dpath|ALU:alu" File: /h/u7/c7/04/fanyao2/Simptel-O9/datapath.v Line: 167
+Info (12128): Elaborating entity "And_" for hierarchy "datapath:dpath|And_:my_and" File: /h/u7/c7/04/fanyao2/Simptel-O9/datapath.v Line: 173
+Info (12128): Elaborating entity "Or_" for hierarchy "datapath:dpath|Or_:my_or" File: /h/u7/c7/04/fanyao2/Simptel-O9/datapath.v Line: 179
+Warning (12011): Net is missing source, defaulting to GND
+    Warning (12110): Net "reset" is missing source, defaulting to GND File: /h/u7/c7/04/fanyao2/Simptel-O9/SimptelO9.v Line: 8
+Warning (276020): Inferred RAM node "datapath:dpath|Registers:register|registers_rtl_0" from synchronous design logic.  Pass-through logic has been added to match the read-during-write behavior of the original design.
+Warning (276020): Inferred RAM node "datapath:dpath|Registers:register|registers_rtl_1" from synchronous design logic.  Pass-through logic has been added to match the read-during-write behavior of the original design.
+Info (276014): Found 1 instances of uninferred RAM logic
+    Info (276007): RAM logic "datapath:dpath|RAMO9:Memory|memory" is uninferred due to asynchronous read logic File: /h/u7/c7/04/fanyao2/Simptel-O9/RAMO9(4KB).v Line: 7
+Warning (127007): Memory Initialization File or Hexadecimal (Intel-Format) File "/h/u7/c7/04/fanyao2/Simptel-O9/db/SimptelO9.ram0_RAMO9_544b9c8.hdl.mif" contains "don't care" values -- overwriting them with 0s
+Info (19000): Inferred 2 megafunctions from design logic
+    Info (276029): Inferred altsyncram megafunction from the following design logic: "datapath:dpath|Registers:register|registers_rtl_0" 
+        Info (286033): Parameter OPERATION_MODE set to DUAL_PORT
+        Info (286033): Parameter WIDTH_A set to 32
+        Info (286033): Parameter WIDTHAD_A set to 5
+        Info (286033): Parameter NUMWORDS_A set to 32
+        Info (286033): Parameter WIDTH_B set to 32
+        Info (286033): Parameter WIDTHAD_B set to 5
+        Info (286033): Parameter NUMWORDS_B set to 32
+        Info (286033): Parameter ADDRESS_ACLR_A set to NONE
+        Info (286033): Parameter OUTDATA_REG_B set to UNREGISTERED
+        Info (286033): Parameter ADDRESS_ACLR_B set to NONE
+        Info (286033): Parameter OUTDATA_ACLR_B set to NONE
+        Info (286033): Parameter ADDRESS_REG_B set to CLOCK0
+        Info (286033): Parameter INDATA_ACLR_A set to NONE
+        Info (286033): Parameter WRCONTROL_ACLR_A set to NONE
+        Info (286033): Parameter READ_DURING_WRITE_MODE_MIXED_PORTS set to OLD_DATA
+    Info (276029): Inferred altsyncram megafunction from the following design logic: "datapath:dpath|Registers:register|registers_rtl_1" 
+        Info (286033): Parameter OPERATION_MODE set to DUAL_PORT
+        Info (286033): Parameter WIDTH_A set to 32
+        Info (286033): Parameter WIDTHAD_A set to 5
+        Info (286033): Parameter NUMWORDS_A set to 32
+        Info (286033): Parameter WIDTH_B set to 32
+        Info (286033): Parameter WIDTHAD_B set to 5
+        Info (286033): Parameter NUMWORDS_B set to 32
+        Info (286033): Parameter ADDRESS_ACLR_A set to NONE
+        Info (286033): Parameter OUTDATA_REG_B set to UNREGISTERED
+        Info (286033): Parameter ADDRESS_ACLR_B set to NONE
+        Info (286033): Parameter OUTDATA_ACLR_B set to NONE
+        Info (286033): Parameter ADDRESS_REG_B set to CLOCK0
+        Info (286033): Parameter INDATA_ACLR_A set to NONE
+        Info (286033): Parameter WRCONTROL_ACLR_A set to NONE
+        Info (286033): Parameter READ_DURING_WRITE_MODE_MIXED_PORTS set to OLD_DATA
+Info (12130): Elaborated megafunction instantiation "datapath:dpath|Registers:register|altsyncram:registers_rtl_0"
+Info (12133): Instantiated megafunction "datapath:dpath|Registers:register|altsyncram:registers_rtl_0" with the following parameter:
+    Info (12134): Parameter "OPERATION_MODE" = "DUAL_PORT"
+    Info (12134): Parameter "WIDTH_A" = "32"
+    Info (12134): Parameter "WIDTHAD_A" = "5"
+    Info (12134): Parameter "NUMWORDS_A" = "32"
+    Info (12134): Parameter "WIDTH_B" = "32"
+    Info (12134): Parameter "WIDTHAD_B" = "5"
+    Info (12134): Parameter "NUMWORDS_B" = "32"
+    Info (12134): Parameter "ADDRESS_ACLR_A" = "NONE"
+    Info (12134): Parameter "OUTDATA_REG_B" = "UNREGISTERED"
+    Info (12134): Parameter "ADDRESS_ACLR_B" = "NONE"
+    Info (12134): Parameter "OUTDATA_ACLR_B" = "NONE"
+    Info (12134): Parameter "ADDRESS_REG_B" = "CLOCK0"
+    Info (12134): Parameter "INDATA_ACLR_A" = "NONE"
+    Info (12134): Parameter "WRCONTROL_ACLR_A" = "NONE"
+    Info (12134): Parameter "READ_DURING_WRITE_MODE_MIXED_PORTS" = "OLD_DATA"
+Info (12021): Found 1 design units, including 1 entities, in source file db/altsyncram_5io1.tdf
+    Info (12023): Found entity 1: altsyncram_5io1 File: /h/u7/c7/04/fanyao2/Simptel-O9/db/altsyncram_5io1.tdf Line: 28
+Info (12130): Elaborated megafunction instantiation "datapath:dpath|Registers:register|altsyncram:registers_rtl_1"
+Info (12133): Instantiated megafunction "datapath:dpath|Registers:register|altsyncram:registers_rtl_1" with the following parameter:
+    Info (12134): Parameter "OPERATION_MODE" = "DUAL_PORT"
+    Info (12134): Parameter "WIDTH_A" = "32"
+    Info (12134): Parameter "WIDTHAD_A" = "5"
+    Info (12134): Parameter "NUMWORDS_A" = "32"
+    Info (12134): Parameter "WIDTH_B" = "32"
+    Info (12134): Parameter "WIDTHAD_B" = "5"
+    Info (12134): Parameter "NUMWORDS_B" = "32"
+    Info (12134): Parameter "ADDRESS_ACLR_A" = "NONE"
+    Info (12134): Parameter "OUTDATA_REG_B" = "UNREGISTERED"
+    Info (12134): Parameter "ADDRESS_ACLR_B" = "NONE"
+    Info (12134): Parameter "OUTDATA_ACLR_B" = "NONE"
+    Info (12134): Parameter "ADDRESS_REG_B" = "CLOCK0"
+    Info (12134): Parameter "INDATA_ACLR_A" = "NONE"
+    Info (12134): Parameter "WRCONTROL_ACLR_A" = "NONE"
+    Info (12134): Parameter "READ_DURING_WRITE_MODE_MIXED_PORTS" = "OLD_DATA"
+Warning (14284): Synthesized away the following node(s):
+    Warning (14285): Synthesized away the following RAM node(s):
+        Warning (14320): Synthesized away node "datapath:dpath|Registers:register|altsyncram:registers_rtl_1|altsyncram_5io1:auto_generated|ram_block1a0" File: /h/u7/c7/04/fanyao2/Simptel-O9/db/altsyncram_5io1.tdf Line: 39
+        Warning (14320): Synthesized away node "datapath:dpath|Registers:register|altsyncram:registers_rtl_1|altsyncram_5io1:auto_generated|ram_block1a1" File: /h/u7/c7/04/fanyao2/Simptel-O9/db/altsyncram_5io1.tdf Line: 67
+        Warning (14320): Synthesized away node "datapath:dpath|Registers:register|altsyncram:registers_rtl_1|altsyncram_5io1:auto_generated|ram_block1a2" File: /h/u7/c7/04/fanyao2/Simptel-O9/db/altsyncram_5io1.tdf Line: 95
+        Warning (14320): Synthesized away node "datapath:dpath|Registers:register|altsyncram:registers_rtl_1|altsyncram_5io1:auto_generated|ram_block1a3" File: /h/u7/c7/04/fanyao2/Simptel-O9/db/altsyncram_5io1.tdf Line: 123
+        Warning (14320): Synthesized away node "datapath:dpath|Registers:register|altsyncram:registers_rtl_1|altsyncram_5io1:auto_generated|ram_block1a4" File: /h/u7/c7/04/fanyao2/Simptel-O9/db/altsyncram_5io1.tdf Line: 151
+        Warning (14320): Synthesized away node "datapath:dpath|Registers:register|altsyncram:registers_rtl_1|altsyncram_5io1:auto_generated|ram_block1a5" File: /h/u7/c7/04/fanyao2/Simptel-O9/db/altsyncram_5io1.tdf Line: 179
+        Warning (14320): Synthesized away node "datapath:dpath|Registers:register|altsyncram:registers_rtl_1|altsyncram_5io1:auto_generated|ram_block1a6" File: /h/u7/c7/04/fanyao2/Simptel-O9/db/altsyncram_5io1.tdf Line: 207
+        Warning (14320): Synthesized away node "datapath:dpath|Registers:register|altsyncram:registers_rtl_1|altsyncram_5io1:auto_generated|ram_block1a7" File: /h/u7/c7/04/fanyao2/Simptel-O9/db/altsyncram_5io1.tdf Line: 235
+        Warning (14320): Synthesized away node "datapath:dpath|Registers:register|altsyncram:registers_rtl_1|altsyncram_5io1:auto_generated|ram_block1a8" File: /h/u7/c7/04/fanyao2/Simptel-O9/db/altsyncram_5io1.tdf Line: 263
+        Warning (14320): Synthesized away node "datapath:dpath|Registers:register|altsyncram:registers_rtl_1|altsyncram_5io1:auto_generated|ram_block1a9" File: /h/u7/c7/04/fanyao2/Simptel-O9/db/altsyncram_5io1.tdf Line: 291
+        Warning (14320): Synthesized away node "datapath:dpath|Registers:register|altsyncram:registers_rtl_1|altsyncram_5io1:auto_generated|ram_block1a10" File: /h/u7/c7/04/fanyao2/Simptel-O9/db/altsyncram_5io1.tdf Line: 319
+        Warning (14320): Synthesized away node "datapath:dpath|Registers:register|altsyncram:registers_rtl_1|altsyncram_5io1:auto_generated|ram_block1a11" File: /h/u7/c7/04/fanyao2/Simptel-O9/db/altsyncram_5io1.tdf Line: 347
+        Warning (14320): Synthesized away node "datapath:dpath|Registers:register|altsyncram:registers_rtl_1|altsyncram_5io1:auto_generated|ram_block1a12" File: /h/u7/c7/04/fanyao2/Simptel-O9/db/altsyncram_5io1.tdf Line: 375
+        Warning (14320): Synthesized away node "datapath:dpath|Registers:register|altsyncram:registers_rtl_1|altsyncram_5io1:auto_generated|ram_block1a13" File: /h/u7/c7/04/fanyao2/Simptel-O9/db/altsyncram_5io1.tdf Line: 403
+        Warning (14320): Synthesized away node "datapath:dpath|Registers:register|altsyncram:registers_rtl_1|altsyncram_5io1:auto_generated|ram_block1a14" File: /h/u7/c7/04/fanyao2/Simptel-O9/db/altsyncram_5io1.tdf Line: 431
+        Warning (14320): Synthesized away node "datapath:dpath|Registers:register|altsyncram:registers_rtl_1|altsyncram_5io1:auto_generated|ram_block1a15" File: /h/u7/c7/04/fanyao2/Simptel-O9/db/altsyncram_5io1.tdf Line: 459
+        Warning (14320): Synthesized away node "datapath:dpath|Registers:register|altsyncram:registers_rtl_1|altsyncram_5io1:auto_generated|ram_block1a16" File: /h/u7/c7/04/fanyao2/Simptel-O9/db/altsyncram_5io1.tdf Line: 487
+        Warning (14320): Synthesized away node "datapath:dpath|Registers:register|altsyncram:registers_rtl_1|altsyncram_5io1:auto_generated|ram_block1a17" File: /h/u7/c7/04/fanyao2/Simptel-O9/db/altsyncram_5io1.tdf Line: 515
+        Warning (14320): Synthesized away node "datapath:dpath|Registers:register|altsyncram:registers_rtl_1|altsyncram_5io1:auto_generated|ram_block1a18" File: /h/u7/c7/04/fanyao2/Simptel-O9/db/altsyncram_5io1.tdf Line: 543
+        Warning (14320): Synthesized away node "datapath:dpath|Registers:register|altsyncram:registers_rtl_1|altsyncram_5io1:auto_generated|ram_block1a19" File: /h/u7/c7/04/fanyao2/Simptel-O9/db/altsyncram_5io1.tdf Line: 571
+        Warning (14320): Synthesized away node "datapath:dpath|Registers:register|altsyncram:registers_rtl_1|altsyncram_5io1:auto_generated|ram_block1a20" File: /h/u7/c7/04/fanyao2/Simptel-O9/db/altsyncram_5io1.tdf Line: 599
+        Warning (14320): Synthesized away node "datapath:dpath|Registers:register|altsyncram:registers_rtl_1|altsyncram_5io1:auto_generated|ram_block1a21" File: /h/u7/c7/04/fanyao2/Simptel-O9/db/altsyncram_5io1.tdf Line: 627
+        Warning (14320): Synthesized away node "datapath:dpath|Registers:register|altsyncram:registers_rtl_1|altsyncram_5io1:auto_generated|ram_block1a22" File: /h/u7/c7/04/fanyao2/Simptel-O9/db/altsyncram_5io1.tdf Line: 655
+        Warning (14320): Synthesized away node "datapath:dpath|Registers:register|altsyncram:registers_rtl_1|altsyncram_5io1:auto_generated|ram_block1a23" File: /h/u7/c7/04/fanyao2/Simptel-O9/db/altsyncram_5io1.tdf Line: 683
+        Warning (14320): Synthesized away node "datapath:dpath|Registers:register|altsyncram:registers_rtl_1|altsyncram_5io1:auto_generated|ram_block1a24" File: /h/u7/c7/04/fanyao2/Simptel-O9/db/altsyncram_5io1.tdf Line: 711
+        Warning (14320): Synthesized away node "datapath:dpath|Registers:register|altsyncram:registers_rtl_1|altsyncram_5io1:auto_generated|ram_block1a25" File: /h/u7/c7/04/fanyao2/Simptel-O9/db/altsyncram_5io1.tdf Line: 739
+        Warning (14320): Synthesized away node "datapath:dpath|Registers:register|altsyncram:registers_rtl_1|altsyncram_5io1:auto_generated|ram_block1a26" File: /h/u7/c7/04/fanyao2/Simptel-O9/db/altsyncram_5io1.tdf Line: 767
+        Warning (14320): Synthesized away node "datapath:dpath|Registers:register|altsyncram:registers_rtl_1|altsyncram_5io1:auto_generated|ram_block1a27" File: /h/u7/c7/04/fanyao2/Simptel-O9/db/altsyncram_5io1.tdf Line: 795
+        Warning (14320): Synthesized away node "datapath:dpath|Registers:register|altsyncram:registers_rtl_1|altsyncram_5io1:auto_generated|ram_block1a28" File: /h/u7/c7/04/fanyao2/Simptel-O9/db/altsyncram_5io1.tdf Line: 823
+        Warning (14320): Synthesized away node "datapath:dpath|Registers:register|altsyncram:registers_rtl_1|altsyncram_5io1:auto_generated|ram_block1a29" File: /h/u7/c7/04/fanyao2/Simptel-O9/db/altsyncram_5io1.tdf Line: 851
+        Warning (14320): Synthesized away node "datapath:dpath|Registers:register|altsyncram:registers_rtl_1|altsyncram_5io1:auto_generated|ram_block1a30" File: /h/u7/c7/04/fanyao2/Simptel-O9/db/altsyncram_5io1.tdf Line: 879
+        Warning (14320): Synthesized away node "datapath:dpath|Registers:register|altsyncram:registers_rtl_1|altsyncram_5io1:auto_generated|ram_block1a31" File: /h/u7/c7/04/fanyao2/Simptel-O9/db/altsyncram_5io1.tdf Line: 907
+        Warning (14320): Synthesized away node "datapath:dpath|Registers:register|altsyncram:registers_rtl_0|altsyncram_5io1:auto_generated|ram_block1a0" File: /h/u7/c7/04/fanyao2/Simptel-O9/db/altsyncram_5io1.tdf Line: 39
+        Warning (14320): Synthesized away node "datapath:dpath|Registers:register|altsyncram:registers_rtl_0|altsyncram_5io1:auto_generated|ram_block1a1" File: /h/u7/c7/04/fanyao2/Simptel-O9/db/altsyncram_5io1.tdf Line: 67
+        Warning (14320): Synthesized away node "datapath:dpath|Registers:register|altsyncram:registers_rtl_0|altsyncram_5io1:auto_generated|ram_block1a2" File: /h/u7/c7/04/fanyao2/Simptel-O9/db/altsyncram_5io1.tdf Line: 95
+        Warning (14320): Synthesized away node "datapath:dpath|Registers:register|altsyncram:registers_rtl_0|altsyncram_5io1:auto_generated|ram_block1a3" File: /h/u7/c7/04/fanyao2/Simptel-O9/db/altsyncram_5io1.tdf Line: 123
+        Warning (14320): Synthesized away node "datapath:dpath|Registers:register|altsyncram:registers_rtl_0|altsyncram_5io1:auto_generated|ram_block1a4" File: /h/u7/c7/04/fanyao2/Simptel-O9/db/altsyncram_5io1.tdf Line: 151
+        Warning (14320): Synthesized away node "datapath:dpath|Registers:register|altsyncram:registers_rtl_0|altsyncram_5io1:auto_generated|ram_block1a5" File: /h/u7/c7/04/fanyao2/Simptel-O9/db/altsyncram_5io1.tdf Line: 179
+        Warning (14320): Synthesized away node "datapath:dpath|Registers:register|altsyncram:registers_rtl_0|altsyncram_5io1:auto_generated|ram_block1a6" File: /h/u7/c7/04/fanyao2/Simptel-O9/db/altsyncram_5io1.tdf Line: 207
+        Warning (14320): Synthesized away node "datapath:dpath|Registers:register|altsyncram:registers_rtl_0|altsyncram_5io1:auto_generated|ram_block1a7" File: /h/u7/c7/04/fanyao2/Simptel-O9/db/altsyncram_5io1.tdf Line: 235
+        Warning (14320): Synthesized away node "datapath:dpath|Registers:register|altsyncram:registers_rtl_0|altsyncram_5io1:auto_generated|ram_block1a8" File: /h/u7/c7/04/fanyao2/Simptel-O9/db/altsyncram_5io1.tdf Line: 263
+        Warning (14320): Synthesized away node "datapath:dpath|Registers:register|altsyncram:registers_rtl_0|altsyncram_5io1:auto_generated|ram_block1a9" File: /h/u7/c7/04/fanyao2/Simptel-O9/db/altsyncram_5io1.tdf Line: 291
+        Warning (14320): Synthesized away node "datapath:dpath|Registers:register|altsyncram:registers_rtl_0|altsyncram_5io1:auto_generated|ram_block1a10" File: /h/u7/c7/04/fanyao2/Simptel-O9/db/altsyncram_5io1.tdf Line: 319
+        Warning (14320): Synthesized away node "datapath:dpath|Registers:register|altsyncram:registers_rtl_0|altsyncram_5io1:auto_generated|ram_block1a11" File: /h/u7/c7/04/fanyao2/Simptel-O9/db/altsyncram_5io1.tdf Line: 347
+        Warning (14320): Synthesized away node "datapath:dpath|Registers:register|altsyncram:registers_rtl_0|altsyncram_5io1:auto_generated|ram_block1a12" File: /h/u7/c7/04/fanyao2/Simptel-O9/db/altsyncram_5io1.tdf Line: 375
+        Warning (14320): Synthesized away node "datapath:dpath|Registers:register|altsyncram:registers_rtl_0|altsyncram_5io1:auto_generated|ram_block1a13" File: /h/u7/c7/04/fanyao2/Simptel-O9/db/altsyncram_5io1.tdf Line: 403
+        Warning (14320): Synthesized away node "datapath:dpath|Registers:register|altsyncram:registers_rtl_0|altsyncram_5io1:auto_generated|ram_block1a14" File: /h/u7/c7/04/fanyao2/Simptel-O9/db/altsyncram_5io1.tdf Line: 431
+        Warning (14320): Synthesized away node "datapath:dpath|Registers:register|altsyncram:registers_rtl_0|altsyncram_5io1:auto_generated|ram_block1a15" File: /h/u7/c7/04/fanyao2/Simptel-O9/db/altsyncram_5io1.tdf Line: 459
+        Warning (14320): Synthesized away node "datapath:dpath|Registers:register|altsyncram:registers_rtl_0|altsyncram_5io1:auto_generated|ram_block1a16" File: /h/u7/c7/04/fanyao2/Simptel-O9/db/altsyncram_5io1.tdf Line: 487
+        Warning (14320): Synthesized away node "datapath:dpath|Registers:register|altsyncram:registers_rtl_0|altsyncram_5io1:auto_generated|ram_block1a17" File: /h/u7/c7/04/fanyao2/Simptel-O9/db/altsyncram_5io1.tdf Line: 515
+        Warning (14320): Synthesized away node "datapath:dpath|Registers:register|altsyncram:registers_rtl_0|altsyncram_5io1:auto_generated|ram_block1a18" File: /h/u7/c7/04/fanyao2/Simptel-O9/db/altsyncram_5io1.tdf Line: 543
+        Warning (14320): Synthesized away node "datapath:dpath|Registers:register|altsyncram:registers_rtl_0|altsyncram_5io1:auto_generated|ram_block1a19" File: /h/u7/c7/04/fanyao2/Simptel-O9/db/altsyncram_5io1.tdf Line: 571
+        Warning (14320): Synthesized away node "datapath:dpath|Registers:register|altsyncram:registers_rtl_0|altsyncram_5io1:auto_generated|ram_block1a20" File: /h/u7/c7/04/fanyao2/Simptel-O9/db/altsyncram_5io1.tdf Line: 599
+        Warning (14320): Synthesized away node "datapath:dpath|Registers:register|altsyncram:registers_rtl_0|altsyncram_5io1:auto_generated|ram_block1a21" File: /h/u7/c7/04/fanyao2/Simptel-O9/db/altsyncram_5io1.tdf Line: 627
+        Warning (14320): Synthesized away node "datapath:dpath|Registers:register|altsyncram:registers_rtl_0|altsyncram_5io1:auto_generated|ram_block1a22" File: /h/u7/c7/04/fanyao2/Simptel-O9/db/altsyncram_5io1.tdf Line: 655
+        Warning (14320): Synthesized away node "datapath:dpath|Registers:register|altsyncram:registers_rtl_0|altsyncram_5io1:auto_generated|ram_block1a23" File: /h/u7/c7/04/fanyao2/Simptel-O9/db/altsyncram_5io1.tdf Line: 683
+        Warning (14320): Synthesized away node "datapath:dpath|Registers:register|altsyncram:registers_rtl_0|altsyncram_5io1:auto_generated|ram_block1a24" File: /h/u7/c7/04/fanyao2/Simptel-O9/db/altsyncram_5io1.tdf Line: 711
+        Warning (14320): Synthesized away node "datapath:dpath|Registers:register|altsyncram:registers_rtl_0|altsyncram_5io1:auto_generated|ram_block1a25" File: /h/u7/c7/04/fanyao2/Simptel-O9/db/altsyncram_5io1.tdf Line: 739
+        Warning (14320): Synthesized away node "datapath:dpath|Registers:register|altsyncram:registers_rtl_0|altsyncram_5io1:auto_generated|ram_block1a26" File: /h/u7/c7/04/fanyao2/Simptel-O9/db/altsyncram_5io1.tdf Line: 767
+        Warning (14320): Synthesized away node "datapath:dpath|Registers:register|altsyncram:registers_rtl_0|altsyncram_5io1:auto_generated|ram_block1a27" File: /h/u7/c7/04/fanyao2/Simptel-O9/db/altsyncram_5io1.tdf Line: 795
+        Warning (14320): Synthesized away node "datapath:dpath|Registers:register|altsyncram:registers_rtl_0|altsyncram_5io1:auto_generated|ram_block1a28" File: /h/u7/c7/04/fanyao2/Simptel-O9/db/altsyncram_5io1.tdf Line: 823
+        Warning (14320): Synthesized away node "datapath:dpath|Registers:register|altsyncram:registers_rtl_0|altsyncram_5io1:auto_generated|ram_block1a29" File: /h/u7/c7/04/fanyao2/Simptel-O9/db/altsyncram_5io1.tdf Line: 851
+        Warning (14320): Synthesized away node "datapath:dpath|Registers:register|altsyncram:registers_rtl_0|altsyncram_5io1:auto_generated|ram_block1a30" File: /h/u7/c7/04/fanyao2/Simptel-O9/db/altsyncram_5io1.tdf Line: 879
+        Warning (14320): Synthesized away node "datapath:dpath|Registers:register|altsyncram:registers_rtl_0|altsyncram_5io1:auto_generated|ram_block1a31" File: /h/u7/c7/04/fanyao2/Simptel-O9/db/altsyncram_5io1.tdf Line: 907
+Info (17049): 152 registers lost all their fanouts during netlist optimizations.
+Info (144001): Generated suppressed messages file /h/u7/c7/04/fanyao2/Simptel-O9/output_files/SimptelO9.map.smsg
 Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
     Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
 Warning (21074): Design contains 1 input pin(s) that do not drive logic
-    Warning (15610): No output dependent on input pin "CLOCK_50" File: /h/u11/c7/00/huangk46/Desktop/Simptel-O9/SimptelO9.v Line: 2
+    Warning (15610): No output dependent on input pin "CLOCK_50" File: /h/u7/c7/04/fanyao2/Simptel-O9/SimptelO9.v Line: 2
 Info (21057): Implemented 1 device resources after synthesis - the final resource count might be different
     Info (21058): Implemented 1 input pins
     Info (21059): Implemented 0 output pins
-Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 34 warnings
-    Info: Peak virtual memory: 1006 megabytes
-    Info: Processing ended: Sun Mar 24 22:43:14 2019
-    Info: Elapsed time: 00:00:21
-    Info: Total CPU time (on all processors): 00:00:23
+Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 79 warnings
+    Info: Peak virtual memory: 1059 megabytes
+    Info: Processing ended: Sat Mar 30 17:31:46 2019
+    Info: Elapsed time: 00:00:19
+    Info: Total CPU time (on all processors): 00:00:22
+
+
++------------------------------------------+
+; Analysis & Synthesis Suppressed Messages ;
++------------------------------------------+
+The suppressed messages can be found in /h/u7/c7/04/fanyao2/Simptel-O9/output_files/SimptelO9.map.smsg.
 
 

@@ -9,7 +9,7 @@ module ALU_Decoder(Function_code, ALU_optcode, ALU_control);
 				ALU_control = 4'b0000; // add
 			else  
 				begin
-					case(ALU_optcode)
+					case(Function_code)
 						6'b100000: ALU_control = 4'b0000; // add
 						6'b011010: ALU_control = 4'b0011; // div
 						6'b011000: ALU_control = 4'b0010; // mult

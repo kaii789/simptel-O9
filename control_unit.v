@@ -13,17 +13,15 @@ module control_unit(input[5:0] opCode,
 	
 	// opcodes
 	localparam 
-                R_TYPE = 6'b000000,
-                ADDI   = 6'b001000,
-		BEQ   = 6'b000100,
-		BGTZ   = 6'b000111,
-		BLEZ   = 6'b000110,  
+		 R_TYPE = 6'b000000,
+		 ADDI   = 6'b001000,
+		BEQ   = 6'b000100,  
 		BNE   = 6'b000101,
 		J   = 6'b000010;	
 	// ALUOps
 	localparam 
 		R_OP = 1'b0,
-                ADD = 1'b1;
+      ADD = 1'b1;
 		
 
 	reg [4:0] current_state, next_state; 	
@@ -75,7 +73,7 @@ always @(*)
 				R_TYPE: begin 
 					ALUSrcA = 1'b1;
 					ALUSrcB = 2'b00;
-					RegDst = 1'b0;
+					RegDst = 1'b1;
 					ALUOp = R_OP;
 				end
 				ADDI: begin 
@@ -85,12 +83,6 @@ always @(*)
 					ALUOp = ADD;
 				end
 				BEQ: begin 
-
-				end
-				BGTZ: begin 
-
-				end
-				BLEZ: begin 
 
 				end
 				BNE: begin 
@@ -106,7 +98,7 @@ always @(*)
 					R_TYPE: begin 
 						ALUSrcA = 1'b1;
 						ALUSrcB = 2'b00;
-						RegDst = 1'b0;
+						RegDst = 1'b1;
 						ALUOp = R_OP;
 						RegWrite = 1'b1;
 					end
@@ -118,12 +110,6 @@ always @(*)
 						RegWrite = 1'b1;
 					end
 					BEQ: begin 
-						
-					end
-					BGTZ: begin 
-						
-					end
-					BLEZ: begin 
 						
 					end
 					BNE: begin 
