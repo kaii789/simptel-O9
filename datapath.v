@@ -52,7 +52,7 @@ module datapath(
 		.sel(PCSource[1:0]),
 		.in_0(ALU_Out_Bus[31:0]), // something weird here
 		.in_1(ALU_Out_Bus[31:0]),
-		.in_2(instr_shifted[31:0]),
+		.in_2(sign_extend_B_out[31:0]),
 		.q(mux_F_out)
 	);
 	
