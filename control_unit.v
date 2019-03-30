@@ -27,24 +27,21 @@ module control_unit(input[5:0] opCode,
      localparam FETCH    = 3'd0,
                 DECODE   = 3'd1,
                 EXECUTE = 3'd2,
-						INCREMENT_PC = 3'd3,
-						INCREMENT_PC_EXECUTE = 3'd4;
+		INCREMENT_PC = 3'd3,
+		INCREMENT_PC_EXECUTE = 3'd4;
 	
 	// opcodes
 	localparam 
                 R_TYPE = 6'b000000,
                 ADDI   = 6'b001000,
-					BEQ   = 6'b000100,
-					BGTZ   = 6'b000111,
-					BLEZ   = 6'b000110,  
-					BNE   = 6'b000101,
-					J   = 6'b000010,
-					JAL   = 6'b000011,
-					LW   = 6'b100011,
-					SW   = 6'b101011;	
+		BEQ   = 6'b000100,
+		BGTZ   = 6'b000111,
+		BLEZ   = 6'b000110,  
+		BNE   = 6'b000101,
+		J   = 6'b000010;	
 	// ALUOps
 	localparam 
-					 R_OP = 1'b0,
+		R_OP = 1'b0,
                 ADD = 1'b1;
 		
 
@@ -76,8 +73,8 @@ always @(*)
     begin: enable_signals
         // By default make all our signals 0
         	 ALUOp = 1'b0; 
-		    PCWriteCond = 1'b0;
-           PCWrite = 1'b0;
+		 PCWriteCond = 1'b0;
+           	 PCWrite = 1'b0;
 		    IorD = 1'b0;
 		    MemWrite = 1'b0;
 		    MemtoReg = 1'b0;
@@ -122,15 +119,6 @@ always @(*)
 						J: begin 
 							PCSource = 2'b10;
 						end
-						JAL: begin 
-							
-						end
-						LW: begin 
-							
-						end
-						SW: begin 
-							
-						end	
 					endcase
 				end 
 	    EXECUTE: begin // get the values to where they belong, ie. their correct registers
@@ -165,15 +153,6 @@ always @(*)
 						PCSource = 2'b10;
 						PCWrite = 1'b1;
 					end
-					JAL: begin 
-						
-					end
-					LW: begin 
-						
-					end
-					SW: begin 
-						
-					end	
 				endcase
 		end
 	INCREMENT_PC: begin
@@ -201,5 +180,3 @@ always @(*)
 	
 endmodule 
 
-
-// still need to account for branching and loading to and from memory
