@@ -3,27 +3,8 @@ module control_unit(input[5:0] opCode,
 		    	  output reg ALUOp, PCWriteCond,
                           output reg[1:0] ALUSrcB, PCSource,
                           output reg PCWrite, IorD, MemWrite, MemtoReg, IRWrite, ALUSrcA, RegWrite, RegDst);
-    
-//    always @(*)
-//        begin
-//            if (reset) 
-//                begin
-//                    ALUOp = 4'b0000; 
-//		    PCWriteCond = 2'b00;
-//                    PCWrite = 1'b0;
-//		    IorD = 1'b0;
-//		    MemRead = 1'b0;
-//		    MemWrite = 1'b0;
-//		    MemtoReg = 1'b0;
-//		    IRWrite = 1'b0;
-//		    ALUSrcB = 1'b0;
-//		    ALUSrcA = 1'b0;
-//		    RegWrite = 1'b0; 
-//		    RegDst = 1'b0;
-//                end
-//        end
-	
-	// states
+
+     // states
      localparam FETCH    = 3'd0,
                 DECODE   = 3'd1,
                 EXECUTE = 3'd2,
@@ -55,16 +36,15 @@ module control_unit(input[5:0] opCode,
     	begin // state_table 
             case (current_state)
                 FETCH: next_state = DECODE;
-					 DECODE: next_state = EXECUTE;	
-					 EXECUTE: begin
-						case (opCode)
-							J: next_state = FETCH;
-							JAL: next_state = FETCH;
-							default: next_state = INCREMENT_PC;
-							endcase
-					 end		
-					 INCREMENT_PC: next_state = INCREMENT_PC_EXECUTE;	
-					 default: next_state = FETCH;
+		DECODE: next_state = EXECUTE;	
+		EXECUTE: begin
+				case (opCode)
+					J: next_state = FETCH;
+					default: next_state = INCREMENT_PC;
+				endcase
+			end		
+		 INCREMENT_PC: next_state = INCREMENT_PC_EXECUTE;	
+		 default: next_state = FETCH;
         endcase
     end 
 
@@ -72,55 +52,55 @@ module control_unit(input[5:0] opCode,
 always @(*)
     begin: enable_signals
         // By default make all our signals 0
-        	 ALUOp = 1'b0; 
-		 PCWriteCond = 1'b0;
-           	 PCWrite = 1'b0;
-		    IorD = 1'b0;
-		    MemWrite = 1'b0;
-		    MemtoReg = 1'b0;
-		    IRWrite = 1'b0;
-		    ALUSrcB = 2'b0;
-		    ALUSrcA = 1'b0;
-		    RegWrite = 1'b0; 
-		    RegDst = 1'b0;
-			 PCSource = 2'b00;
+	 ALUOp = 1'b0; 
+	 PCWriteCond = 1'b0;
+	 PCWrite = 1'b0;
+	 IorD = 1'b0;
+	 MemWrite = 1'b0;
+	 MemtoReg = 1'b0;
+	 IRWrite = 1'b0;
+	 ALUSrcB = 2'b0;
+	 ALUSrcA = 1'b0;
+	 RegWrite = 1'b0; 
+	 RegDst = 1'b0;
+	 PCSource = 2'b00;
  case (current_state)
             FETCH: begin  // get the instruction into the IR
                 IRWrite = 1'b1;
-					 IorD = 1'b0;
+		IorD = 1'b0;
                 end
             DECODE: begin // decode the instruction and prepare the values
-           
-					case(opCode)
-						R_TYPE: begin 
-							ALUSrcA = 1'b1;
-							ALUSrcB = 2'b00;
-							RegDst = 1'b0;
-							ALUOp = R_OP;
-						end
-						ADDI: begin 
-							ALUSrcA = 1'b1;
-							ALUSrcB = 2'b10;
-							RegDst = 1'b0;
-							ALUOp = ADD;
-						end
-						BEQ: begin 
-							
-						end
-						BGTZ: begin 
-							
-						end
-						BLEZ: begin 
-							
-						end
-						BNE: begin 
-							
-						end
-						J: begin 
-							PCSource = 2'b10;
-						end
-					endcase
-				end 
+
+			case(opCode)
+				R_TYPE: begin 
+					ALUSrcA = 1'b1;
+					ALUSrcB = 2'b00;
+					RegDst = 1'b0;
+					ALUOp = R_OP;
+				end
+				ADDI: begin 
+					ALUSrcA = 1'b1;
+					ALUSrcB = 2'b10;
+					RegDst = 1'b0;
+					ALUOp = ADD;
+				end
+				BEQ: begin 
+
+				end
+				BGTZ: begin 
+
+				end
+				BLEZ: begin 
+
+				end
+				BNE: begin 
+
+				end
+				J: begin 
+					PCSource = 2'b10;
+				end
+			endcase
+		end 
 	    EXECUTE: begin // get the values to where they belong, ie. their correct registers
 			case(opCode)
 					R_TYPE: begin 
