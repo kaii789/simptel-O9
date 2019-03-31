@@ -170,7 +170,7 @@ module datapath(
 	ALU_Register alu_reg(
 		.clk(clk),
 		.in(ALU_Out_Bus[31:0]),
-		.out(ALU_reg_bus[31:0])
+		.out(ALU_out_reg[31:0])
 	);
 	
 	And_ my_and(
