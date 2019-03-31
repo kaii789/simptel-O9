@@ -255,3 +255,13 @@ module four_to_one_mux(in_0, in_1, in_2, in_3, q, sel);
 		end
 	
 endmodule
+
+module ALU_Register(in, out, clk);
+	input [31:0] in;
+	input clk;
+	output reg [31:0] out;
+	
+	always @(posedge clk)
+		reg <= in[31:0];
+	
+endmodule
