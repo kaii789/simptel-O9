@@ -11,14 +11,15 @@ module control_unit(input[5:0] opCode,
 		INCREMENT_PC = 3'd3,
 		INCREMENT_PC_EXECUTE = 3'd4,
 		BRANCH_EXECUTE = 3'd5;
+		END_STATE = 3'd6;
 	
 	// opcodes
 	localparam 
 		 R_TYPE = 6'b000000,
 		 ADDI   = 6'b001000,
 		BEQ   = 6'b000100,  
-		BNE   = 6'b000101,
-		J   = 6'b000010;	
+		J   = 6'b000010;
+		END = 6'b111111;
 	// ALUOps
 	localparam 
 		R_OP = 1'b0,
@@ -40,11 +41,13 @@ module control_unit(input[5:0] opCode,
 				case (opCode)
 					J: next_state = FETCH;
 					BEQ: next_state = BRANCH_EXECUTE;
+					END: next_state = END_STATE;
 					default: next_state = INCREMENT_PC;
 				endcase
 			end		
 		 INCREMENT_PC: next_state = INCREMENT_PC_EXECUTE;	
 		 BRANCH_EXECUTE: next_state = INCREMENT_PC;    
+		 END_STATE: next_state = END_STATE;
 		 default: next_state = FETCH;
         endcase
     end 
@@ -89,9 +92,6 @@ always @(*)
 					ALUSrcA = 1'b0;
 					ALUSrcB = 2'b10;
 				end
-				BNE: begin 
-
-				end
 				J: begin 
 					PCSource = 2'b10;
 				end
@@ -117,9 +117,6 @@ always @(*)
 						ALUSrcA = 1'b1;
 						ALUSrcB = 2'b00;
 						PCSource = 2'b01;
-					end
-					BNE: begin 
-						
 					end
 					J: begin 
 						PCSource = 2'b10;
