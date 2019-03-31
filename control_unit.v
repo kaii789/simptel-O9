@@ -10,7 +10,7 @@ module control_unit(input[5:0] opCode,
                 EXECUTE = 3'd2,
 		INCREMENT_PC = 3'd3,
 		INCREMENT_PC_EXECUTE = 3'd4,
-		BRANCH_EXECUTE = 3'd5;
+		BRANCH_EXECUTE = 3'd5,
 		END_STATE = 3'd6;
 	
 	// opcodes
@@ -18,7 +18,7 @@ module control_unit(input[5:0] opCode,
 		 R_TYPE = 6'b000000,
 		 ADDI   = 6'b001000,
 		BEQ   = 6'b000100,  
-		J   = 6'b000010;
+		J   = 6'b000010,
 		END = 6'b111111;
 	// ALUOps
 	localparam 
