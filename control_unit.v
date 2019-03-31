@@ -40,10 +40,13 @@ module control_unit(input[5:0] opCode,
 		EXECUTE: begin
 				case (opCode)
 					J: next_state = FETCH;
+					BEQ: next_state = CHECK_BRANCH_COND;
 					default: next_state = INCREMENT_PC;
 				endcase
 			end		
 		 INCREMENT_PC: next_state = INCREMENT_PC_EXECUTE;	
+		 CHECK_BRANCH_COND: next_state = BRANCH_EXECUTE;
+		 BRANCH_EXECUTE: next_state = INCREMENT_PC;    
 		 default: next_state = FETCH;
         endcase
     end 
