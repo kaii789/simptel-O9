@@ -9,8 +9,8 @@ module control_unit(input[5:0] opCode,
                 DECODE   = 3'd1,
                 EXECUTE = 3'd2,
 		INCREMENT_PC = 3'd3,
-		INCREMENT_PC_EXECUTE = 3'd4;
-		BRANCH_EXECUTE = 3'd6;
+		INCREMENT_PC_EXECUTE = 3'd4,
+		BRANCH_EXECUTE = 3'd5;
 	
 	// opcodes
 	localparam 
