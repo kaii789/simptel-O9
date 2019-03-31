@@ -10,7 +10,6 @@ module control_unit(input[5:0] opCode,
                 EXECUTE = 3'd2,
 		INCREMENT_PC = 3'd3,
 		INCREMENT_PC_EXECUTE = 3'd4;
-		CHECK_BRANCH_COND = 3'd5;
 		BRANCH_EXECUTE = 3'd6;
 	
 	// opcodes
@@ -40,12 +39,11 @@ module control_unit(input[5:0] opCode,
 		EXECUTE: begin
 				case (opCode)
 					J: next_state = FETCH;
-					BEQ: next_state = CHECK_BRANCH_COND;
+					BEQ: next_state = BRANCH_EXECUTE;
 					default: next_state = INCREMENT_PC;
 				endcase
 			end		
 		 INCREMENT_PC: next_state = INCREMENT_PC_EXECUTE;	
-		 CHECK_BRANCH_COND: next_state = BRANCH_EXECUTE;
 		 BRANCH_EXECUTE: next_state = INCREMENT_PC;    
 		 default: next_state = FETCH;
         endcase
@@ -88,7 +86,8 @@ always @(*)
 					ALUOp = ADD;
 				end
 				BEQ: begin 
-
+					ALUSrcA = 1'b0;
+					ALUSrcB = 2'b10;
 				end
 				BNE: begin 
 
@@ -115,7 +114,9 @@ always @(*)
 						RegWrite = 1'b1;
 					end
 					BEQ: begin 
-						
+						ALUSrcA = 1'b1;
+						ALUSrcB = 2'b00;
+						PCSource = 2'b01;
 					end
 					BNE: begin 
 						
@@ -137,7 +138,12 @@ always @(*)
 		ALUOp = ADD;
 		PCWrite = 1'b1;
 	end
-                
+        BRANCH_EXECUTE: begin
+		ALUSrcA = 1'b1;
+		ALUSrcB = 2'b00;
+		PCSource = 2'b01;
+		PCWrite = 1'b1;
+	end
 
         // default:    // don't need default since we already made sure all of our outputs were assigned a value at the start of the always block
         endcase
