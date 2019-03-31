@@ -195,7 +195,7 @@ module And_(in_0, in_1, q);
 endmodule
 
 module Or_(in_0, in_1, q);
-	input in_0, in_1Update README.md;
+	input in_0, in_1;
 	output q;
 	
 	assign q = in_0 | in_1;
@@ -269,6 +269,6 @@ module ALU_Register(in, out, clk);
 	output reg [31:0] out;
 	
 	always @(posedge clk)
-		reg <= in[31:0];
+		out <= in[31:0];
 	
 endmodule
