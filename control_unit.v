@@ -117,6 +117,7 @@ always @(*)
 						ALUSrcA = 1'b1;
 						ALUSrcB = 2'b00;
 						PCSource = 2'b01;
+						PCWriteCond = 1'b1;
 					end
 					J: begin 
 						PCSource = 2'b10;
