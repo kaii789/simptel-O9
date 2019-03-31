@@ -24,6 +24,7 @@ module datapath(
 	output [5:0] opCode;
 	
 	wire [31:0] ALU_Out_Bus;
+	wire [31:0] ALU_out_reg;
 	wire [31:0] instr_shifted;
 	wire [31:0] mux_F_out;
 	wire [31:0] PC_Out_Bus;
@@ -50,8 +51,8 @@ module datapath(
  	
 	three_to_one_mux mux_F(
 		.sel(PCSource[1:0]),
-		.in_0(ALU_Out_Bus[31:0]), // something weird here
-		.in_1(ALU_Out_Bus[31:0]),
+		.in_0(ALU_out_reg[31:0]), // something weird here
+		.in_1(ALU_out_reg[31:0]),
 		.in_2(sign_extend_B_out[31:0]),
 		.q(mux_F_out)
 	);
@@ -67,7 +68,7 @@ module datapath(
 	two_to_one_mux mux_A(
 		.sel(IorD),
 		.in_0(PC_Out_Bus[31:0]),
-		.in_1(ALU_Out_Bus[31:0]),
+		.in_1(ALU_out_reg[31:0]),
 		.q(mux_A_out[31:0])
 	);
 	
@@ -109,7 +110,7 @@ module datapath(
 	);
 	
 	two_to_one_mux mux_C(
-		.in_0(ALU_Out_Bus[31:0]),
+		.in_0(ALU_out_reg[31:0]),
 		.in_1(mem_out[31:0]),
 		.q(mux_C_out[31:0]),
 		.sel(MemtoReg)
@@ -166,6 +167,12 @@ module datapath(
 		.ALU_result(ALU_Out_Bus[31:0]) // not using a separate register here
 	);
 	
+	ALU_Register alu_reg(
+		.clk(clk),
+		.in(ALU_Out_Bus[31:0]),
+		.out(ALU_reg_bus[31:0])
+	);
+	
 	And_ my_and(
 		.in_0(zero),
 		.in_1(PCWriteCond),
@@ -188,7 +195,7 @@ module And_(in_0, in_1, q);
 endmodule
 
 module Or_(in_0, in_1, q);
-	input in_0, in_1;
+	input in_0, in_1Update README.md;
 	output q;
 	
 	assign q = in_0 | in_1;
