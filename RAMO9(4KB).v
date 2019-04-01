@@ -9,7 +9,7 @@ module RAMO9(input [15:0] address,
 	// initialize our RAM 
 	initial
 	begin
-		$readmemb("/h/u7/c7/04/fanyao2/Simptel-O9/fib.mem", memory, 0, 12); // TODO: edit with program changes
+		$readmemb("/h/u11/c7/00/huangk46/Desktop/Simptel-O9/GeoSeriesCalc.mem", memory, 0, 10); // TODO: edit with program changes
 	end
 
 	always @(posedge clock) begin 
