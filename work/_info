@@ -9,7 +9,7 @@ z2
 cModel Technology
 d/h/u11/c7/00/huangk46/Desktop/Simptel-O9
 vALU
-Z0 !s110 1554081368
+Z0 !s110 1554085701
 !i10b 1
 !s100 m34A;nDDOHH[EgL3EBUiU1
 ILCk6JPL@PBQDXMW2V?3SJ3
@@ -23,7 +23,7 @@ Z4 OV;L;10.5b;63
 r1
 !s85 0
 31
-Z5 !s108 1554081368.000000
+Z5 !s108 1554085699.000000
 Z6 !s107 datapath_registers.v|control_unit.v|SignExtend.v|ShiftLeft.v|RAMO9(4KB).v|ProgramCounter.v|ALU_Decoder.v|ALU.v|datapath.v|SimptelO9.v|
 Z7 !s90 -reportprogress|300|-timescale|1ns/1ns|SimptelO9.v|datapath.v|ALU.v|ALU_Decoder.v|ProgramCounter.v|RAMO9(4KB).v|ShiftLeft.v|SignExtend.v|control_unit.v|datapath_registers.v|
 !i113 1
@@ -75,7 +75,7 @@ R8
 R9
 n@a@l@u_@register
 vAnd_
-R0
+Z13 !s110 1554085700
 !i10b 1
 !s100 Hi=DX8SGY8hooB[c1U99X2
 I_DWcRO>CZCzCGIVK?Vb<_0
@@ -97,7 +97,7 @@ R8
 R9
 n@and_
 vcontrol_unit
-R0
+Z14 !s110 1554085702
 !i10b 1
 !s100 zNX1GO20KAbT=DW6D:RWF0
 I7n8N_eTDk?7RTThinS<n]1
@@ -118,7 +118,7 @@ R7
 R8
 R9
 vdatapath
-R0
+Z15 !s110 1554085699
 !i10b 1
 !s100 B<?0e;NHLEEnJho9:CYd^1
 IdNECCm_5T@GYNU__XB;:L1
@@ -139,7 +139,7 @@ R7
 R8
 R9
 vfour_to_one_mux
-R0
+R13
 !i10b 1
 !s100 2H11<XOnCY>@FIhlB3UET2
 ImVZXVd3QnZSlNmX1=@2Mo1
@@ -181,15 +181,15 @@ R7
 R8
 R9
 vInstruction_Register
-R0
+R14
 !i10b 1
 !s100 [J3A8eR5`R7P`8d:QSW2o2
 IH>Xi=7mTJX@I;6iRnaBV13
 R1
 R2
-Z13 w1554077683
-Z14 8datapath_registers.v
-Z15 Fdatapath_registers.v
+Z16 w1554077683
+Z17 8datapath_registers.v
+Z18 Fdatapath_registers.v
 L0 1
 R4
 r1
@@ -203,7 +203,7 @@ R8
 R9
 n@instruction_@register
 vOr_
-R0
+R13
 !i10b 1
 !s100 Ud3BLGhEOzl8]mCR9fRHc2
 I8zm<eb@oN[0Whd6c_cfOE1
@@ -249,11 +249,11 @@ n@program@counter
 vRAMO9
 R0
 !i10b 1
-!s100 l]HhoGXWX9:N25VncDZlH3
-IngEOS9D^[iX??IfVBKTAk0
+!s100 PX2^I<e1g6g]OJMCTYUdA1
+Izl5H0md?:S@BkHi_j4VQR3
 R1
 R2
-w1554081134
+w1554085580
 8RAMO9(4KB).v
 FRAMO9(4KB).v
 L0 1
@@ -269,15 +269,15 @@ R8
 R9
 n@r@a@m@o9
 vRegisters
-R0
+R14
 !i10b 1
 !s100 a_aGYZi]KE][4NG519RHk3
 IKg@ZK6zV2JF0laoR1lzZ31
 R1
 R2
-R13
-R14
-R15
+R16
+R17
+R18
 L0 23
 R4
 r1
@@ -291,7 +291,7 @@ R8
 R9
 n@registers
 vShiftLeft
-R0
+R14
 !i10b 1
 !s100 9MFCjNgVF4Ngj]=TI9hTl0
 IzRzg3OY=PzjA7RN`;5G>g1
@@ -313,15 +313,15 @@ R8
 R9
 n@shift@left
 vSignExtend
-R0
+R14
 !i10b 1
 !s100 m40;@>Q_Z2z>m8WPY>mCT0
 I3@_Lj_XbJ@^`S:Y6EbAA_1
 R1
 R2
 R3
-Z16 8SignExtend.v
-Z17 FSignExtend.v
+Z19 8SignExtend.v
+Z20 FSignExtend.v
 L0 1
 R4
 r1
@@ -335,15 +335,15 @@ R8
 R9
 n@sign@extend
 vSignExtend_26_bit
-R0
+R14
 !i10b 1
 !s100 :5IAT7z1WG??D7L_HDm`b3
 I>7PX[gHBcdeoE<_d04ES32
 R1
 R2
 R3
-R16
-R17
+R19
+R20
 L0 10
 R4
 r1
@@ -357,7 +357,7 @@ R8
 R9
 n@sign@extend_26_bit
 vSimptelO9
-R0
+R15
 !i10b 1
 !s100 B3>WR^X_Fa^ZiW?nl=mmP0
 Idc2dPk?UzM5f=6;9HmISG3
@@ -379,7 +379,7 @@ R8
 R9
 n@simptel@o9
 vthree_to_one_mux
-R0
+R13
 !i10b 1
 !s100 lV>bVa6VR74C:=T9eI72>2
 ImWE9TzdFF<mNHaocennRF0
@@ -400,7 +400,7 @@ R7
 R8
 R9
 vtwo_to_one_mux
-R0
+R13
 !i10b 1
 !s100 2ig5jV8AdkcIYnXL=F<7I2
 IS^@]0cPkbKja>IVaPmNWJ1
@@ -421,7 +421,7 @@ R7
 R8
 R9
 vtwo_to_one_mux_5_bit
-R0
+R13
 !i10b 1
 !s100 nbQb@bCD@6SA?lcAo?=P:1
 IP:Q?ACFMR6>Lbl<TNNl<F1
