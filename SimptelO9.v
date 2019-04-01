@@ -2,15 +2,15 @@ module SimptelO9(CLOCK_50);
   input CLOCK_50;
   
   wire [5:0] opCode;
-  wire PCWriteCond, ALUOp, IorD, MemWrite, MemtoReg, IRWrite, ALUSrcA, RegWrite, RegDst, PCWrite;
-  wire [1:0] ALUSrcB, PCSource;
+  wire PCWriteCond, IorD, MemWrite, MemtoReg, IRWrite, ALUSrcA, RegWrite, RegDst, PCWrite;
+  wire [1:0] ALUSrcB, PCSource, ALUOp;
   
  wire reset;
  wire memread;
 
   control_unit cunit(.opCode(opCode[5:0]), 
 			  .clk(CLOCK_50), .reset(reset),
-                          .ALUOp(ALUOp), 
+                          .ALUOp(ALUOp[1:0]), 
                           .PCWriteCond(PCWriteCond), .ALUSrcB(ALUSrcB[1:0]), .PCSource(PCSource),
                           .PCWrite(PCWrite), .IorD(IorD), .MemWrite(MemWrite), .MemtoReg(MemtoReg), 
                           .IRWrite(IRWrite), .ALUSrcA(ALUSrcA), .RegWrite(RegWrite), .RegDst(RegDst));
@@ -25,7 +25,7 @@ module SimptelO9(CLOCK_50);
 	.MemtoReg(MemtoReg),
 	.IRWrite(IRWrite),
 	.PCSource(PCSource[1:0]),
-	.ALUOp(ALUOp),
+	.ALUOp(ALUOp[1:0]),
 	.ALUSrcB(ALUSrcB[1:0]),
 	.ALUSrcA(ALUSrcA),
 	.RegWrite(RegWrite),

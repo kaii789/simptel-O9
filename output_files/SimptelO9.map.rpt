@@ -1,5 +1,5 @@
 Analysis & Synthesis report for SimptelO9
-Sat Mar 30 17:31:46 2019
+Sun Mar 31 21:14:23 2019
 Quartus Prime Version 17.0.0 Build 595 04/25/2017 SJ Lite Edition
 
 
@@ -28,10 +28,11 @@ Quartus Prime Version 17.0.0 Build 595 04/25/2017 SJ Lite Edition
  20. Port Connectivity Checks: "datapath:dpath|four_to_one_mux:mux_E"
  21. Port Connectivity Checks: "datapath:dpath|ShiftLeft:shift_left_2_B"
  22. Port Connectivity Checks: "datapath:dpath|two_to_one_mux:mux_A"
- 23. Post-Synthesis Netlist Statistics for Top Partition
- 24. Elapsed Time Per Partition
- 25. Analysis & Synthesis Messages
- 26. Analysis & Synthesis Suppressed Messages
+ 23. Port Connectivity Checks: "datapath:dpath"
+ 24. Post-Synthesis Netlist Statistics for Top Partition
+ 25. Elapsed Time Per Partition
+ 26. Analysis & Synthesis Messages
+ 27. Analysis & Synthesis Suppressed Messages
 
 
 
@@ -58,7 +59,7 @@ agreement for further details.
 +-------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                  ;
 +---------------------------------+---------------------------------------------+
-; Analysis & Synthesis Status     ; Successful - Sat Mar 30 17:31:46 2019       ;
+; Analysis & Synthesis Status     ; Successful - Sun Mar 31 21:14:23 2019       ;
 ; Quartus Prime Version           ; 17.0.0 Build 595 04/25/2017 SJ Lite Edition ;
 ; Revision Name                   ; SimptelO9                                   ;
 ; Top-level Entity Name           ; SimptelO9                                   ;
@@ -250,229 +251,292 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 
 
 Encoding Type:  One-Hot
-+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; State Machine - |SimptelO9|control_unit:cunit|current_state                                                                                                               ;
-+------------------------------------+----------------------------+-----------------------+----------------------+---------------------+------------------------------------+
-; Name                               ; current_state.INCREMENT_PC ; current_state.EXECUTE ; current_state.DECODE ; current_state.FETCH ; current_state.INCREMENT_PC_EXECUTE ;
-+------------------------------------+----------------------------+-----------------------+----------------------+---------------------+------------------------------------+
-; current_state.FETCH                ; 0                          ; 0                     ; 0                    ; 0                   ; 0                                  ;
-; current_state.DECODE               ; 0                          ; 0                     ; 1                    ; 1                   ; 0                                  ;
-; current_state.EXECUTE              ; 0                          ; 1                     ; 0                    ; 1                   ; 0                                  ;
-; current_state.INCREMENT_PC         ; 1                          ; 0                     ; 0                    ; 1                   ; 0                                  ;
-; current_state.INCREMENT_PC_EXECUTE ; 0                          ; 0                     ; 0                    ; 1                   ; 1                                  ;
-+------------------------------------+----------------------------+-----------------------+----------------------+---------------------+------------------------------------+
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; State Machine - |SimptelO9|control_unit:cunit|current_state                                                                                                                                                                                               ;
++------------------------------------+------------------------------+-------------------------+----------------------+------------------------------------+----------------------------+-----------------------+----------------------+---------------------+
+; Name                               ; current_state.BRANCH_EXECUTE ; current_state.END_STATE ; current_state.BRANCH ; current_state.INCREMENT_PC_EXECUTE ; current_state.INCREMENT_PC ; current_state.EXECUTE ; current_state.DECODE ; current_state.FETCH ;
++------------------------------------+------------------------------+-------------------------+----------------------+------------------------------------+----------------------------+-----------------------+----------------------+---------------------+
+; current_state.FETCH                ; 0                            ; 0                       ; 0                    ; 0                                  ; 0                          ; 0                     ; 0                    ; 0                   ;
+; current_state.DECODE               ; 0                            ; 0                       ; 0                    ; 0                                  ; 0                          ; 0                     ; 1                    ; 1                   ;
+; current_state.EXECUTE              ; 0                            ; 0                       ; 0                    ; 0                                  ; 0                          ; 1                     ; 0                    ; 1                   ;
+; current_state.INCREMENT_PC         ; 0                            ; 0                       ; 0                    ; 0                                  ; 1                          ; 0                     ; 0                    ; 1                   ;
+; current_state.INCREMENT_PC_EXECUTE ; 0                            ; 0                       ; 0                    ; 1                                  ; 0                          ; 0                     ; 0                    ; 1                   ;
+; current_state.BRANCH               ; 0                            ; 0                       ; 1                    ; 0                                  ; 0                          ; 0                     ; 0                    ; 1                   ;
+; current_state.END_STATE            ; 0                            ; 1                       ; 0                    ; 0                                  ; 0                          ; 0                     ; 0                    ; 1                   ;
+; current_state.BRANCH_EXECUTE       ; 1                            ; 0                       ; 0                    ; 0                                  ; 0                          ; 0                     ; 0                    ; 1                   ;
++------------------------------------+------------------------------+-------------------------+----------------------+------------------------------------+----------------------------+-----------------------+----------------------+---------------------+
 
 
-+----------------------------------------------------------------------------------------------------------------------------------------+
-; Registers Removed During Synthesis                                                                                                     ;
-+-----------------------------------------------------------------------+----------------------------------------------------------------+
-; Register name                                                         ; Reason for Removal                                             ;
-+-----------------------------------------------------------------------+----------------------------------------------------------------+
-; datapath:dpath|Instruction_Register:IR|instruc2[1]                    ; Merged with datapath:dpath|Instruction_Register:IR|instruc0[2] ;
-; datapath:dpath|Instruction_Register:IR|instruc0[3,4,13..15]           ; Merged with datapath:dpath|Instruction_Register:IR|instruc0[2] ;
-; datapath:dpath|Instruction_Register:IR|instruc1[2..4]                 ; Merged with datapath:dpath|Instruction_Register:IR|instruc0[2] ;
-; datapath:dpath|Instruction_Register:IR|instruc2[2..4]                 ; Merged with datapath:dpath|Instruction_Register:IR|instruc0[2] ;
-; datapath:dpath|Instruction_Register:IR|instruc3[0,2,4,5]              ; Merged with datapath:dpath|Instruction_Register:IR|instruc0[2] ;
-; datapath:dpath|Instruction_Register:IR|instruc2[0]                    ; Merged with datapath:dpath|Instruction_Register:IR|instruc0[5] ;
-; datapath:dpath|Instruction_Register:IR|instruc0[6..12]                ; Merged with datapath:dpath|Instruction_Register:IR|instruc0[5] ;
-; datapath:dpath|Instruction_Register:IR|instruc0[2]                    ; Stuck at GND due to stuck port data_in                         ;
-; datapath:dpath|Registers:register|registers_rtl_0_bypass[4..10]       ; Stuck at GND due to stuck port data_in                         ;
-; datapath:dpath|Registers:register|registers_rtl_1_bypass[5..10]       ; Stuck at GND due to stuck port data_in                         ;
-; control_unit:cunit|current_state~2                                    ; Lost fanout                                                    ;
-; control_unit:cunit|current_state~3                                    ; Lost fanout                                                    ;
-; control_unit:cunit|current_state~5                                    ; Lost fanout                                                    ;
-; control_unit:cunit|current_state~6                                    ; Lost fanout                                                    ;
-; datapath:dpath|Instruction_Register:IR|instruc1[0]                    ; Merged with datapath:dpath|Instruction_Register:IR|instruc0[0] ;
-; datapath:dpath|Instruction_Register:IR|instruc3[1]                    ; Lost fanout                                                    ;
-; control_unit:cunit|current_state.EXECUTE                              ; Lost fanout                                                    ;
-; datapath:dpath|ALU:alu|ALU_result[0..31]                              ; Lost fanout                                                    ;
-; datapath:dpath|Instruction_Register:IR|instruc0[0,5]                  ; Lost fanout                                                    ;
-; datapath:dpath|Instruction_Register:IR|instruc3[3]                    ; Lost fanout                                                    ;
-; control_unit:cunit|current_state.DECODE                               ; Lost fanout                                                    ;
-; datapath:dpath|Instruction_Register:IR|instruc1[1]                    ; Lost fanout                                                    ;
-; datapath:dpath|ProgramCounter:program_counter|PC_out[0..9]            ; Lost fanout                                                    ;
-; control_unit:cunit|current_state.FETCH                                ; Lost fanout                                                    ;
-; datapath:dpath|ProgramCounter:program_counter|PC_out[30]              ; Lost fanout                                                    ;
-; datapath:dpath|Registers:register|registers_rtl_0_bypass[0..3,12]     ; Lost fanout                                                    ;
-; datapath:dpath|ProgramCounter:program_counter|PC_out[29]              ; Lost fanout                                                    ;
-; datapath:dpath|Registers:register|registers_rtl_0_bypass[13]          ; Lost fanout                                                    ;
-; datapath:dpath|ProgramCounter:program_counter|PC_out[31]              ; Lost fanout                                                    ;
-; datapath:dpath|Registers:register|registers_rtl_0_bypass[11]          ; Lost fanout                                                    ;
-; datapath:dpath|ProgramCounter:program_counter|PC_out[28]              ; Lost fanout                                                    ;
-; datapath:dpath|Registers:register|registers_rtl_0_bypass[14]          ; Lost fanout                                                    ;
-; datapath:dpath|ProgramCounter:program_counter|PC_out[27]              ; Lost fanout                                                    ;
-; datapath:dpath|Registers:register|registers_rtl_0_bypass[15]          ; Lost fanout                                                    ;
-; datapath:dpath|ProgramCounter:program_counter|PC_out[26]              ; Lost fanout                                                    ;
-; datapath:dpath|Registers:register|registers_rtl_0_bypass[16]          ; Lost fanout                                                    ;
-; datapath:dpath|ProgramCounter:program_counter|PC_out[25]              ; Lost fanout                                                    ;
-; datapath:dpath|Registers:register|registers_rtl_0_bypass[17]          ; Lost fanout                                                    ;
-; datapath:dpath|ProgramCounter:program_counter|PC_out[24]              ; Lost fanout                                                    ;
-; datapath:dpath|Registers:register|registers_rtl_0_bypass[18]          ; Lost fanout                                                    ;
-; datapath:dpath|ProgramCounter:program_counter|PC_out[23]              ; Lost fanout                                                    ;
-; datapath:dpath|Registers:register|registers_rtl_0_bypass[19]          ; Lost fanout                                                    ;
-; datapath:dpath|ProgramCounter:program_counter|PC_out[22]              ; Lost fanout                                                    ;
-; datapath:dpath|Registers:register|registers_rtl_0_bypass[20]          ; Lost fanout                                                    ;
-; datapath:dpath|ProgramCounter:program_counter|PC_out[21]              ; Lost fanout                                                    ;
-; datapath:dpath|Registers:register|registers_rtl_0_bypass[21]          ; Lost fanout                                                    ;
-; datapath:dpath|ProgramCounter:program_counter|PC_out[20]              ; Lost fanout                                                    ;
-; datapath:dpath|Registers:register|registers_rtl_0_bypass[22]          ; Lost fanout                                                    ;
-; datapath:dpath|ProgramCounter:program_counter|PC_out[19]              ; Lost fanout                                                    ;
-; datapath:dpath|Registers:register|registers_rtl_0_bypass[23]          ; Lost fanout                                                    ;
-; datapath:dpath|ProgramCounter:program_counter|PC_out[18]              ; Lost fanout                                                    ;
-; datapath:dpath|Registers:register|registers_rtl_0_bypass[24]          ; Lost fanout                                                    ;
-; datapath:dpath|ProgramCounter:program_counter|PC_out[17]              ; Lost fanout                                                    ;
-; datapath:dpath|Registers:register|registers_rtl_0_bypass[25]          ; Lost fanout                                                    ;
-; datapath:dpath|ProgramCounter:program_counter|PC_out[16]              ; Lost fanout                                                    ;
-; datapath:dpath|Registers:register|registers_rtl_0_bypass[26]          ; Lost fanout                                                    ;
-; datapath:dpath|ProgramCounter:program_counter|PC_out[15]              ; Lost fanout                                                    ;
-; datapath:dpath|Registers:register|registers_rtl_0_bypass[27]          ; Lost fanout                                                    ;
-; datapath:dpath|ProgramCounter:program_counter|PC_out[14]              ; Lost fanout                                                    ;
-; datapath:dpath|Registers:register|registers_rtl_0_bypass[28]          ; Lost fanout                                                    ;
-; datapath:dpath|ProgramCounter:program_counter|PC_out[13]              ; Lost fanout                                                    ;
-; datapath:dpath|Registers:register|registers_rtl_0_bypass[29]          ; Lost fanout                                                    ;
-; datapath:dpath|ProgramCounter:program_counter|PC_out[12]              ; Lost fanout                                                    ;
-; datapath:dpath|Registers:register|registers_rtl_0_bypass[30]          ; Lost fanout                                                    ;
-; datapath:dpath|ProgramCounter:program_counter|PC_out[11]              ; Lost fanout                                                    ;
-; datapath:dpath|Registers:register|registers_rtl_0_bypass[31]          ; Lost fanout                                                    ;
-; datapath:dpath|ProgramCounter:program_counter|PC_out[10]              ; Lost fanout                                                    ;
-; datapath:dpath|Registers:register|registers_rtl_0_bypass[32..42]      ; Lost fanout                                                    ;
-; control_unit:cunit|current_state.INCREMENT_PC_EXECUTE                 ; Lost fanout                                                    ;
-; datapath:dpath|Instruction_Register:IR|instruc0[1]                    ; Lost fanout                                                    ;
-; control_unit:cunit|current_state.INCREMENT_PC                         ; Lost fanout                                                    ;
-; datapath:dpath|Registers:register|registers_rtl_1_bypass[0..4,11..42] ; Lost fanout                                                    ;
-; Total Number of Removed Registers = 191                               ;                                                                ;
-+-----------------------------------------------------------------------+----------------------------------------------------------------+
++-------------------------------------------------------------------------------------------------------------------------------------+
+; Registers Removed During Synthesis                                                                                                  ;
++--------------------------------------------------------------------+----------------------------------------------------------------+
+; Register name                                                      ; Reason for Removal                                             ;
++--------------------------------------------------------------------+----------------------------------------------------------------+
+; datapath:dpath|Instruction_Register:IR|instruc2[1]                 ; Merged with datapath:dpath|Instruction_Register:IR|instruc0[1] ;
+; datapath:dpath|Instruction_Register:IR|instruc0[2..15]             ; Merged with datapath:dpath|Instruction_Register:IR|instruc0[1] ;
+; datapath:dpath|Instruction_Register:IR|instruc1[2..4]              ; Merged with datapath:dpath|Instruction_Register:IR|instruc0[1] ;
+; datapath:dpath|Instruction_Register:IR|instruc2[2..4]              ; Merged with datapath:dpath|Instruction_Register:IR|instruc0[1] ;
+; datapath:dpath|Instruction_Register:IR|instruc3[0,1,4,5]           ; Merged with datapath:dpath|Instruction_Register:IR|instruc0[1] ;
+; datapath:dpath|Instruction_Register:IR|instruc3[2]                 ; Merged with datapath:dpath|Instruction_Register:IR|instruc2[0] ;
+; control_unit:cunit|current_state~2                                 ; Lost fanout                                                    ;
+; control_unit:cunit|current_state~3                                 ; Lost fanout                                                    ;
+; control_unit:cunit|current_state~4                                 ; Lost fanout                                                    ;
+; control_unit:cunit|current_state~5                                 ; Lost fanout                                                    ;
+; control_unit:cunit|current_state~6                                 ; Lost fanout                                                    ;
+; datapath:dpath|Instruction_Register:IR|instruc0[1]                 ; Lost fanout                                                    ;
+; datapath:dpath|Instruction_Register:IR|instruc2[0]                 ; Lost fanout                                                    ;
+; control_unit:cunit|current_state.EXECUTE                           ; Lost fanout                                                    ;
+; datapath:dpath|ALU:alu|ALU_result[0..31]                           ; Lost fanout                                                    ;
+; datapath:dpath|Instruction_Register:IR|instruc1[0]                 ; Lost fanout                                                    ;
+; datapath:dpath|Instruction_Register:IR|instruc3[3]                 ; Lost fanout                                                    ;
+; control_unit:cunit|current_state.DECODE                            ; Lost fanout                                                    ;
+; control_unit:cunit|current_state.END_STATE                         ; Lost fanout                                                    ;
+; datapath:dpath|Instruction_Register:IR|instruc1[1]                 ; Lost fanout                                                    ;
+; datapath:dpath|ProgramCounter:program_counter|PC_out[0..9]         ; Lost fanout                                                    ;
+; control_unit:cunit|current_state.FETCH                             ; Lost fanout                                                    ;
+; datapath:dpath|ProgramCounter:program_counter|PC_out[30]           ; Lost fanout                                                    ;
+; datapath:dpath|Registers:register|registers_rtl_0_bypass[0..10,12] ; Lost fanout                                                    ;
+; control_unit:cunit|current_state.BRANCH                            ; Lost fanout                                                    ;
+; control_unit:cunit|current_state.BRANCH_EXECUTE                    ; Lost fanout                                                    ;
+; datapath:dpath|ProgramCounter:program_counter|PC_out[29]           ; Lost fanout                                                    ;
+; datapath:dpath|Registers:register|registers_rtl_0_bypass[13]       ; Lost fanout                                                    ;
+; datapath:dpath|ProgramCounter:program_counter|PC_out[31]           ; Lost fanout                                                    ;
+; datapath:dpath|Registers:register|registers_rtl_0_bypass[11]       ; Lost fanout                                                    ;
+; datapath:dpath|ProgramCounter:program_counter|PC_out[28]           ; Lost fanout                                                    ;
+; datapath:dpath|Registers:register|registers_rtl_0_bypass[14]       ; Lost fanout                                                    ;
+; datapath:dpath|ProgramCounter:program_counter|PC_out[27]           ; Lost fanout                                                    ;
+; datapath:dpath|Registers:register|registers_rtl_0_bypass[15]       ; Lost fanout                                                    ;
+; datapath:dpath|ProgramCounter:program_counter|PC_out[26]           ; Lost fanout                                                    ;
+; datapath:dpath|Registers:register|registers_rtl_0_bypass[16]       ; Lost fanout                                                    ;
+; datapath:dpath|ProgramCounter:program_counter|PC_out[25]           ; Lost fanout                                                    ;
+; datapath:dpath|Registers:register|registers_rtl_0_bypass[17]       ; Lost fanout                                                    ;
+; datapath:dpath|ProgramCounter:program_counter|PC_out[24]           ; Lost fanout                                                    ;
+; datapath:dpath|Registers:register|registers_rtl_0_bypass[18]       ; Lost fanout                                                    ;
+; datapath:dpath|ProgramCounter:program_counter|PC_out[23]           ; Lost fanout                                                    ;
+; datapath:dpath|Registers:register|registers_rtl_0_bypass[19]       ; Lost fanout                                                    ;
+; datapath:dpath|ProgramCounter:program_counter|PC_out[22]           ; Lost fanout                                                    ;
+; datapath:dpath|Registers:register|registers_rtl_0_bypass[20]       ; Lost fanout                                                    ;
+; datapath:dpath|ProgramCounter:program_counter|PC_out[21]           ; Lost fanout                                                    ;
+; datapath:dpath|Registers:register|registers_rtl_0_bypass[21]       ; Lost fanout                                                    ;
+; datapath:dpath|ProgramCounter:program_counter|PC_out[20]           ; Lost fanout                                                    ;
+; datapath:dpath|Registers:register|registers_rtl_0_bypass[22]       ; Lost fanout                                                    ;
+; datapath:dpath|ProgramCounter:program_counter|PC_out[19]           ; Lost fanout                                                    ;
+; datapath:dpath|Registers:register|registers_rtl_0_bypass[23]       ; Lost fanout                                                    ;
+; datapath:dpath|ProgramCounter:program_counter|PC_out[18]           ; Lost fanout                                                    ;
+; datapath:dpath|Registers:register|registers_rtl_0_bypass[24]       ; Lost fanout                                                    ;
+; datapath:dpath|ProgramCounter:program_counter|PC_out[17]           ; Lost fanout                                                    ;
+; datapath:dpath|Registers:register|registers_rtl_0_bypass[25]       ; Lost fanout                                                    ;
+; datapath:dpath|ProgramCounter:program_counter|PC_out[16]           ; Lost fanout                                                    ;
+; datapath:dpath|Registers:register|registers_rtl_0_bypass[26]       ; Lost fanout                                                    ;
+; datapath:dpath|ProgramCounter:program_counter|PC_out[15]           ; Lost fanout                                                    ;
+; datapath:dpath|Registers:register|registers_rtl_0_bypass[27]       ; Lost fanout                                                    ;
+; datapath:dpath|ProgramCounter:program_counter|PC_out[14]           ; Lost fanout                                                    ;
+; datapath:dpath|Registers:register|registers_rtl_0_bypass[28]       ; Lost fanout                                                    ;
+; datapath:dpath|ProgramCounter:program_counter|PC_out[13]           ; Lost fanout                                                    ;
+; datapath:dpath|Registers:register|registers_rtl_0_bypass[29]       ; Lost fanout                                                    ;
+; datapath:dpath|ProgramCounter:program_counter|PC_out[12]           ; Lost fanout                                                    ;
+; datapath:dpath|Registers:register|registers_rtl_0_bypass[30]       ; Lost fanout                                                    ;
+; datapath:dpath|ProgramCounter:program_counter|PC_out[11]           ; Lost fanout                                                    ;
+; datapath:dpath|Registers:register|registers_rtl_0_bypass[31]       ; Lost fanout                                                    ;
+; datapath:dpath|ProgramCounter:program_counter|PC_out[10]           ; Lost fanout                                                    ;
+; datapath:dpath|Registers:register|registers_rtl_0_bypass[32..42]   ; Lost fanout                                                    ;
+; datapath:dpath|ALU_Register:alu_register|out[8]                    ; Lost fanout                                                    ;
+; control_unit:cunit|current_state.INCREMENT_PC_EXECUTE              ; Lost fanout                                                    ;
+; datapath:dpath|ALU_Register:alu_register|out[0..7,9]               ; Lost fanout                                                    ;
+; datapath:dpath|Instruction_Register:IR|instruc0[0]                 ; Lost fanout                                                    ;
+; control_unit:cunit|current_state.INCREMENT_PC                      ; Lost fanout                                                    ;
+; datapath:dpath|Registers:register|registers_rtl_1_bypass[0..11]    ; Lost fanout                                                    ;
+; datapath:dpath|ALU_Register:alu_register|out[30]                   ; Lost fanout                                                    ;
+; datapath:dpath|Registers:register|registers_rtl_1_bypass[12]       ; Lost fanout                                                    ;
+; datapath:dpath|ALU_Register:alu_register|out[29,31]                ; Lost fanout                                                    ;
+; datapath:dpath|Registers:register|registers_rtl_1_bypass[13]       ; Lost fanout                                                    ;
+; datapath:dpath|ALU_Register:alu_register|out[28]                   ; Lost fanout                                                    ;
+; datapath:dpath|Registers:register|registers_rtl_1_bypass[14]       ; Lost fanout                                                    ;
+; datapath:dpath|ALU_Register:alu_register|out[27]                   ; Lost fanout                                                    ;
+; datapath:dpath|Registers:register|registers_rtl_1_bypass[15]       ; Lost fanout                                                    ;
+; datapath:dpath|ALU_Register:alu_register|out[26]                   ; Lost fanout                                                    ;
+; datapath:dpath|Registers:register|registers_rtl_1_bypass[16]       ; Lost fanout                                                    ;
+; datapath:dpath|ALU_Register:alu_register|out[25]                   ; Lost fanout                                                    ;
+; datapath:dpath|Registers:register|registers_rtl_1_bypass[17]       ; Lost fanout                                                    ;
+; datapath:dpath|ALU_Register:alu_register|out[24]                   ; Lost fanout                                                    ;
+; datapath:dpath|Registers:register|registers_rtl_1_bypass[18]       ; Lost fanout                                                    ;
+; datapath:dpath|ALU_Register:alu_register|out[23]                   ; Lost fanout                                                    ;
+; datapath:dpath|Registers:register|registers_rtl_1_bypass[19]       ; Lost fanout                                                    ;
+; datapath:dpath|ALU_Register:alu_register|out[22]                   ; Lost fanout                                                    ;
+; datapath:dpath|Registers:register|registers_rtl_1_bypass[20]       ; Lost fanout                                                    ;
+; datapath:dpath|ALU_Register:alu_register|out[21]                   ; Lost fanout                                                    ;
+; datapath:dpath|Registers:register|registers_rtl_1_bypass[21]       ; Lost fanout                                                    ;
+; datapath:dpath|ALU_Register:alu_register|out[20]                   ; Lost fanout                                                    ;
+; datapath:dpath|Registers:register|registers_rtl_1_bypass[22]       ; Lost fanout                                                    ;
+; datapath:dpath|ALU_Register:alu_register|out[19]                   ; Lost fanout                                                    ;
+; datapath:dpath|Registers:register|registers_rtl_1_bypass[23]       ; Lost fanout                                                    ;
+; datapath:dpath|ALU_Register:alu_register|out[18]                   ; Lost fanout                                                    ;
+; datapath:dpath|Registers:register|registers_rtl_1_bypass[24]       ; Lost fanout                                                    ;
+; datapath:dpath|ALU_Register:alu_register|out[17]                   ; Lost fanout                                                    ;
+; datapath:dpath|Registers:register|registers_rtl_1_bypass[25]       ; Lost fanout                                                    ;
+; datapath:dpath|ALU_Register:alu_register|out[16]                   ; Lost fanout                                                    ;
+; datapath:dpath|Registers:register|registers_rtl_1_bypass[26]       ; Lost fanout                                                    ;
+; datapath:dpath|ALU_Register:alu_register|out[15]                   ; Lost fanout                                                    ;
+; datapath:dpath|Registers:register|registers_rtl_1_bypass[27]       ; Lost fanout                                                    ;
+; datapath:dpath|ALU_Register:alu_register|out[14]                   ; Lost fanout                                                    ;
+; datapath:dpath|Registers:register|registers_rtl_1_bypass[28]       ; Lost fanout                                                    ;
+; datapath:dpath|ALU_Register:alu_register|out[13]                   ; Lost fanout                                                    ;
+; datapath:dpath|Registers:register|registers_rtl_1_bypass[29]       ; Lost fanout                                                    ;
+; datapath:dpath|ALU_Register:alu_register|out[12]                   ; Lost fanout                                                    ;
+; datapath:dpath|Registers:register|registers_rtl_1_bypass[30]       ; Lost fanout                                                    ;
+; datapath:dpath|ALU_Register:alu_register|out[11]                   ; Lost fanout                                                    ;
+; datapath:dpath|Registers:register|registers_rtl_1_bypass[31]       ; Lost fanout                                                    ;
+; datapath:dpath|ALU_Register:alu_register|out[10]                   ; Lost fanout                                                    ;
+; datapath:dpath|Registers:register|registers_rtl_1_bypass[32..42]   ; Lost fanout                                                    ;
+; Total Number of Removed Registers = 227                            ;                                                                ;
++--------------------------------------------------------------------+----------------------------------------------------------------+
 
 
-+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Removed Registers Triggering Further Register Optimizations                                                                                                                ;
-+-------------------------------------------------------------+---------------------------+----------------------------------------------------------------------------------+
-; Register name                                               ; Reason for Removal        ; Registers Removed due to This Register                                           ;
-+-------------------------------------------------------------+---------------------------+----------------------------------------------------------------------------------+
-; datapath:dpath|Instruction_Register:IR|instruc0[2]          ; Stuck at GND              ; datapath:dpath|Registers:register|registers_rtl_0_bypass[5],                     ;
-;                                                             ; due to stuck port data_in ; datapath:dpath|Registers:register|registers_rtl_0_bypass[7],                     ;
-;                                                             ;                           ; datapath:dpath|Registers:register|registers_rtl_0_bypass[9],                     ;
-;                                                             ;                           ; datapath:dpath|Registers:register|registers_rtl_1_bypass[5],                     ;
-;                                                             ;                           ; datapath:dpath|Registers:register|registers_rtl_1_bypass[7],                     ;
-;                                                             ;                           ; datapath:dpath|Registers:register|registers_rtl_1_bypass[9],                     ;
-;                                                             ;                           ; datapath:dpath|Instruction_Register:IR|instruc3[1],                              ;
-;                                                             ;                           ; datapath:dpath|ALU:alu|ALU_result[27], datapath:dpath|ALU:alu|ALU_result[26],    ;
-;                                                             ;                           ; datapath:dpath|ALU:alu|ALU_result[25], datapath:dpath|ALU:alu|ALU_result[24],    ;
-;                                                             ;                           ; datapath:dpath|ALU:alu|ALU_result[23], datapath:dpath|ALU:alu|ALU_result[22],    ;
-;                                                             ;                           ; datapath:dpath|Instruction_Register:IR|instruc0[0],                              ;
-;                                                             ;                           ; datapath:dpath|Instruction_Register:IR|instruc0[5],                              ;
-;                                                             ;                           ; datapath:dpath|Instruction_Register:IR|instruc3[3],                              ;
-;                                                             ;                           ; datapath:dpath|ProgramCounter:program_counter|PC_out[2],                         ;
-;                                                             ;                           ; datapath:dpath|ProgramCounter:program_counter|PC_out[4],                         ;
-;                                                             ;                           ; datapath:dpath|ProgramCounter:program_counter|PC_out[0],                         ;
-;                                                             ;                           ; datapath:dpath|ProgramCounter:program_counter|PC_out[6],                         ;
-;                                                             ;                           ; datapath:dpath|ProgramCounter:program_counter|PC_out[7],                         ;
-;                                                             ;                           ; datapath:dpath|ProgramCounter:program_counter|PC_out[1],                         ;
-;                                                             ;                           ; datapath:dpath|ProgramCounter:program_counter|PC_out[5],                         ;
-;                                                             ;                           ; datapath:dpath|ProgramCounter:program_counter|PC_out[9],                         ;
-;                                                             ;                           ; datapath:dpath|ProgramCounter:program_counter|PC_out[8],                         ;
-;                                                             ;                           ; datapath:dpath|ProgramCounter:program_counter|PC_out[30],                        ;
-;                                                             ;                           ; datapath:dpath|Registers:register|registers_rtl_0_bypass[12],                    ;
-;                                                             ;                           ; datapath:dpath|ProgramCounter:program_counter|PC_out[29],                        ;
-;                                                             ;                           ; datapath:dpath|ProgramCounter:program_counter|PC_out[31],                        ;
-;                                                             ;                           ; datapath:dpath|Registers:register|registers_rtl_0_bypass[11],                    ;
-;                                                             ;                           ; datapath:dpath|ProgramCounter:program_counter|PC_out[25],                        ;
-;                                                             ;                           ; datapath:dpath|Registers:register|registers_rtl_0_bypass[17],                    ;
-;                                                             ;                           ; datapath:dpath|ProgramCounter:program_counter|PC_out[23],                        ;
-;                                                             ;                           ; datapath:dpath|Registers:register|registers_rtl_0_bypass[19],                    ;
-;                                                             ;                           ; datapath:dpath|ProgramCounter:program_counter|PC_out[21],                        ;
-;                                                             ;                           ; datapath:dpath|Registers:register|registers_rtl_0_bypass[21],                    ;
-;                                                             ;                           ; datapath:dpath|ProgramCounter:program_counter|PC_out[18],                        ;
-;                                                             ;                           ; datapath:dpath|ProgramCounter:program_counter|PC_out[16],                        ;
-;                                                             ;                           ; datapath:dpath|Registers:register|registers_rtl_0_bypass[26],                    ;
-;                                                             ;                           ; datapath:dpath|ProgramCounter:program_counter|PC_out[14],                        ;
-;                                                             ;                           ; datapath:dpath|Registers:register|registers_rtl_0_bypass[28],                    ;
-;                                                             ;                           ; datapath:dpath|ProgramCounter:program_counter|PC_out[12],                        ;
-;                                                             ;                           ; datapath:dpath|Registers:register|registers_rtl_0_bypass[30],                    ;
-;                                                             ;                           ; datapath:dpath|ProgramCounter:program_counter|PC_out[11],                        ;
-;                                                             ;                           ; datapath:dpath|ProgramCounter:program_counter|PC_out[10],                        ;
-;                                                             ;                           ; datapath:dpath|Registers:register|registers_rtl_0_bypass[32],                    ;
-;                                                             ;                           ; datapath:dpath|Registers:register|registers_rtl_0_bypass[34],                    ;
-;                                                             ;                           ; datapath:dpath|Registers:register|registers_rtl_0_bypass[36],                    ;
-;                                                             ;                           ; datapath:dpath|Registers:register|registers_rtl_0_bypass[38],                    ;
-;                                                             ;                           ; datapath:dpath|Registers:register|registers_rtl_0_bypass[40],                    ;
-;                                                             ;                           ; datapath:dpath|Instruction_Register:IR|instruc0[1],                              ;
-;                                                             ;                           ; datapath:dpath|Registers:register|registers_rtl_1_bypass[11],                    ;
-;                                                             ;                           ; datapath:dpath|Registers:register|registers_rtl_1_bypass[0],                     ;
-;                                                             ;                           ; datapath:dpath|Registers:register|registers_rtl_1_bypass[1],                     ;
-;                                                             ;                           ; datapath:dpath|Registers:register|registers_rtl_1_bypass[2],                     ;
-;                                                             ;                           ; datapath:dpath|Registers:register|registers_rtl_1_bypass[3],                     ;
-;                                                             ;                           ; datapath:dpath|Registers:register|registers_rtl_1_bypass[4],                     ;
-;                                                             ;                           ; datapath:dpath|Registers:register|registers_rtl_1_bypass[13],                    ;
-;                                                             ;                           ; datapath:dpath|Registers:register|registers_rtl_1_bypass[14],                    ;
-;                                                             ;                           ; datapath:dpath|Registers:register|registers_rtl_1_bypass[15],                    ;
-;                                                             ;                           ; datapath:dpath|Registers:register|registers_rtl_1_bypass[16],                    ;
-;                                                             ;                           ; datapath:dpath|Registers:register|registers_rtl_1_bypass[17],                    ;
-;                                                             ;                           ; datapath:dpath|Registers:register|registers_rtl_1_bypass[18],                    ;
-;                                                             ;                           ; datapath:dpath|Registers:register|registers_rtl_1_bypass[19],                    ;
-;                                                             ;                           ; datapath:dpath|Registers:register|registers_rtl_1_bypass[20],                    ;
-;                                                             ;                           ; datapath:dpath|Registers:register|registers_rtl_1_bypass[21],                    ;
-;                                                             ;                           ; datapath:dpath|Registers:register|registers_rtl_1_bypass[22],                    ;
-;                                                             ;                           ; datapath:dpath|Registers:register|registers_rtl_1_bypass[23],                    ;
-;                                                             ;                           ; datapath:dpath|Registers:register|registers_rtl_1_bypass[24],                    ;
-;                                                             ;                           ; datapath:dpath|Registers:register|registers_rtl_1_bypass[25],                    ;
-;                                                             ;                           ; datapath:dpath|Registers:register|registers_rtl_1_bypass[26],                    ;
-;                                                             ;                           ; datapath:dpath|Registers:register|registers_rtl_1_bypass[27],                    ;
-;                                                             ;                           ; datapath:dpath|Registers:register|registers_rtl_1_bypass[28],                    ;
-;                                                             ;                           ; datapath:dpath|Registers:register|registers_rtl_1_bypass[29],                    ;
-;                                                             ;                           ; datapath:dpath|Registers:register|registers_rtl_1_bypass[30],                    ;
-;                                                             ;                           ; datapath:dpath|Registers:register|registers_rtl_1_bypass[31],                    ;
-;                                                             ;                           ; datapath:dpath|Registers:register|registers_rtl_1_bypass[32],                    ;
-;                                                             ;                           ; datapath:dpath|Registers:register|registers_rtl_1_bypass[33],                    ;
-;                                                             ;                           ; datapath:dpath|Registers:register|registers_rtl_1_bypass[34],                    ;
-;                                                             ;                           ; datapath:dpath|Registers:register|registers_rtl_1_bypass[35],                    ;
-;                                                             ;                           ; datapath:dpath|Registers:register|registers_rtl_1_bypass[36],                    ;
-;                                                             ;                           ; datapath:dpath|Registers:register|registers_rtl_1_bypass[37],                    ;
-;                                                             ;                           ; datapath:dpath|Registers:register|registers_rtl_1_bypass[38],                    ;
-;                                                             ;                           ; datapath:dpath|Registers:register|registers_rtl_1_bypass[39],                    ;
-;                                                             ;                           ; datapath:dpath|Registers:register|registers_rtl_1_bypass[40],                    ;
-;                                                             ;                           ; datapath:dpath|Registers:register|registers_rtl_1_bypass[41],                    ;
-;                                                             ;                           ; datapath:dpath|Registers:register|registers_rtl_1_bypass[42]                     ;
-; datapath:dpath|Registers:register|registers_rtl_0_bypass[4] ; Stuck at GND              ; datapath:dpath|ProgramCounter:program_counter|PC_out[3],                         ;
-;                                                             ; due to stuck port data_in ; datapath:dpath|Registers:register|registers_rtl_0_bypass[0],                     ;
-;                                                             ;                           ; datapath:dpath|Registers:register|registers_rtl_0_bypass[1],                     ;
-;                                                             ;                           ; datapath:dpath|Registers:register|registers_rtl_0_bypass[2],                     ;
-;                                                             ;                           ; datapath:dpath|Registers:register|registers_rtl_0_bypass[3],                     ;
-;                                                             ;                           ; datapath:dpath|Registers:register|registers_rtl_0_bypass[15],                    ;
-;                                                             ;                           ; datapath:dpath|ProgramCounter:program_counter|PC_out[26],                        ;
-;                                                             ;                           ; datapath:dpath|Registers:register|registers_rtl_0_bypass[16],                    ;
-;                                                             ;                           ; datapath:dpath|ProgramCounter:program_counter|PC_out[24],                        ;
-;                                                             ;                           ; datapath:dpath|Registers:register|registers_rtl_0_bypass[18],                    ;
-;                                                             ;                           ; datapath:dpath|ProgramCounter:program_counter|PC_out[22],                        ;
-;                                                             ;                           ; datapath:dpath|Registers:register|registers_rtl_0_bypass[20],                    ;
-;                                                             ;                           ; datapath:dpath|Registers:register|registers_rtl_0_bypass[22],                    ;
-;                                                             ;                           ; datapath:dpath|ProgramCounter:program_counter|PC_out[17],                        ;
-;                                                             ;                           ; datapath:dpath|Registers:register|registers_rtl_0_bypass[25],                    ;
-;                                                             ;                           ; datapath:dpath|ProgramCounter:program_counter|PC_out[15],                        ;
-;                                                             ;                           ; datapath:dpath|Registers:register|registers_rtl_0_bypass[27],                    ;
-;                                                             ;                           ; datapath:dpath|ProgramCounter:program_counter|PC_out[13],                        ;
-;                                                             ;                           ; datapath:dpath|Registers:register|registers_rtl_0_bypass[29],                    ;
-;                                                             ;                           ; datapath:dpath|Registers:register|registers_rtl_0_bypass[31],                    ;
-;                                                             ;                           ; datapath:dpath|Registers:register|registers_rtl_0_bypass[33],                    ;
-;                                                             ;                           ; datapath:dpath|Registers:register|registers_rtl_0_bypass[35],                    ;
-;                                                             ;                           ; datapath:dpath|Registers:register|registers_rtl_0_bypass[37],                    ;
-;                                                             ;                           ; datapath:dpath|Registers:register|registers_rtl_0_bypass[39],                    ;
-;                                                             ;                           ; datapath:dpath|Registers:register|registers_rtl_0_bypass[41]                     ;
-; control_unit:cunit|current_state~2                          ; Lost Fanouts              ; control_unit:cunit|current_state.EXECUTE, control_unit:cunit|current_state.FETCH ;
-; datapath:dpath|ALU:alu|ALU_result[31]                       ; Lost Fanouts              ; control_unit:cunit|current_state.INCREMENT_PC_EXECUTE,                           ;
-;                                                             ;                           ; control_unit:cunit|current_state.INCREMENT_PC                                    ;
-; datapath:dpath|ALU:alu|ALU_result[30]                       ; Lost Fanouts              ; datapath:dpath|Registers:register|registers_rtl_0_bypass[13],                    ;
-;                                                             ;                           ; datapath:dpath|Registers:register|registers_rtl_1_bypass[12]                     ;
-; datapath:dpath|ALU:alu|ALU_result[29]                       ; Lost Fanouts              ; datapath:dpath|ProgramCounter:program_counter|PC_out[28],                        ;
-;                                                             ;                           ; datapath:dpath|Registers:register|registers_rtl_0_bypass[14]                     ;
-; datapath:dpath|ALU:alu|ALU_result[20]                       ; Lost Fanouts              ; datapath:dpath|ProgramCounter:program_counter|PC_out[19],                        ;
-;                                                             ;                           ; datapath:dpath|Registers:register|registers_rtl_0_bypass[23]                     ;
-; control_unit:cunit|current_state~3                          ; Lost Fanouts              ; control_unit:cunit|current_state.DECODE                                          ;
-; datapath:dpath|ALU:alu|ALU_result[28]                       ; Lost Fanouts              ; datapath:dpath|ProgramCounter:program_counter|PC_out[27]                         ;
-; datapath:dpath|ALU:alu|ALU_result[21]                       ; Lost Fanouts              ; datapath:dpath|ProgramCounter:program_counter|PC_out[20]                         ;
-; datapath:dpath|ALU:alu|ALU_result[19]                       ; Lost Fanouts              ; datapath:dpath|Registers:register|registers_rtl_0_bypass[24]                     ;
-; datapath:dpath|ALU:alu|ALU_result[1]                        ; Lost Fanouts              ; datapath:dpath|Registers:register|registers_rtl_0_bypass[42]                     ;
-+-------------------------------------------------------------+---------------------------+----------------------------------------------------------------------------------+
++-----------------------------------------------------------------------------------------------------------------------------------------------+
+; Removed Registers Triggering Further Register Optimizations                                                                                   ;
++---------------------------------------+--------------------+----------------------------------------------------------------------------------+
+; Register name                         ; Reason for Removal ; Registers Removed due to This Register                                           ;
++---------------------------------------+--------------------+----------------------------------------------------------------------------------+
+; control_unit:cunit|current_state~2    ; Lost Fanouts       ; datapath:dpath|Instruction_Register:IR|instruc0[1],                              ;
+;                                       ;                    ; control_unit:cunit|current_state.EXECUTE,                                        ;
+;                                       ;                    ; datapath:dpath|ProgramCounter:program_counter|PC_out[8],                         ;
+;                                       ;                    ; datapath:dpath|ProgramCounter:program_counter|PC_out[9],                         ;
+;                                       ;                    ; datapath:dpath|ProgramCounter:program_counter|PC_out[7],                         ;
+;                                       ;                    ; datapath:dpath|ProgramCounter:program_counter|PC_out[6],                         ;
+;                                       ;                    ; datapath:dpath|ProgramCounter:program_counter|PC_out[1],                         ;
+;                                       ;                    ; datapath:dpath|ProgramCounter:program_counter|PC_out[2],                         ;
+;                                       ;                    ; datapath:dpath|ProgramCounter:program_counter|PC_out[3],                         ;
+;                                       ;                    ; datapath:dpath|ProgramCounter:program_counter|PC_out[4],                         ;
+;                                       ;                    ; datapath:dpath|ProgramCounter:program_counter|PC_out[0],                         ;
+;                                       ;                    ; control_unit:cunit|current_state.FETCH, control_unit:cunit|current_state.BRANCH, ;
+;                                       ;                    ; control_unit:cunit|current_state.BRANCH_EXECUTE,                                 ;
+;                                       ;                    ; datapath:dpath|ALU_Register:alu_register|out[8],                                 ;
+;                                       ;                    ; datapath:dpath|ALU_Register:alu_register|out[9],                                 ;
+;                                       ;                    ; datapath:dpath|ALU_Register:alu_register|out[7],                                 ;
+;                                       ;                    ; datapath:dpath|ALU_Register:alu_register|out[6],                                 ;
+;                                       ;                    ; datapath:dpath|ALU_Register:alu_register|out[1],                                 ;
+;                                       ;                    ; datapath:dpath|ALU_Register:alu_register|out[2],                                 ;
+;                                       ;                    ; datapath:dpath|ALU_Register:alu_register|out[3],                                 ;
+;                                       ;                    ; datapath:dpath|ALU_Register:alu_register|out[4],                                 ;
+;                                       ;                    ; datapath:dpath|ALU_Register:alu_register|out[0]                                  ;
+; datapath:dpath|ALU:alu|ALU_result[30] ; Lost Fanouts       ; datapath:dpath|Registers:register|registers_rtl_0_bypass[0],                     ;
+;                                       ;                    ; datapath:dpath|ProgramCounter:program_counter|PC_out[29],                        ;
+;                                       ;                    ; datapath:dpath|Registers:register|registers_rtl_0_bypass[13],                    ;
+;                                       ;                    ; datapath:dpath|ProgramCounter:program_counter|PC_out[31],                        ;
+;                                       ;                    ; datapath:dpath|Registers:register|registers_rtl_0_bypass[11],                    ;
+;                                       ;                    ; control_unit:cunit|current_state.INCREMENT_PC_EXECUTE,                           ;
+;                                       ;                    ; datapath:dpath|Registers:register|registers_rtl_1_bypass[0],                     ;
+;                                       ;                    ; datapath:dpath|Registers:register|registers_rtl_1_bypass[12],                    ;
+;                                       ;                    ; datapath:dpath|ALU_Register:alu_register|out[29],                                ;
+;                                       ;                    ; datapath:dpath|ALU_Register:alu_register|out[31]                                 ;
+; control_unit:cunit|current_state~4    ; Lost Fanouts       ; datapath:dpath|Instruction_Register:IR|instruc2[0],                              ;
+;                                       ;                    ; datapath:dpath|Instruction_Register:IR|instruc3[3],                              ;
+;                                       ;                    ; datapath:dpath|ProgramCounter:program_counter|PC_out[5],                         ;
+;                                       ;                    ; datapath:dpath|ALU_Register:alu_register|out[5],                                 ;
+;                                       ;                    ; control_unit:cunit|current_state.INCREMENT_PC                                    ;
+; datapath:dpath|ALU:alu|ALU_result[29] ; Lost Fanouts       ; datapath:dpath|Registers:register|registers_rtl_0_bypass[12],                    ;
+;                                       ;                    ; datapath:dpath|ProgramCounter:program_counter|PC_out[28],                        ;
+;                                       ;                    ; datapath:dpath|Registers:register|registers_rtl_0_bypass[14],                    ;
+;                                       ;                    ; datapath:dpath|Registers:register|registers_rtl_1_bypass[13],                    ;
+;                                       ;                    ; datapath:dpath|ALU_Register:alu_register|out[28]                                 ;
+; datapath:dpath|ALU:alu|ALU_result[21] ; Lost Fanouts       ; datapath:dpath|ProgramCounter:program_counter|PC_out[20],                        ;
+;                                       ;                    ; datapath:dpath|Registers:register|registers_rtl_0_bypass[22],                    ;
+;                                       ;                    ; datapath:dpath|Registers:register|registers_rtl_1_bypass[21],                    ;
+;                                       ;                    ; datapath:dpath|ALU_Register:alu_register|out[20]                                 ;
+; datapath:dpath|ALU:alu|ALU_result[11] ; Lost Fanouts       ; datapath:dpath|ProgramCounter:program_counter|PC_out[10],                        ;
+;                                       ;                    ; datapath:dpath|Registers:register|registers_rtl_0_bypass[32],                    ;
+;                                       ;                    ; datapath:dpath|Registers:register|registers_rtl_1_bypass[31],                    ;
+;                                       ;                    ; datapath:dpath|ALU_Register:alu_register|out[10]                                 ;
+; datapath:dpath|ALU:alu|ALU_result[12] ; Lost Fanouts       ; datapath:dpath|ProgramCounter:program_counter|PC_out[11],                        ;
+;                                       ;                    ; datapath:dpath|Registers:register|registers_rtl_0_bypass[31],                    ;
+;                                       ;                    ; datapath:dpath|Registers:register|registers_rtl_1_bypass[30],                    ;
+;                                       ;                    ; datapath:dpath|ALU_Register:alu_register|out[11]                                 ;
+; datapath:dpath|ALU:alu|ALU_result[13] ; Lost Fanouts       ; datapath:dpath|ProgramCounter:program_counter|PC_out[12],                        ;
+;                                       ;                    ; datapath:dpath|Registers:register|registers_rtl_0_bypass[30],                    ;
+;                                       ;                    ; datapath:dpath|Registers:register|registers_rtl_1_bypass[29],                    ;
+;                                       ;                    ; datapath:dpath|ALU_Register:alu_register|out[12]                                 ;
+; datapath:dpath|ALU:alu|ALU_result[14] ; Lost Fanouts       ; datapath:dpath|ProgramCounter:program_counter|PC_out[13],                        ;
+;                                       ;                    ; datapath:dpath|Registers:register|registers_rtl_0_bypass[29],                    ;
+;                                       ;                    ; datapath:dpath|Registers:register|registers_rtl_1_bypass[28],                    ;
+;                                       ;                    ; datapath:dpath|ALU_Register:alu_register|out[13]                                 ;
+; datapath:dpath|ALU:alu|ALU_result[15] ; Lost Fanouts       ; datapath:dpath|ProgramCounter:program_counter|PC_out[14],                        ;
+;                                       ;                    ; datapath:dpath|Registers:register|registers_rtl_0_bypass[28],                    ;
+;                                       ;                    ; datapath:dpath|Registers:register|registers_rtl_1_bypass[27],                    ;
+;                                       ;                    ; datapath:dpath|ALU_Register:alu_register|out[14]                                 ;
+; datapath:dpath|ALU:alu|ALU_result[16] ; Lost Fanouts       ; datapath:dpath|ProgramCounter:program_counter|PC_out[15],                        ;
+;                                       ;                    ; datapath:dpath|Registers:register|registers_rtl_0_bypass[27],                    ;
+;                                       ;                    ; datapath:dpath|Registers:register|registers_rtl_1_bypass[26],                    ;
+;                                       ;                    ; datapath:dpath|ALU_Register:alu_register|out[15]                                 ;
+; datapath:dpath|ALU:alu|ALU_result[17] ; Lost Fanouts       ; datapath:dpath|ProgramCounter:program_counter|PC_out[16],                        ;
+;                                       ;                    ; datapath:dpath|Registers:register|registers_rtl_0_bypass[26],                    ;
+;                                       ;                    ; datapath:dpath|Registers:register|registers_rtl_1_bypass[25],                    ;
+;                                       ;                    ; datapath:dpath|ALU_Register:alu_register|out[16]                                 ;
+; datapath:dpath|ALU:alu|ALU_result[18] ; Lost Fanouts       ; datapath:dpath|ProgramCounter:program_counter|PC_out[17],                        ;
+;                                       ;                    ; datapath:dpath|Registers:register|registers_rtl_0_bypass[25],                    ;
+;                                       ;                    ; datapath:dpath|Registers:register|registers_rtl_1_bypass[24],                    ;
+;                                       ;                    ; datapath:dpath|ALU_Register:alu_register|out[17]                                 ;
+; datapath:dpath|ALU:alu|ALU_result[19] ; Lost Fanouts       ; datapath:dpath|ProgramCounter:program_counter|PC_out[18],                        ;
+;                                       ;                    ; datapath:dpath|Registers:register|registers_rtl_0_bypass[24],                    ;
+;                                       ;                    ; datapath:dpath|Registers:register|registers_rtl_1_bypass[23],                    ;
+;                                       ;                    ; datapath:dpath|ALU_Register:alu_register|out[18]                                 ;
+; datapath:dpath|ALU:alu|ALU_result[20] ; Lost Fanouts       ; datapath:dpath|ProgramCounter:program_counter|PC_out[19],                        ;
+;                                       ;                    ; datapath:dpath|Registers:register|registers_rtl_0_bypass[23],                    ;
+;                                       ;                    ; datapath:dpath|Registers:register|registers_rtl_1_bypass[22],                    ;
+;                                       ;                    ; datapath:dpath|ALU_Register:alu_register|out[19]                                 ;
+; datapath:dpath|ALU:alu|ALU_result[22] ; Lost Fanouts       ; datapath:dpath|ProgramCounter:program_counter|PC_out[21],                        ;
+;                                       ;                    ; datapath:dpath|Registers:register|registers_rtl_0_bypass[21],                    ;
+;                                       ;                    ; datapath:dpath|Registers:register|registers_rtl_1_bypass[20],                    ;
+;                                       ;                    ; datapath:dpath|ALU_Register:alu_register|out[21]                                 ;
+; datapath:dpath|ALU:alu|ALU_result[23] ; Lost Fanouts       ; datapath:dpath|ProgramCounter:program_counter|PC_out[22],                        ;
+;                                       ;                    ; datapath:dpath|Registers:register|registers_rtl_0_bypass[20],                    ;
+;                                       ;                    ; datapath:dpath|Registers:register|registers_rtl_1_bypass[19],                    ;
+;                                       ;                    ; datapath:dpath|ALU_Register:alu_register|out[22]                                 ;
+; datapath:dpath|ALU:alu|ALU_result[24] ; Lost Fanouts       ; datapath:dpath|ProgramCounter:program_counter|PC_out[23],                        ;
+;                                       ;                    ; datapath:dpath|Registers:register|registers_rtl_0_bypass[19],                    ;
+;                                       ;                    ; datapath:dpath|Registers:register|registers_rtl_1_bypass[18],                    ;
+;                                       ;                    ; datapath:dpath|ALU_Register:alu_register|out[23]                                 ;
+; datapath:dpath|ALU:alu|ALU_result[25] ; Lost Fanouts       ; datapath:dpath|ProgramCounter:program_counter|PC_out[24],                        ;
+;                                       ;                    ; datapath:dpath|Registers:register|registers_rtl_0_bypass[18],                    ;
+;                                       ;                    ; datapath:dpath|Registers:register|registers_rtl_1_bypass[17],                    ;
+;                                       ;                    ; datapath:dpath|ALU_Register:alu_register|out[24]                                 ;
+; datapath:dpath|ALU:alu|ALU_result[26] ; Lost Fanouts       ; datapath:dpath|ProgramCounter:program_counter|PC_out[25],                        ;
+;                                       ;                    ; datapath:dpath|Registers:register|registers_rtl_0_bypass[17],                    ;
+;                                       ;                    ; datapath:dpath|Registers:register|registers_rtl_1_bypass[16],                    ;
+;                                       ;                    ; datapath:dpath|ALU_Register:alu_register|out[25]                                 ;
+; datapath:dpath|ALU:alu|ALU_result[27] ; Lost Fanouts       ; datapath:dpath|ProgramCounter:program_counter|PC_out[26],                        ;
+;                                       ;                    ; datapath:dpath|Registers:register|registers_rtl_0_bypass[16],                    ;
+;                                       ;                    ; datapath:dpath|Registers:register|registers_rtl_1_bypass[15],                    ;
+;                                       ;                    ; datapath:dpath|ALU_Register:alu_register|out[26]                                 ;
+; datapath:dpath|ALU:alu|ALU_result[28] ; Lost Fanouts       ; datapath:dpath|ProgramCounter:program_counter|PC_out[27],                        ;
+;                                       ;                    ; datapath:dpath|Registers:register|registers_rtl_0_bypass[15],                    ;
+;                                       ;                    ; datapath:dpath|Registers:register|registers_rtl_1_bypass[14],                    ;
+;                                       ;                    ; datapath:dpath|ALU_Register:alu_register|out[27]                                 ;
+; datapath:dpath|ALU:alu|ALU_result[31] ; Lost Fanouts       ; datapath:dpath|ProgramCounter:program_counter|PC_out[30],                        ;
+;                                       ;                    ; datapath:dpath|Instruction_Register:IR|instruc0[0],                              ;
+;                                       ;                    ; datapath:dpath|ALU_Register:alu_register|out[30]                                 ;
+; datapath:dpath|ALU:alu|ALU_result[4]  ; Lost Fanouts       ; datapath:dpath|Registers:register|registers_rtl_0_bypass[39],                    ;
+;                                       ;                    ; datapath:dpath|Registers:register|registers_rtl_1_bypass[38]                     ;
+; datapath:dpath|ALU:alu|ALU_result[5]  ; Lost Fanouts       ; datapath:dpath|Registers:register|registers_rtl_0_bypass[38],                    ;
+;                                       ;                    ; datapath:dpath|Registers:register|registers_rtl_1_bypass[37]                     ;
+; datapath:dpath|ALU:alu|ALU_result[2]  ; Lost Fanouts       ; datapath:dpath|Registers:register|registers_rtl_0_bypass[41],                    ;
+;                                       ;                    ; datapath:dpath|Registers:register|registers_rtl_1_bypass[40]                     ;
+; datapath:dpath|ALU:alu|ALU_result[3]  ; Lost Fanouts       ; datapath:dpath|Registers:register|registers_rtl_0_bypass[40],                    ;
+;                                       ;                    ; datapath:dpath|Registers:register|registers_rtl_1_bypass[39]                     ;
+; datapath:dpath|ALU:alu|ALU_result[1]  ; Lost Fanouts       ; datapath:dpath|Registers:register|registers_rtl_0_bypass[42],                    ;
+;                                       ;                    ; datapath:dpath|Registers:register|registers_rtl_1_bypass[41]                     ;
+; datapath:dpath|ALU:alu|ALU_result[6]  ; Lost Fanouts       ; datapath:dpath|Registers:register|registers_rtl_0_bypass[37],                    ;
+;                                       ;                    ; datapath:dpath|Registers:register|registers_rtl_1_bypass[36]                     ;
+; datapath:dpath|ALU:alu|ALU_result[7]  ; Lost Fanouts       ; datapath:dpath|Registers:register|registers_rtl_0_bypass[36],                    ;
+;                                       ;                    ; datapath:dpath|Registers:register|registers_rtl_1_bypass[35]                     ;
+; datapath:dpath|ALU:alu|ALU_result[8]  ; Lost Fanouts       ; datapath:dpath|Registers:register|registers_rtl_0_bypass[35],                    ;
+;                                       ;                    ; datapath:dpath|Registers:register|registers_rtl_1_bypass[34]                     ;
+; datapath:dpath|ALU:alu|ALU_result[9]  ; Lost Fanouts       ; datapath:dpath|Registers:register|registers_rtl_0_bypass[34],                    ;
+;                                       ;                    ; datapath:dpath|Registers:register|registers_rtl_1_bypass[33]                     ;
+; datapath:dpath|ALU:alu|ALU_result[10] ; Lost Fanouts       ; datapath:dpath|Registers:register|registers_rtl_0_bypass[33],                    ;
+;                                       ;                    ; datapath:dpath|Registers:register|registers_rtl_1_bypass[32]                     ;
+; control_unit:cunit|current_state~3    ; Lost Fanouts       ; control_unit:cunit|current_state.DECODE,                                         ;
+;                                       ;                    ; control_unit:cunit|current_state.END_STATE                                       ;
++---------------------------------------+--------------------+----------------------------------------------------------------------------------+
 
 
 +------------------------------------------------------+
@@ -598,12 +662,9 @@ Encoding Type:  One-Hot
 +--------------------+-----------+---------------+----------------------+------------------------+------------+-------------------------------------------------------+
 ; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output                            ;
 +--------------------+-----------+---------------+----------------------+------------------------+------------+-------------------------------------------------------+
-; 4:1                ; 30 bits   ; 60 LEs        ; 60 LEs               ; 0 LEs                  ; Yes        ; |SimptelO9|datapath:dpath|ALU:alu|ALU_result[16]      ;
-; 3:1                ; 17 bits   ; 34 LEs        ; 34 LEs               ; 0 LEs                  ; No         ; |SimptelO9|datapath:dpath|four_to_one_mux:mux_E|q[24] ;
-; 3:1                ; 5 bits    ; 10 LEs        ; 10 LEs               ; 0 LEs                  ; No         ; |SimptelO9|datapath:dpath|four_to_one_mux:mux_E|q[12] ;
-; 3:1                ; 32 bits   ; 64 LEs        ; 64 LEs               ; 0 LEs                  ; No         ; |SimptelO9|datapath:dpath|two_to_one_mux:mux_D|q[12]  ;
-; 7:1                ; 2 bits    ; 8 LEs         ; 8 LEs                ; 0 LEs                  ; No         ; |SimptelO9|datapath:dpath|four_to_one_mux:mux_E|q[15] ;
-; 7:1                ; 2 bits    ; 8 LEs         ; 8 LEs                ; 0 LEs                  ; No         ; |SimptelO9|datapath:dpath|four_to_one_mux:mux_E|q[5]  ;
+; 4:1                ; 30 bits   ; 60 LEs        ; 60 LEs               ; 0 LEs                  ; Yes        ; |SimptelO9|datapath:dpath|ALU:alu|ALU_result[4]       ;
+; 3:1                ; 29 bits   ; 58 LEs        ; 58 LEs               ; 0 LEs                  ; No         ; |SimptelO9|datapath:dpath|four_to_one_mux:mux_E|q[20] ;
+; 3:1                ; 32 bits   ; 64 LEs        ; 64 LEs               ; 0 LEs                  ; No         ; |SimptelO9|datapath:dpath|two_to_one_mux:mux_D|q[16]  ;
 +--------------------+-----------+---------------+----------------------+------------------------+------------+-------------------------------------------------------+
 
 
@@ -806,6 +867,18 @@ Note: In order to hide this table in the UI and the text report file, please set
 +-----------+--------+----------+-------------------------------------------------------------------------------------+
 
 
++-------------------------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "datapath:dpath"                                                                                          ;
++------+--------+----------+----------------------------------------------------------------------------------------------------------+
+; Port ; Type   ; Severity ; Details                                                                                                  ;
++------+--------+----------+----------------------------------------------------------------------------------------------------------+
+; HEX0 ; Output ; Warning  ; Declared by entity but not connected by instance. Logic that only feeds a dangling port will be removed. ;
+; HEX1 ; Output ; Warning  ; Declared by entity but not connected by instance. Logic that only feeds a dangling port will be removed. ;
+; HEX2 ; Output ; Warning  ; Declared by entity but not connected by instance. Logic that only feeds a dangling port will be removed. ;
+; HEX3 ; Output ; Warning  ; Declared by entity but not connected by instance. Logic that only feeds a dangling port will be removed. ;
++------+--------+----------+----------------------------------------------------------------------------------------------------------+
+
+
 +-----------------------------------------------------+
 ; Post-Synthesis Netlist Statistics for Top Partition ;
 +-------------------+---------------------------------+
@@ -823,7 +896,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 +----------------+--------------+
 ; Partition Name ; Elapsed Time ;
 +----------------+--------------+
-; Top            ; 00:00:01     ;
+; Top            ; 00:00:00     ;
 +----------------+--------------+
 
 
@@ -833,7 +906,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Synthesis
     Info: Version 17.0.0 Build 595 04/25/2017 SJ Lite Edition
-    Info: Processing started: Sat Mar 30 17:31:27 2019
+    Info: Processing started: Sun Mar 31 21:14:04 2019
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off SimptelO9 -c SimptelO9
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
 Info (20030): Parallel compilation is enabled and will use 4 of the 4 processors detected
@@ -856,14 +929,16 @@ Info (12021): Found 2 design units, including 2 entities, in source file SignExt
     Info (12023): Found entity 2: SignExtend_26_bit File: /h/u7/c7/04/fanyao2/Simptel-O9/SignExtend.v Line: 10
 Info (12021): Found 1 design units, including 1 entities, in source file control_unit.v
     Info (12023): Found entity 1: control_unit File: /h/u7/c7/04/fanyao2/Simptel-O9/control_unit.v Line: 1
-Info (12021): Found 7 design units, including 7 entities, in source file datapath.v
+Info (12021): Found 9 design units, including 9 entities, in source file datapath.v
     Info (12023): Found entity 1: datapath File: /h/u7/c7/04/fanyao2/Simptel-O9/datapath.v Line: 1
-    Info (12023): Found entity 2: And_ File: /h/u7/c7/04/fanyao2/Simptel-O9/datapath.v Line: 183
-    Info (12023): Found entity 3: Or_ File: /h/u7/c7/04/fanyao2/Simptel-O9/datapath.v Line: 190
-    Info (12023): Found entity 4: two_to_one_mux File: /h/u7/c7/04/fanyao2/Simptel-O9/datapath.v Line: 197
-    Info (12023): Found entity 5: three_to_one_mux File: /h/u7/c7/04/fanyao2/Simptel-O9/datapath.v Line: 211
-    Info (12023): Found entity 6: two_to_one_mux_5_bit File: /h/u7/c7/04/fanyao2/Simptel-O9/datapath.v Line: 227
-    Info (12023): Found entity 7: four_to_one_mux File: /h/u7/c7/04/fanyao2/Simptel-O9/datapath.v Line: 240
+    Info (12023): Found entity 2: And_ File: /h/u7/c7/04/fanyao2/Simptel-O9/datapath.v Line: 215
+    Info (12023): Found entity 3: Or_ File: /h/u7/c7/04/fanyao2/Simptel-O9/datapath.v Line: 222
+    Info (12023): Found entity 4: two_to_one_mux File: /h/u7/c7/04/fanyao2/Simptel-O9/datapath.v Line: 229
+    Info (12023): Found entity 5: three_to_one_mux File: /h/u7/c7/04/fanyao2/Simptel-O9/datapath.v Line: 243
+    Info (12023): Found entity 6: two_to_one_mux_5_bit File: /h/u7/c7/04/fanyao2/Simptel-O9/datapath.v Line: 259
+    Info (12023): Found entity 7: four_to_one_mux File: /h/u7/c7/04/fanyao2/Simptel-O9/datapath.v Line: 272
+    Info (12023): Found entity 8: ALU_Register File: /h/u7/c7/04/fanyao2/Simptel-O9/datapath.v Line: 291
+    Info (12023): Found entity 9: hex_decoder File: /h/u7/c7/04/fanyao2/Simptel-O9/datapath.v Line: 301
 Info (12021): Found 2 design units, including 2 entities, in source file datapath_registers.v
     Info (12023): Found entity 1: Instruction_Register File: /h/u7/c7/04/fanyao2/Simptel-O9/datapath_registers.v Line: 1
     Info (12023): Found entity 2: Registers File: /h/u7/c7/04/fanyao2/Simptel-O9/datapath_registers.v Line: 23
@@ -871,32 +946,36 @@ Info (12021): Found 1 design units, including 1 entities, in source file ShiftLe
     Info (12023): Found entity 1: ShiftLeft File: /h/u7/c7/04/fanyao2/Simptel-O9/ShiftLeft.v Line: 1
 Info (12127): Elaborating entity "SimptelO9" for the top level hierarchy
 Info (12128): Elaborating entity "control_unit" for hierarchy "control_unit:cunit" File: /h/u7/c7/04/fanyao2/Simptel-O9/SimptelO9.v Line: 16
-Info (10264): Verilog HDL Case Statement information at control_unit.v(37): all case item expressions in this case statement are onehot File: /h/u7/c7/04/fanyao2/Simptel-O9/control_unit.v Line: 37
-Warning (10270): Verilog HDL Case Statement warning at control_unit.v(74): incomplete case statement has no default case item File: /h/u7/c7/04/fanyao2/Simptel-O9/control_unit.v Line: 74
-Warning (10270): Verilog HDL Case Statement warning at control_unit.v(105): incomplete case statement has no default case item File: /h/u7/c7/04/fanyao2/Simptel-O9/control_unit.v Line: 105
+Info (10264): Verilog HDL Case Statement information at control_unit.v(40): all case item expressions in this case statement are onehot File: /h/u7/c7/04/fanyao2/Simptel-O9/control_unit.v Line: 40
+Warning (10270): Verilog HDL Case Statement warning at control_unit.v(82): incomplete case statement has no default case item File: /h/u7/c7/04/fanyao2/Simptel-O9/control_unit.v Line: 82
+Warning (10270): Verilog HDL Case Statement warning at control_unit.v(106): incomplete case statement has no default case item File: /h/u7/c7/04/fanyao2/Simptel-O9/control_unit.v Line: 106
+Warning (10270): Verilog HDL Case Statement warning at control_unit.v(75): incomplete case statement has no default case item File: /h/u7/c7/04/fanyao2/Simptel-O9/control_unit.v Line: 75
+Info (10264): Verilog HDL Case Statement information at control_unit.v(75): all case item expressions in this case statement are onehot File: /h/u7/c7/04/fanyao2/Simptel-O9/control_unit.v Line: 75
 Info (12128): Elaborating entity "datapath" for hierarchy "datapath:dpath" File: /h/u7/c7/04/fanyao2/Simptel-O9/SimptelO9.v Line: 36
-Info (12128): Elaborating entity "three_to_one_mux" for hierarchy "datapath:dpath|three_to_one_mux:mux_F" File: /h/u7/c7/04/fanyao2/Simptel-O9/datapath.v Line: 57
-Info (12128): Elaborating entity "ProgramCounter" for hierarchy "datapath:dpath|ProgramCounter:program_counter" File: /h/u7/c7/04/fanyao2/Simptel-O9/datapath.v Line: 65
-Info (12128): Elaborating entity "two_to_one_mux" for hierarchy "datapath:dpath|two_to_one_mux:mux_A" File: /h/u7/c7/04/fanyao2/Simptel-O9/datapath.v Line: 72
-Info (12128): Elaborating entity "RAMO9" for hierarchy "datapath:dpath|RAMO9:Memory" File: /h/u7/c7/04/fanyao2/Simptel-O9/datapath.v Line: 80
-Info (12128): Elaborating entity "Instruction_Register" for hierarchy "datapath:dpath|Instruction_Register:IR" File: /h/u7/c7/04/fanyao2/Simptel-O9/datapath.v Line: 90
-Info (12128): Elaborating entity "two_to_one_mux_5_bit" for hierarchy "datapath:dpath|two_to_one_mux_5_bit:mux_B" File: /h/u7/c7/04/fanyao2/Simptel-O9/datapath.v Line: 97
-Info (12128): Elaborating entity "Registers" for hierarchy "datapath:dpath|Registers:register" File: /h/u7/c7/04/fanyao2/Simptel-O9/datapath.v Line: 109
+Info (12128): Elaborating entity "hex_decoder" for hierarchy "datapath:dpath|hex_decoder:H0" File: /h/u7/c7/04/fanyao2/Simptel-O9/datapath.v Line: 60
+Info (12128): Elaborating entity "three_to_one_mux" for hierarchy "datapath:dpath|three_to_one_mux:mux_F" File: /h/u7/c7/04/fanyao2/Simptel-O9/datapath.v Line: 83
+Info (12128): Elaborating entity "ProgramCounter" for hierarchy "datapath:dpath|ProgramCounter:program_counter" File: /h/u7/c7/04/fanyao2/Simptel-O9/datapath.v Line: 91
+Info (12128): Elaborating entity "two_to_one_mux" for hierarchy "datapath:dpath|two_to_one_mux:mux_A" File: /h/u7/c7/04/fanyao2/Simptel-O9/datapath.v Line: 98
+Info (12128): Elaborating entity "RAMO9" for hierarchy "datapath:dpath|RAMO9:Memory" File: /h/u7/c7/04/fanyao2/Simptel-O9/datapath.v Line: 106
+Info (12128): Elaborating entity "Instruction_Register" for hierarchy "datapath:dpath|Instruction_Register:IR" File: /h/u7/c7/04/fanyao2/Simptel-O9/datapath.v Line: 116
+Info (12128): Elaborating entity "two_to_one_mux_5_bit" for hierarchy "datapath:dpath|two_to_one_mux_5_bit:mux_B" File: /h/u7/c7/04/fanyao2/Simptel-O9/datapath.v Line: 123
+Info (12128): Elaborating entity "Registers" for hierarchy "datapath:dpath|Registers:register" File: /h/u7/c7/04/fanyao2/Simptel-O9/datapath.v Line: 135
 Warning (10855): Verilog HDL warning at datapath_registers.v(31): initial value for variable registers should be constant File: /h/u7/c7/04/fanyao2/Simptel-O9/datapath_registers.v Line: 31
-Info (12128): Elaborating entity "SignExtend" for hierarchy "datapath:dpath|SignExtend:sign_extend_A" File: /h/u7/c7/04/fanyao2/Simptel-O9/datapath.v Line: 121
-Info (12128): Elaborating entity "SignExtend_26_bit" for hierarchy "datapath:dpath|SignExtend_26_bit:sign_extend_B" File: /h/u7/c7/04/fanyao2/Simptel-O9/datapath.v Line: 126
-Info (12128): Elaborating entity "ShiftLeft" for hierarchy "datapath:dpath|ShiftLeft:shift_left_2_B" File: /h/u7/c7/04/fanyao2/Simptel-O9/datapath.v Line: 131
-Info (12128): Elaborating entity "four_to_one_mux" for hierarchy "datapath:dpath|four_to_one_mux:mux_E" File: /h/u7/c7/04/fanyao2/Simptel-O9/datapath.v Line: 147
-Info (12128): Elaborating entity "ALU_Decoder" for hierarchy "datapath:dpath|ALU_Decoder:alu_decoder" File: /h/u7/c7/04/fanyao2/Simptel-O9/datapath.v Line: 158
-Warning (10270): Verilog HDL Case Statement warning at ALU_Decoder.v(12): incomplete case statement has no default case item File: /h/u7/c7/04/fanyao2/Simptel-O9/ALU_Decoder.v Line: 12
+Info (12128): Elaborating entity "SignExtend" for hierarchy "datapath:dpath|SignExtend:sign_extend_A" File: /h/u7/c7/04/fanyao2/Simptel-O9/datapath.v Line: 147
+Info (12128): Elaborating entity "SignExtend_26_bit" for hierarchy "datapath:dpath|SignExtend_26_bit:sign_extend_B" File: /h/u7/c7/04/fanyao2/Simptel-O9/datapath.v Line: 152
+Info (12128): Elaborating entity "ShiftLeft" for hierarchy "datapath:dpath|ShiftLeft:shift_left_2_B" File: /h/u7/c7/04/fanyao2/Simptel-O9/datapath.v Line: 157
+Info (12128): Elaborating entity "four_to_one_mux" for hierarchy "datapath:dpath|four_to_one_mux:mux_E" File: /h/u7/c7/04/fanyao2/Simptel-O9/datapath.v Line: 173
+Info (12128): Elaborating entity "ALU_Decoder" for hierarchy "datapath:dpath|ALU_Decoder:alu_decoder" File: /h/u7/c7/04/fanyao2/Simptel-O9/datapath.v Line: 184
+Warning (10270): Verilog HDL Case Statement warning at ALU_Decoder.v(14): incomplete case statement has no default case item File: /h/u7/c7/04/fanyao2/Simptel-O9/ALU_Decoder.v Line: 14
 Warning (10240): Verilog HDL Always Construct warning at ALU_Decoder.v(8): inferring latch(es) for variable "ALU_control", which holds its previous value in one or more paths through the always construct File: /h/u7/c7/04/fanyao2/Simptel-O9/ALU_Decoder.v Line: 8
-Info (10041): Inferred latch for "ALU_control[0]" at ALU_Decoder.v(12) File: /h/u7/c7/04/fanyao2/Simptel-O9/ALU_Decoder.v Line: 12
-Info (10041): Inferred latch for "ALU_control[1]" at ALU_Decoder.v(12) File: /h/u7/c7/04/fanyao2/Simptel-O9/ALU_Decoder.v Line: 12
-Info (10041): Inferred latch for "ALU_control[2]" at ALU_Decoder.v(12) File: /h/u7/c7/04/fanyao2/Simptel-O9/ALU_Decoder.v Line: 12
-Info (10041): Inferred latch for "ALU_control[3]" at ALU_Decoder.v(12) File: /h/u7/c7/04/fanyao2/Simptel-O9/ALU_Decoder.v Line: 12
-Info (12128): Elaborating entity "ALU" for hierarchy "datapath:dpath|ALU:alu" File: /h/u7/c7/04/fanyao2/Simptel-O9/datapath.v Line: 167
-Info (12128): Elaborating entity "And_" for hierarchy "datapath:dpath|And_:my_and" File: /h/u7/c7/04/fanyao2/Simptel-O9/datapath.v Line: 173
-Info (12128): Elaborating entity "Or_" for hierarchy "datapath:dpath|Or_:my_or" File: /h/u7/c7/04/fanyao2/Simptel-O9/datapath.v Line: 179
+Info (10041): Inferred latch for "ALU_control[0]" at ALU_Decoder.v(10) File: /h/u7/c7/04/fanyao2/Simptel-O9/ALU_Decoder.v Line: 10
+Info (10041): Inferred latch for "ALU_control[1]" at ALU_Decoder.v(10) File: /h/u7/c7/04/fanyao2/Simptel-O9/ALU_Decoder.v Line: 10
+Info (10041): Inferred latch for "ALU_control[2]" at ALU_Decoder.v(10) File: /h/u7/c7/04/fanyao2/Simptel-O9/ALU_Decoder.v Line: 10
+Info (10041): Inferred latch for "ALU_control[3]" at ALU_Decoder.v(10) File: /h/u7/c7/04/fanyao2/Simptel-O9/ALU_Decoder.v Line: 10
+Info (12128): Elaborating entity "ALU" for hierarchy "datapath:dpath|ALU:alu" File: /h/u7/c7/04/fanyao2/Simptel-O9/datapath.v Line: 193
+Info (12128): Elaborating entity "ALU_Register" for hierarchy "datapath:dpath|ALU_Register:alu_register" File: /h/u7/c7/04/fanyao2/Simptel-O9/datapath.v Line: 199
+Info (12128): Elaborating entity "And_" for hierarchy "datapath:dpath|And_:my_and" File: /h/u7/c7/04/fanyao2/Simptel-O9/datapath.v Line: 205
+Info (12128): Elaborating entity "Or_" for hierarchy "datapath:dpath|Or_:my_or" File: /h/u7/c7/04/fanyao2/Simptel-O9/datapath.v Line: 211
 Warning (12011): Net is missing source, defaulting to GND
     Warning (12110): Net "reset" is missing source, defaulting to GND File: /h/u7/c7/04/fanyao2/Simptel-O9/SimptelO9.v Line: 8
 Warning (276020): Inferred RAM node "datapath:dpath|Registers:register|registers_rtl_0" from synchronous design logic.  Pass-through logic has been added to match the read-during-write behavior of the original design.
@@ -956,23 +1035,6 @@ Info (12133): Instantiated megafunction "datapath:dpath|Registers:register|altsy
     Info (12134): Parameter "READ_DURING_WRITE_MODE_MIXED_PORTS" = "OLD_DATA"
 Info (12021): Found 1 design units, including 1 entities, in source file db/altsyncram_5io1.tdf
     Info (12023): Found entity 1: altsyncram_5io1 File: /h/u7/c7/04/fanyao2/Simptel-O9/db/altsyncram_5io1.tdf Line: 28
-Info (12130): Elaborated megafunction instantiation "datapath:dpath|Registers:register|altsyncram:registers_rtl_1"
-Info (12133): Instantiated megafunction "datapath:dpath|Registers:register|altsyncram:registers_rtl_1" with the following parameter:
-    Info (12134): Parameter "OPERATION_MODE" = "DUAL_PORT"
-    Info (12134): Parameter "WIDTH_A" = "32"
-    Info (12134): Parameter "WIDTHAD_A" = "5"
-    Info (12134): Parameter "NUMWORDS_A" = "32"
-    Info (12134): Parameter "WIDTH_B" = "32"
-    Info (12134): Parameter "WIDTHAD_B" = "5"
-    Info (12134): Parameter "NUMWORDS_B" = "32"
-    Info (12134): Parameter "ADDRESS_ACLR_A" = "NONE"
-    Info (12134): Parameter "OUTDATA_REG_B" = "UNREGISTERED"
-    Info (12134): Parameter "ADDRESS_ACLR_B" = "NONE"
-    Info (12134): Parameter "OUTDATA_ACLR_B" = "NONE"
-    Info (12134): Parameter "ADDRESS_REG_B" = "CLOCK0"
-    Info (12134): Parameter "INDATA_ACLR_A" = "NONE"
-    Info (12134): Parameter "WRCONTROL_ACLR_A" = "NONE"
-    Info (12134): Parameter "READ_DURING_WRITE_MODE_MIXED_PORTS" = "OLD_DATA"
 Warning (14284): Synthesized away the following node(s):
     Warning (14285): Synthesized away the following RAM node(s):
         Warning (14320): Synthesized away node "datapath:dpath|Registers:register|altsyncram:registers_rtl_1|altsyncram_5io1:auto_generated|ram_block1a0" File: /h/u7/c7/04/fanyao2/Simptel-O9/db/altsyncram_5io1.tdf Line: 39
@@ -1039,7 +1101,8 @@ Warning (14284): Synthesized away the following node(s):
         Warning (14320): Synthesized away node "datapath:dpath|Registers:register|altsyncram:registers_rtl_0|altsyncram_5io1:auto_generated|ram_block1a29" File: /h/u7/c7/04/fanyao2/Simptel-O9/db/altsyncram_5io1.tdf Line: 851
         Warning (14320): Synthesized away node "datapath:dpath|Registers:register|altsyncram:registers_rtl_0|altsyncram_5io1:auto_generated|ram_block1a30" File: /h/u7/c7/04/fanyao2/Simptel-O9/db/altsyncram_5io1.tdf Line: 879
         Warning (14320): Synthesized away node "datapath:dpath|Registers:register|altsyncram:registers_rtl_0|altsyncram_5io1:auto_generated|ram_block1a31" File: /h/u7/c7/04/fanyao2/Simptel-O9/db/altsyncram_5io1.tdf Line: 907
-Info (17049): 152 registers lost all their fanouts during netlist optimizations.
+Warning (12241): 1 hierarchies have connectivity warnings - see the Connectivity Checks report folder
+Info (17049): 201 registers lost all their fanouts during netlist optimizations.
 Info (144001): Generated suppressed messages file /h/u7/c7/04/fanyao2/Simptel-O9/output_files/SimptelO9.map.smsg
 Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
     Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
@@ -1048,11 +1111,11 @@ Warning (21074): Design contains 1 input pin(s) that do not drive logic
 Info (21057): Implemented 1 device resources after synthesis - the final resource count might be different
     Info (21058): Implemented 1 input pins
     Info (21059): Implemented 0 output pins
-Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 79 warnings
-    Info: Peak virtual memory: 1059 megabytes
-    Info: Processing ended: Sat Mar 30 17:31:46 2019
+Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 81 warnings
+    Info: Peak virtual memory: 1056 megabytes
+    Info: Processing ended: Sun Mar 31 21:14:23 2019
     Info: Elapsed time: 00:00:19
-    Info: Total CPU time (on all processors): 00:00:22
+    Info: Total CPU time (on all processors): 00:00:24
 
 
 +------------------------------------------+

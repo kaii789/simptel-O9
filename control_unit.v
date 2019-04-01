@@ -24,7 +24,7 @@
 		END = 6'b111111;
 	// ALUOps
 	localparam 
-		R_OP = 2'b0,
+		R_OP = 2'b00,
       ADD = 2'b01,
 		SUB = 2'b10;
 		
@@ -60,7 +60,7 @@
 always @(*)
     begin: enable_signals
         // By default make all our signals 0
-	 ALUOp = 1'b0; 
+	 ALUOp = 2'b00; 
 	 PCWriteCond = 1'b0;
 	 PCWrite = 1'b0;
 	 IorD = 1'b0;

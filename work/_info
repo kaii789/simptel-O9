@@ -9,134 +9,177 @@ z2
 cModel Technology
 d/h/u11/c7/00/huangk46/Desktop/Simptel-O9
 vALU
-Z0 !s110 1553981691
+Z0 !s110 1554081368
 !i10b 1
 !s100 m34A;nDDOHH[EgL3EBUiU1
 ILCk6JPL@PBQDXMW2V?3SJ3
 Z1 VDg1SIo80bB@j0V0VzS_@n1
 Z2 d/h/u7/c7/04/fanyao2/Simptel-O9
-w1553979774
+Z3 w1554077682
 8ALU.v
 FALU.v
 L0 1
-Z3 OV;L;10.5b;63
+Z4 OV;L;10.5b;63
 r1
 !s85 0
 31
-Z4 !s108 1553981691.000000
-Z5 !s107 datapath_registers.v|control_unit.v|SignExtend.v|ShiftLeft.v|RAMO9(4KB).v|ProgramCounter.v|ALU_Decoder.v|ALU.v|datapath.v|SimptelO9.v|
-Z6 !s90 -reportprogress|300|-timescale|1ns/1ns|SimptelO9.v|datapath.v|ALU.v|ALU_Decoder.v|ProgramCounter.v|RAMO9(4KB).v|ShiftLeft.v|SignExtend.v|control_unit.v|datapath_registers.v|
+Z5 !s108 1554081368.000000
+Z6 !s107 datapath_registers.v|control_unit.v|SignExtend.v|ShiftLeft.v|RAMO9(4KB).v|ProgramCounter.v|ALU_Decoder.v|ALU.v|datapath.v|SimptelO9.v|
+Z7 !s90 -reportprogress|300|-timescale|1ns/1ns|SimptelO9.v|datapath.v|ALU.v|ALU_Decoder.v|ProgramCounter.v|RAMO9(4KB).v|ShiftLeft.v|SignExtend.v|control_unit.v|datapath_registers.v|
 !i113 1
-Z7 o-timescale 1ns/1ns
-Z8 tCvgOpt 0
+Z8 o-timescale 1ns/1ns
+Z9 tCvgOpt 0
 n@a@l@u
 vALU_Decoder
 R0
 !i10b 1
-!s100 >o<TWIkHWDBI4mJ>0X>4@3
-Ih;?``<J7lfk>CG9l4DK]Q0
+!s100 jdo0_P?Fg]UVi7zBbBK3A2
+IVZ:FJEAXGK30oTZXKZ9KY0
 R1
 R2
-w1553980689
+w1554079951
 8ALU_Decoder.v
 FALU_Decoder.v
 L0 1
-R3
+R4
 r1
 !s85 0
 31
-R4
 R5
 R6
-!i113 1
 R7
+!i113 1
 R8
+R9
 n@a@l@u_@decoder
+vALU_Register
+R0
+!i10b 1
+!s100 6[SZ8m>9e<iI`An>fjoM60
+IAd`4Nm:e:Jj^6BA[[j6Uh2
+R1
+R2
+Z10 w1554080724
+Z11 8datapath.v
+Z12 Fdatapath.v
+L0 291
+R4
+r1
+!s85 0
+31
+R5
+R6
+R7
+!i113 1
+R8
+R9
+n@a@l@u_@register
 vAnd_
 R0
 !i10b 1
-!s100 DcF>j8I:XB=<C;9U0[bRD3
-I>ik_gc2La3mTiMnEDzQNJ3
+!s100 Hi=DX8SGY8hooB[c1U99X2
+I_DWcRO>CZCzCGIVK?Vb<_0
 R1
 R2
-Z9 w1553977823
-Z10 8datapath.v
-Z11 Fdatapath.v
-L0 183
-R3
+R10
+R11
+R12
+L0 215
+R4
 r1
 !s85 0
 31
-R4
 R5
 R6
-!i113 1
 R7
+!i113 1
 R8
+R9
 n@and_
 vcontrol_unit
 R0
 !i10b 1
-!s100 3lDOfk:1LEWcaNQLn9id;0
-IP>T=1?Fn]oLHP?O;0fnUc0
+!s100 zNX1GO20KAbT=DW6D:RWF0
+I7n8N_eTDk?7RTThinS<n]1
 R1
 R2
-w1553981473
+w1554080310
 8control_unit.v
 Fcontrol_unit.v
 L0 1
-R3
+R4
 r1
 !s85 0
 31
-R4
 R5
 R6
-!i113 1
 R7
+!i113 1
 R8
+R9
 vdatapath
 R0
 !i10b 1
-!s100 TmkM:^ic;clOjQf`7T`<?3
-IG7;9a;2:=DLnD]<5^S[Fd3
+!s100 B<?0e;NHLEEnJho9:CYd^1
+IdNECCm_5T@GYNU__XB;:L1
 R1
 R2
-R9
 R10
 R11
+R12
 L0 1
-R3
+R4
 r1
 !s85 0
 31
-R4
 R5
 R6
-!i113 1
 R7
+!i113 1
 R8
+R9
 vfour_to_one_mux
 R0
 !i10b 1
-!s100 4=F5A4aj_08JHS8?k76Zb1
-IXnK_bR[[@88WJLU<JA0?E3
+!s100 2H11<XOnCY>@FIhlB3UET2
+ImVZXVd3QnZSlNmX1=@2Mo1
 R1
 R2
-R9
 R10
 R11
-L0 240
-R3
+R12
+L0 272
+R4
 r1
 !s85 0
 31
-R4
 R5
 R6
-!i113 1
 R7
+!i113 1
 R8
+R9
+vhex_decoder
+R0
+!i10b 1
+!s100 AJYzDW9lLToF`9AORZdU]0
+I>PX`^FBDgSLUmQG6Jo0NJ2
+R1
+R2
+R10
+R11
+R12
+L0 301
+R4
+r1
+!s85 0
+31
+R5
+R6
+R7
+!i113 1
+R8
+R9
 vInstruction_Register
 R0
 !i10b 1
@@ -144,42 +187,42 @@ R0
 IH>Xi=7mTJX@I;6iRnaBV13
 R1
 R2
-Z12 w1553976309
-Z13 8datapath_registers.v
-Z14 Fdatapath_registers.v
+Z13 w1554077683
+Z14 8datapath_registers.v
+Z15 Fdatapath_registers.v
 L0 1
-R3
+R4
 r1
 !s85 0
 31
-R4
 R5
 R6
-!i113 1
 R7
+!i113 1
 R8
+R9
 n@instruction_@register
 vOr_
 R0
 !i10b 1
-!s100 N3]Z@DY>@Z7YVk^=H3G5N0
-IJnD?NidZhiX=;HVYZaA4@1
+!s100 Ud3BLGhEOzl8]mCR9fRHc2
+I8zm<eb@oN[0Whd6c_cfOE1
 R1
 R2
-R9
 R10
 R11
-L0 190
-R3
+R12
+L0 222
+R4
 r1
 !s85 0
 31
-R4
 R5
 R6
-!i113 1
 R7
+!i113 1
 R8
+R9
 n@or_
 vProgramCounter
 R0
@@ -188,42 +231,42 @@ R0
 IWYe8l4C[R_dBeW?X^Z]0J0
 R1
 R2
-R12
+R3
 8ProgramCounter.v
 FProgramCounter.v
 L0 1
-R3
+R4
 r1
 !s85 0
 31
-R4
 R5
 R6
-!i113 1
 R7
+!i113 1
 R8
+R9
 n@program@counter
 vRAMO9
 R0
 !i10b 1
-!s100 JhRd>l@M1Cj4?:YC8fkWo3
-IB7gC1GeBmJ_b_oXmIlGRe1
+!s100 l]HhoGXWX9:N25VncDZlH3
+IngEOS9D^[iX??IfVBKTAk0
 R1
 R2
-R12
+w1554081134
 8RAMO9(4KB).v
 FRAMO9(4KB).v
 L0 1
-R3
+R4
 r1
 !s85 0
 31
-R4
 R5
 R6
-!i113 1
 R7
+!i113 1
 R8
+R9
 n@r@a@m@o9
 vRegisters
 R0
@@ -232,20 +275,20 @@ R0
 IKg@ZK6zV2JF0laoR1lzZ31
 R1
 R2
-R12
 R13
 R14
+R15
 L0 23
-R3
+R4
 r1
 !s85 0
 31
-R4
 R5
 R6
-!i113 1
 R7
+!i113 1
 R8
+R9
 n@registers
 vShiftLeft
 R0
@@ -254,20 +297,20 @@ R0
 IzRzg3OY=PzjA7RN`;5G>g1
 R1
 R2
-R12
+R3
 8ShiftLeft.v
 FShiftLeft.v
 L0 1
-R3
+R4
 r1
 !s85 0
 31
-R4
 R5
 R6
-!i113 1
 R7
+!i113 1
 R8
+R9
 n@shift@left
 vSignExtend
 R0
@@ -276,20 +319,20 @@ R0
 I3@_Lj_XbJ@^`S:Y6EbAA_1
 R1
 R2
-R12
-Z15 8SignExtend.v
-Z16 FSignExtend.v
-L0 1
 R3
+Z16 8SignExtend.v
+Z17 FSignExtend.v
+L0 1
+R4
 r1
 !s85 0
 31
-R4
 R5
 R6
-!i113 1
 R7
+!i113 1
 R8
+R9
 n@sign@extend
 vSignExtend_26_bit
 R0
@@ -298,103 +341,103 @@ R0
 I>7PX[gHBcdeoE<_d04ES32
 R1
 R2
-R12
-R15
-R16
-L0 10
 R3
+R16
+R17
+L0 10
+R4
 r1
 !s85 0
 31
-R4
 R5
 R6
-!i113 1
 R7
+!i113 1
 R8
+R9
 n@sign@extend_26_bit
 vSimptelO9
 R0
 !i10b 1
-!s100 V03@@58hBGEdk@adeaP=<2
-IOz4XS^TlG`5gQ?C2hK<KH3
+!s100 B3>WR^X_Fa^ZiW?nl=mmP0
+Idc2dPk?UzM5f=6;9HmISG3
 R1
 R2
-R12
+w1554080534
 8SimptelO9.v
 FSimptelO9.v
 L0 1
-R3
+R4
 r1
 !s85 0
 31
-R4
 R5
 R6
-!i113 1
 R7
+!i113 1
 R8
+R9
 n@simptel@o9
 vthree_to_one_mux
 R0
 !i10b 1
-!s100 IoURH[K2l:B:e>Uo6<4LX3
-I4^cb@kW62X<Q8mjcLjMhd2
+!s100 lV>bVa6VR74C:=T9eI72>2
+ImWE9TzdFF<mNHaocennRF0
 R1
 R2
-R9
 R10
 R11
-L0 211
-R3
+R12
+L0 243
+R4
 r1
 !s85 0
 31
-R4
 R5
 R6
-!i113 1
 R7
+!i113 1
 R8
+R9
 vtwo_to_one_mux
 R0
 !i10b 1
-!s100 kdIX@mN8?m5^1Q]PY`2G[2
-IXG_f@4izPfd1?]g?^Bb]]2
+!s100 2ig5jV8AdkcIYnXL=F<7I2
+IS^@]0cPkbKja>IVaPmNWJ1
 R1
 R2
-R9
 R10
 R11
-L0 197
-R3
+R12
+L0 229
+R4
 r1
 !s85 0
 31
-R4
 R5
 R6
-!i113 1
 R7
+!i113 1
 R8
+R9
 vtwo_to_one_mux_5_bit
 R0
 !i10b 1
-!s100 gW;9?3B4EVM3RPLcV1ahg3
-I<]mToT<d:oQV_of01T7mi0
+!s100 nbQb@bCD@6SA?lcAo?=P:1
+IP:Q?ACFMR6>Lbl<TNNl<F1
 R1
 R2
-R9
 R10
 R11
-L0 227
-R3
+R12
+L0 259
+R4
 r1
 !s85 0
 31
-R4
 R5
 R6
-!i113 1
 R7
+!i113 1
 R8
+R9

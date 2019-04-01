@@ -3,34 +3,29 @@ CLOCK_50 => CLOCK_50.IN2
 
 
 |SimptelO9|control_unit:cunit
-opCode[0] => Equal0.IN11
 opCode[0] => Decoder0.IN5
-opCode[1] => Equal0.IN10
 opCode[1] => Decoder0.IN4
-opCode[2] => Equal0.IN9
 opCode[2] => Decoder0.IN3
-opCode[3] => Equal0.IN8
 opCode[3] => Decoder0.IN2
-opCode[4] => Equal0.IN7
 opCode[4] => Decoder0.IN1
-opCode[5] => Equal0.IN6
 opCode[5] => Decoder0.IN0
 clk => current_state~1.DATAIN
 reset => ~NO_FANOUT~
-ALUOp <= Selector4.DB_MAX_OUTPUT_PORT_TYPE
-PCWriteCond <= <GND>
+ALUOp[0] <= Selector7.DB_MAX_OUTPUT_PORT_TYPE
+ALUOp[1] <= Selector6.DB_MAX_OUTPUT_PORT_TYPE
+PCWriteCond <= Selector10.DB_MAX_OUTPUT_PORT_TYPE
 ALUSrcB[0] <= ALUOp.DB_MAX_OUTPUT_PORT_TYPE
-ALUSrcB[1] <= Selector2.DB_MAX_OUTPUT_PORT_TYPE
-PCSource[0] <= <GND>
-PCSource[1] <= Selector5.DB_MAX_OUTPUT_PORT_TYPE
-PCWrite <= Selector6.DB_MAX_OUTPUT_PORT_TYPE
+ALUSrcB[1] <= Selector4.DB_MAX_OUTPUT_PORT_TYPE
+PCSource[0] <= Selector9.DB_MAX_OUTPUT_PORT_TYPE
+PCSource[1] <= Selector8.DB_MAX_OUTPUT_PORT_TYPE
+PCWrite <= Selector11.DB_MAX_OUTPUT_PORT_TYPE
 IorD <= <GND>
 MemWrite <= <GND>
 MemtoReg <= <GND>
 IRWrite <= IRWrite.DB_MAX_OUTPUT_PORT_TYPE
-ALUSrcA <= Selector1.DB_MAX_OUTPUT_PORT_TYPE
+ALUSrcA <= Selector3.DB_MAX_OUTPUT_PORT_TYPE
 RegWrite <= RegWrite.DB_MAX_OUTPUT_PORT_TYPE
-RegDst <= Selector3.DB_MAX_OUTPUT_PORT_TYPE
+RegDst <= Selector5.DB_MAX_OUTPUT_PORT_TYPE
 
 
 |SimptelO9|datapath:dpath
@@ -43,13 +38,14 @@ MemtoReg => MemtoReg.IN1
 IRWrite => IRWrite.IN1
 PCSource[0] => PCSource[0].IN1
 PCSource[1] => PCSource[1].IN1
-ALUOp => ALUOp.IN1
+ALUOp[0] => ALUOp[0].IN1
+ALUOp[1] => ALUOp[1].IN1
 ALUSrcB[0] => ALUSrcB[0].IN1
 ALUSrcB[1] => ALUSrcB[1].IN1
 ALUSrcA => ALUSrcA.IN1
 RegWrite => RegWrite.IN1
 RegDst => RegDst.IN1
-clk => clk.IN5
+clk => clk.IN6
 reset => reset.IN2
 opCode[0] <= Instruction_Register:IR.instruc3
 opCode[1] <= Instruction_Register:IR.instruc3
@@ -57,6 +53,90 @@ opCode[2] <= Instruction_Register:IR.instruc3
 opCode[3] <= Instruction_Register:IR.instruc3
 opCode[4] <= Instruction_Register:IR.instruc3
 opCode[5] <= Instruction_Register:IR.instruc3
+HEX0[0] <= hex_decoder:H0.segments
+HEX0[1] <= hex_decoder:H0.segments
+HEX0[2] <= hex_decoder:H0.segments
+HEX0[3] <= hex_decoder:H0.segments
+HEX0[4] <= hex_decoder:H0.segments
+HEX0[5] <= hex_decoder:H0.segments
+HEX0[6] <= hex_decoder:H0.segments
+HEX1[0] <= hex_decoder:H1.segments
+HEX1[1] <= hex_decoder:H1.segments
+HEX1[2] <= hex_decoder:H1.segments
+HEX1[3] <= hex_decoder:H1.segments
+HEX1[4] <= hex_decoder:H1.segments
+HEX1[5] <= hex_decoder:H1.segments
+HEX1[6] <= hex_decoder:H1.segments
+HEX2[0] <= hex_decoder:H02.segments
+HEX2[1] <= hex_decoder:H02.segments
+HEX2[2] <= hex_decoder:H02.segments
+HEX2[3] <= hex_decoder:H02.segments
+HEX2[4] <= hex_decoder:H02.segments
+HEX2[5] <= hex_decoder:H02.segments
+HEX2[6] <= hex_decoder:H02.segments
+HEX3[0] <= hex_decoder:H3.segments
+HEX3[1] <= hex_decoder:H3.segments
+HEX3[2] <= hex_decoder:H3.segments
+HEX3[3] <= hex_decoder:H3.segments
+HEX3[4] <= hex_decoder:H3.segments
+HEX3[5] <= hex_decoder:H3.segments
+HEX3[6] <= hex_decoder:H3.segments
+
+
+|SimptelO9|datapath:dpath|hex_decoder:H0
+hex_digit[0] => Decoder0.IN3
+hex_digit[1] => Decoder0.IN2
+hex_digit[2] => Decoder0.IN1
+hex_digit[3] => Decoder0.IN0
+segments[0] <= WideOr6.DB_MAX_OUTPUT_PORT_TYPE
+segments[1] <= WideOr5.DB_MAX_OUTPUT_PORT_TYPE
+segments[2] <= WideOr4.DB_MAX_OUTPUT_PORT_TYPE
+segments[3] <= WideOr3.DB_MAX_OUTPUT_PORT_TYPE
+segments[4] <= WideOr2.DB_MAX_OUTPUT_PORT_TYPE
+segments[5] <= WideOr1.DB_MAX_OUTPUT_PORT_TYPE
+segments[6] <= WideOr0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|SimptelO9|datapath:dpath|hex_decoder:H1
+hex_digit[0] => Decoder0.IN3
+hex_digit[1] => Decoder0.IN2
+hex_digit[2] => Decoder0.IN1
+hex_digit[3] => Decoder0.IN0
+segments[0] <= WideOr6.DB_MAX_OUTPUT_PORT_TYPE
+segments[1] <= WideOr5.DB_MAX_OUTPUT_PORT_TYPE
+segments[2] <= WideOr4.DB_MAX_OUTPUT_PORT_TYPE
+segments[3] <= WideOr3.DB_MAX_OUTPUT_PORT_TYPE
+segments[4] <= WideOr2.DB_MAX_OUTPUT_PORT_TYPE
+segments[5] <= WideOr1.DB_MAX_OUTPUT_PORT_TYPE
+segments[6] <= WideOr0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|SimptelO9|datapath:dpath|hex_decoder:H02
+hex_digit[0] => Decoder0.IN3
+hex_digit[1] => Decoder0.IN2
+hex_digit[2] => Decoder0.IN1
+hex_digit[3] => Decoder0.IN0
+segments[0] <= WideOr6.DB_MAX_OUTPUT_PORT_TYPE
+segments[1] <= WideOr5.DB_MAX_OUTPUT_PORT_TYPE
+segments[2] <= WideOr4.DB_MAX_OUTPUT_PORT_TYPE
+segments[3] <= WideOr3.DB_MAX_OUTPUT_PORT_TYPE
+segments[4] <= WideOr2.DB_MAX_OUTPUT_PORT_TYPE
+segments[5] <= WideOr1.DB_MAX_OUTPUT_PORT_TYPE
+segments[6] <= WideOr0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|SimptelO9|datapath:dpath|hex_decoder:H3
+hex_digit[0] => Decoder0.IN3
+hex_digit[1] => Decoder0.IN2
+hex_digit[2] => Decoder0.IN1
+hex_digit[3] => Decoder0.IN0
+segments[0] <= WideOr6.DB_MAX_OUTPUT_PORT_TYPE
+segments[1] <= WideOr5.DB_MAX_OUTPUT_PORT_TYPE
+segments[2] <= WideOr4.DB_MAX_OUTPUT_PORT_TYPE
+segments[3] <= WideOr3.DB_MAX_OUTPUT_PORT_TYPE
+segments[4] <= WideOr2.DB_MAX_OUTPUT_PORT_TYPE
+segments[5] <= WideOr1.DB_MAX_OUTPUT_PORT_TYPE
+segments[6] <= WideOr0.DB_MAX_OUTPUT_PORT_TYPE
 
 
 |SimptelO9|datapath:dpath|three_to_one_mux:mux_F
@@ -6081,10 +6161,10 @@ Function_code[2] => Decoder0.IN3
 Function_code[3] => Decoder0.IN2
 Function_code[4] => Decoder0.IN1
 Function_code[5] => Decoder0.IN0
-ALU_optcode => ALU_control[0]$latch.ACLR
-ALU_optcode => ALU_control[1]$latch.ACLR
-ALU_optcode => ALU_control[2]$latch.ACLR
-ALU_optcode => ALU_control[3]$latch.ACLR
+ALU_optcode[0] => Equal0.IN0
+ALU_optcode[0] => Equal1.IN1
+ALU_optcode[1] => Equal0.IN1
+ALU_optcode[1] => Equal1.IN0
 ALU_control[0] <= ALU_control[0]$latch.DB_MAX_OUTPUT_PORT_TYPE
 ALU_control[1] <= ALU_control[1]$latch.DB_MAX_OUTPUT_PORT_TYPE
 ALU_control[2] <= ALU_control[2]$latch.DB_MAX_OUTPUT_PORT_TYPE
@@ -6923,6 +7003,105 @@ ALU_result[28] <= ALU_result[28]~reg0.DB_MAX_OUTPUT_PORT_TYPE
 ALU_result[29] <= ALU_result[29]~reg0.DB_MAX_OUTPUT_PORT_TYPE
 ALU_result[30] <= ALU_result[30]~reg0.DB_MAX_OUTPUT_PORT_TYPE
 ALU_result[31] <= ALU_result[31]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|SimptelO9|datapath:dpath|ALU_Register:alu_register
+in[0] => out[0]~reg0.DATAIN
+in[1] => out[1]~reg0.DATAIN
+in[2] => out[2]~reg0.DATAIN
+in[3] => out[3]~reg0.DATAIN
+in[4] => out[4]~reg0.DATAIN
+in[5] => out[5]~reg0.DATAIN
+in[6] => out[6]~reg0.DATAIN
+in[7] => out[7]~reg0.DATAIN
+in[8] => out[8]~reg0.DATAIN
+in[9] => out[9]~reg0.DATAIN
+in[10] => out[10]~reg0.DATAIN
+in[11] => out[11]~reg0.DATAIN
+in[12] => out[12]~reg0.DATAIN
+in[13] => out[13]~reg0.DATAIN
+in[14] => out[14]~reg0.DATAIN
+in[15] => out[15]~reg0.DATAIN
+in[16] => out[16]~reg0.DATAIN
+in[17] => out[17]~reg0.DATAIN
+in[18] => out[18]~reg0.DATAIN
+in[19] => out[19]~reg0.DATAIN
+in[20] => out[20]~reg0.DATAIN
+in[21] => out[21]~reg0.DATAIN
+in[22] => out[22]~reg0.DATAIN
+in[23] => out[23]~reg0.DATAIN
+in[24] => out[24]~reg0.DATAIN
+in[25] => out[25]~reg0.DATAIN
+in[26] => out[26]~reg0.DATAIN
+in[27] => out[27]~reg0.DATAIN
+in[28] => out[28]~reg0.DATAIN
+in[29] => out[29]~reg0.DATAIN
+in[30] => out[30]~reg0.DATAIN
+in[31] => out[31]~reg0.DATAIN
+out[0] <= out[0]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+out[1] <= out[1]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+out[2] <= out[2]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+out[3] <= out[3]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+out[4] <= out[4]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+out[5] <= out[5]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+out[6] <= out[6]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+out[7] <= out[7]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+out[8] <= out[8]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+out[9] <= out[9]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+out[10] <= out[10]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+out[11] <= out[11]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+out[12] <= out[12]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+out[13] <= out[13]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+out[14] <= out[14]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+out[15] <= out[15]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+out[16] <= out[16]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+out[17] <= out[17]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+out[18] <= out[18]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+out[19] <= out[19]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+out[20] <= out[20]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+out[21] <= out[21]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+out[22] <= out[22]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+out[23] <= out[23]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+out[24] <= out[24]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+out[25] <= out[25]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+out[26] <= out[26]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+out[27] <= out[27]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+out[28] <= out[28]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+out[29] <= out[29]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+out[30] <= out[30]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+out[31] <= out[31]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+clk => out[0]~reg0.CLK
+clk => out[1]~reg0.CLK
+clk => out[2]~reg0.CLK
+clk => out[3]~reg0.CLK
+clk => out[4]~reg0.CLK
+clk => out[5]~reg0.CLK
+clk => out[6]~reg0.CLK
+clk => out[7]~reg0.CLK
+clk => out[8]~reg0.CLK
+clk => out[9]~reg0.CLK
+clk => out[10]~reg0.CLK
+clk => out[11]~reg0.CLK
+clk => out[12]~reg0.CLK
+clk => out[13]~reg0.CLK
+clk => out[14]~reg0.CLK
+clk => out[15]~reg0.CLK
+clk => out[16]~reg0.CLK
+clk => out[17]~reg0.CLK
+clk => out[18]~reg0.CLK
+clk => out[19]~reg0.CLK
+clk => out[20]~reg0.CLK
+clk => out[21]~reg0.CLK
+clk => out[22]~reg0.CLK
+clk => out[23]~reg0.CLK
+clk => out[24]~reg0.CLK
+clk => out[25]~reg0.CLK
+clk => out[26]~reg0.CLK
+clk => out[27]~reg0.CLK
+clk => out[28]~reg0.CLK
+clk => out[29]~reg0.CLK
+clk => out[30]~reg0.CLK
+clk => out[31]~reg0.CLK
 
 
 |SimptelO9|datapath:dpath|And_:my_and

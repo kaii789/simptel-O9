@@ -1,5 +1,5 @@
 TimeQuest Timing Analyzer report for SimptelO9
-Sat Mar 30 17:34:08 2019
+Sun Mar 31 21:15:10 2019
 Quartus Prime Version 17.0.0 Build 595 04/25/2017 SJ Lite Edition
 
 
@@ -363,7 +363,7 @@ No non-DPA dedicated SERDES Receiver circuitry present in device or used in desi
 Info: *******************************************************************
 Info: Running Quartus Prime TimeQuest Timing Analyzer
     Info: Version 17.0.0 Build 595 04/25/2017 SJ Lite Edition
-    Info: Processing started: Sat Mar 30 17:33:35 2019
+    Info: Processing started: Sun Mar 31 21:15:04 2019
 Info: Command: quartus_sta SimptelO9 -c SimptelO9
 Info: qsta_default_script.tcl version: #1
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
@@ -423,9 +423,9 @@ Info (332140): No Minimum Pulse Width paths to report
 Info (332101): Design is fully constrained for setup requirements
 Info (332101): Design is fully constrained for hold requirements
 Info: Quartus Prime TimeQuest Timing Analyzer was successful. 0 errors, 6 warnings
-    Info: Peak virtual memory: 1177 megabytes
-    Info: Processing ended: Sat Mar 30 17:34:08 2019
-    Info: Elapsed time: 00:00:33
-    Info: Total CPU time (on all processors): 00:00:05
+    Info: Peak virtual memory: 1175 megabytes
+    Info: Processing ended: Sun Mar 31 21:15:10 2019
+    Info: Elapsed time: 00:00:06
+    Info: Total CPU time (on all processors): 00:00:04
 
 

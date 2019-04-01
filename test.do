@@ -13,4 +13,4 @@ force {CLOCK_50} 0 0, 1 5 -r 10
 # A
 # force {go} 0 0, 1 10
 
-run 400ns
+run 5000ns

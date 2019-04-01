@@ -22,8 +22,8 @@ module datapath(
 );
 
 
-	input PCWriteCond, PCWrite, IorD, MemRead, MemWrite, MemtoReg, IRWrite, ALUOp, ALUSrcA, RegWrite, RegDst, clk, reset;
-	input [1:0] PCSource, ALUSrcB;
+	input PCWriteCond, PCWrite, IorD, MemRead, MemWrite, MemtoReg, IRWrite, ALUSrcA, RegWrite, RegDst, clk, reset;
+	input [1:0] PCSource, ALUSrcB, ALUOp;
 	
 	output [5:0] opCode;
 	output [6:0] HEX0, HEX1, HEX2, HEX3;

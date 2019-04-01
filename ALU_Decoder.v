@@ -1,12 +1,14 @@
 module ALU_Decoder(Function_code, ALU_optcode, ALU_control);
 	input [5:0] Function_code;
-	input ALU_optcode;
+	input [1:0] ALU_optcode;
 	output reg [3:0] ALU_control;
 	
 	always @(*)
 		begin
-			if (ALU_optcode)
+			if (ALU_optcode == 2'b01)
 				ALU_control = 4'b0000; // add
+			else if (ALU_optcode == 2'b10)
+				ALU_control = 4'b0001; // sub
 			else  
 				begin
 					case(Function_code)
