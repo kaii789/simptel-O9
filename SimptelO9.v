@@ -33,11 +33,11 @@ module SimptelO9(CLOCK_50, HEX0, HEX1, HEX2, HEX3);
 	.RegDst(RegDst),
 	.clk(CLOCK_50),
 	.reset(reset),
-	  .opCode(opCode[5:0]),
-	  .HEX0(HEX0[6:0]),
-	  .HEX1(HEX0[6:0]),
-	  .HEX2(HEX0[6:0]),
-	  .HEX3(HEX0[6:0])
+	.opCode(opCode[5:0]),
+	.HEX0(HEX0[6:0]),
+	.HEX1(HEX0[6:0]),
+	.HEX2(HEX0[6:0]),
+	.HEX3(HEX0[6:0])
 );
 
 endmodule 
