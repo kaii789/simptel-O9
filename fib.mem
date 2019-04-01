@@ -1,10 +1,3 @@
-// This is a fibonacci sequence calculator that "prints" the 5th fibonacci number.
-// $t1: n-2
-// $t2: n-1
-// $t3: temp
-// $t4: counter
-// $t5: which fibonacci number?
-
 00100000000001010000000000000101 // initialize $t5 to be 5
 00010000101000000000000000001010 // if $t5 == $zero, branch to 10 (11) lines down
 00100000000000010000000000000000 // initialize $t1 to be 0
@@ -16,5 +9,12 @@
 00100000100001000000000000000001 // $t4 = $t4 + 1 increment the counter
 00010000100001000000000000000001 // if $t4 == $t5, branch to 1 (2) lines down
 00001000000000000000000000000101 // jump to line 5 (this is only satisfied when when counter is not at the desired number yet)
-11111000101111111111111111111111 // print $t2
-11111000001111111111111111111111 // print $zero
+11111100010111111111111111111111 // print $t2
+11111100000111111111111111111111 // print $zero
+
+// This is a fibonacci sequence calculator that "prints" the 5th fibonacci number.
+// $t1: n-2
+// $t2: n-1
+// $t3: temp
+// $t4: counter
+// $t5: which fibonacci number?
