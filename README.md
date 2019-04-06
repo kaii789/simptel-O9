@@ -1,6 +1,6 @@
 # Simptel-O9
 
-A simple single-cycle processor capable of taking in Assembly/Machine Code instructions. 
+A simplified single-cycle processor capable of taking in Assembly/Machine Code instructions. 
 
 # Milestones
 Milestone 1:
